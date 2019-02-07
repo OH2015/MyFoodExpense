@@ -23,7 +23,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     var cost3 = 0
     var cost4 = 0
     var cost5 = 0
-
+    var cost6 = 0
 
     @IBOutlet weak var ingredients1: UITextField!
     @IBOutlet weak var ingredients2: UITextField!
@@ -39,15 +39,12 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     @IBOutlet weak var prices5: UIPickerView!
     @IBOutlet weak var prices6: UIPickerView!
 
-
     @IBOutlet weak var tax1: UIButton!
     @IBOutlet weak var tax2: UIButton!
     @IBOutlet weak var tax3: UIButton!
     @IBOutlet weak var tax4: UIButton!
     @IBOutlet weak var tax5: UIButton!
     @IBOutlet weak var tax6: UIButton!
-
-
 
     var ingpickerView: UIPickerView! = UIPickerView()
     @IBOutlet weak var personPickerView: UIPickerView!
@@ -105,8 +102,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
             }
         }
         taxInclude(tag: pickerView.tag)
-
     }
+
 
     @IBAction func taxChanged(_ sender: UIButton) {
         if sender.currentTitle == "税抜き"{
@@ -118,12 +115,9 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         }
 
         taxInclude(tag: sender.tag)
-
-
     }
 
     func taxInclude(tag: Int){
-
         switch tag {
         case 1:
             let taxValue = Int(Double(cost1) * 0.08)
@@ -170,13 +164,22 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
                 self.calculate()
                 cost5 -= taxValue
             }
+        case 6:
+            let taxValue = Int(Double(cost6) * 0.08)
+            if tax6.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost6 += taxValue
+                self.calculate()
+                cost6 -= taxValue
+            }
         default:
             return
         }
     }
 
     func calculate(){
-        TotalCost = cost1 + cost2 + cost3 + cost4 + cost5
+        TotalCost = cost1 + cost2 + cost3 + cost4 + cost5 + cost6
         if TotalCost == 0{
             perCost.text = "0"
         }else{
@@ -225,14 +228,11 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         self.prices3.delegate = self
         self.prices4.delegate = self
         self.prices5.delegate = self
+        self.prices6.delegate = self
 
         scrollView.delegate = self
 
-
-
         drawChart()
-
-
     }
 
     func setChart(y: [Double]) {
@@ -268,7 +268,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
 
         self.barChartView.delegate = self
 
-        let Costs = [Double(cost1),Double(cost2),Double(cost3),Double(cost4),Double(cost5)]
+        let Costs = [Double(cost1),Double(cost2),Double(cost3),Double(cost4),Double(cost5),Double(cost6)]
         setChart(y: Costs)
 
         self.contentView2.addSubview(barChartView)
@@ -299,6 +299,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients4.endEditing(true)
         ingredients5.text = ""
         ingredients5.endEditing(true)
+        ingredients6.text = ""
+        ingredients6.endEditing(true)
     }
 
 //    @objc
@@ -308,11 +310,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients3.endEditing(true)
         ingredients4.endEditing(true)
         ingredients5.endEditing(true)
+        ingredients6.endEditing(true)
     }
-
-
-
-
 
 }
 
