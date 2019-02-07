@@ -70,7 +70,7 @@
                                         <color key="backgroundColor" red="0.67276569660726449" green="0.8898401155094029" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anP-0B-xd5">
-                                        <rect key="frame" x="0.0" y="-22" width="426" height="1500"/>
+                                        <rect key="frame" x="0.0" y="-22" width="426" height="1478"/>
                                         <subviews>
                                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waS-tr-w8X">
                                                 <rect key="frame" x="205" y="149" width="102" height="89"/>
@@ -194,14 +194,12 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.82106142922477154" blue="0.53644178533755738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1500" id="ZYg-d0-1nE"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="kA3-6M-G7E" firstAttribute="width" secondItem="anP-0B-xd5" secondAttribute="width" id="0mh-7O-noX"/>
+                                    <constraint firstItem="anP-0B-xd5" firstAttribute="height" secondItem="GGu-TL-qhH" secondAttribute="height" id="2in-jL-Xuw"/>
                                     <constraint firstItem="kA3-6M-G7E" firstAttribute="height" secondItem="anP-0B-xd5" secondAttribute="height" id="35t-CF-63i"/>
                                     <constraint firstItem="anP-0B-xd5" firstAttribute="top" secondItem="GGu-TL-qhH" secondAttribute="top" id="AO5-ef-ENU"/>
                                     <constraint firstAttribute="bottom" secondItem="kA3-6M-G7E" secondAttribute="bottom" id="Cdz-Ri-VU1"/>
