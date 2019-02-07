@@ -15,22 +15,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyFoodExpense" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IA7-Uy-lRJ">
-                        <rect key="frame" x="0.0" y="0.0" width="828" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="828" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGu-TL-qhH" customClass="MyScrollView" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="828" height="1456"/>
+                                <rect key="frame" x="0.0" y="44" width="828" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-6M-G7E" userLabel="ContentView2">
                                         <rect key="frame" x="434" y="0.0" width="394" height="1500"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="合計金額" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWa-c8-WW3">
-                                                <rect key="frame" x="96" y="47" width="106" height="53"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bs-yP-jUb">
                                                 <rect key="frame" x="213" y="47" width="57" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,12 +59,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="合計金額(税込)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWa-c8-WW3">
+                                                <rect key="frame" x="81" y="53" width="122" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.67276569660726449" green="0.8898401155094029" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anP-0B-xd5">
                                         <rect key="frame" x="0.0" y="-22" width="426" height="1478"/>
                                         <subviews>
+                                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlr-RA-sjm">
+                                                <rect key="frame" x="205" y="52" width="102" height="89"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
                                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waS-tr-w8X">
                                                 <rect key="frame" x="205" y="149" width="102" height="89"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -84,8 +88,16 @@
                                                 <rect key="frame" x="205" y="346" width="102" height="102"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
+                                            <pickerView tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-p5-XL1">
+                                                <rect key="frame" x="205" y="456" width="102" height="96"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
+                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tdg-cL-Kpo">
+                                                <rect key="frame" x="205" y="560" width="102" height="96"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-0Q-WQa">
-                                                <rect key="frame" x="122" y="608" width="87" height="73"/>
+                                                <rect key="frame" x="127" y="675" width="87" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="2tR-yp-ix7"/>
@@ -93,20 +105,12 @@
                                                 </connections>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mf5-wV-9Q4">
-                                                <rect key="frame" x="256" y="634" width="18" height="21"/>
+                                                <rect key="frame" x="259" y="701" width="18" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-p5-XL1">
-                                                <rect key="frame" x="205" y="456" width="102" height="96"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </pickerView>
-                                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlr-RA-sjm">
-                                                <rect key="frame" x="205" y="52" width="102" height="89"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            </pickerView>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJI-e6-9IH">
                                                 <rect key="frame" x="43" y="69" width="97" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -115,16 +119,6 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Zsi-BI-Ije"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m6U-W1-Ha8">
-                                                <rect key="frame" x="43" y="483" width="97" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FZa-Jr-2sl"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53n-tl-Wxo">
@@ -155,6 +149,26 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="VTD-4p-XyJ"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m6U-W1-Ha8">
+                                                <rect key="frame" x="43" y="483" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FZa-Jr-2sl"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-9r-qYt">
+                                                <rect key="frame" x="43" y="584" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ev9-X8-0H0"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVG-vA-QKd">
@@ -192,6 +206,73 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBs-Wt-qsY">
+                                                <rect key="frame" x="322" y="597" width="19" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcs-83-Wd4">
+                                                <rect key="frame" x="322" y="111" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iTT-nW-Ztl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arG-TN-cLE">
+                                                <rect key="frame" x="322" y="208" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WzZ-CT-Q6n"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtQ-bt-0Lz">
+                                                <rect key="frame" x="322" y="308" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n4l-2j-696"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWw-jj-H7S">
+                                                <rect key="frame" x="322" y="418" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O3G-vA-xol"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e77-Tk-ucN">
+                                                <rect key="frame" x="322" y="522" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gsi-EZ-gfA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-Hy-YcC">
+                                                <rect key="frame" x="322" y="627" width="70" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="税抜き">
+                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gAe-qQ-ILB"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.82106142922477154" blue="0.53644178533755738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -212,7 +293,7 @@
                                 </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="CZI-Yp-NVk">
-                                <rect key="frame" x="402.5" y="1387" width="23" height="37"/>
+                                <rect key="frame" x="402.5" y="783" width="23" height="37"/>
                                 <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.24466697112098745" blue="0.13265612053732678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
@@ -230,14 +311,16 @@
                         <viewLayoutGuide key="safeArea" id="AvA-LV-iWE"/>
                     </view>
                     <navigationItem key="navigationItem" id="pqt-My-szy"/>
-                    <size key="freeformSize" width="828" height="1500"/>
+                    <size key="freeformSize" width="828" height="896"/>
                     <connections>
                         <outlet property="contentView" destination="anP-0B-xd5" id="ves-hY-ymc"/>
+                        <outlet property="contentView2" destination="kA3-6M-G7E" id="BS8-nn-NMT"/>
                         <outlet property="ingredients1" destination="ZJI-e6-9IH" id="flc-Ff-BIW"/>
                         <outlet property="ingredients2" destination="53n-tl-Wxo" id="Hqe-ui-lPq"/>
                         <outlet property="ingredients3" destination="M5n-X4-t68" id="heT-T4-tWt"/>
                         <outlet property="ingredients4" destination="xhC-dh-5eh" id="CRP-Ek-6M0"/>
                         <outlet property="ingredients5" destination="m6U-W1-Ha8" id="HV5-v9-WZd"/>
+                        <outlet property="ingredients6" destination="BM9-9r-qYt" id="MMD-GC-WOT"/>
                         <outlet property="pageControll" destination="CZI-Yp-NVk" id="CX3-AU-l0F"/>
                         <outlet property="perCost" destination="PcN-KG-3Ss" id="pDb-bL-dNS"/>
                         <outlet property="personPickerView" destination="UWK-0Q-WQa" id="eDX-u8-uAX"/>
@@ -246,7 +329,14 @@
                         <outlet property="prices3" destination="Y5w-8S-pQn" id="JRd-vK-7in"/>
                         <outlet property="prices4" destination="BQg-gh-hfW" id="wLI-4I-eDZ"/>
                         <outlet property="prices5" destination="wP3-p5-XL1" id="jah-EG-bbF"/>
+                        <outlet property="prices6" destination="Tdg-cL-Kpo" id="uMt-1A-6bc"/>
                         <outlet property="scrollView" destination="GGu-TL-qhH" id="ms2-km-8wj"/>
+                        <outlet property="tax1" destination="zcs-83-Wd4" id="KJc-vK-fwG"/>
+                        <outlet property="tax2" destination="arG-TN-cLE" id="Fmq-rb-L1E"/>
+                        <outlet property="tax3" destination="WtQ-bt-0Lz" id="hhf-89-sFn"/>
+                        <outlet property="tax4" destination="oWw-jj-H7S" id="aZE-CS-boz"/>
+                        <outlet property="tax5" destination="e77-Tk-ucN" id="SNO-8y-3Y0"/>
+                        <outlet property="tax6" destination="V1X-Hy-YcC" id="Mj5-Vc-Fxh"/>
                         <outlet property="totalCost" destination="9Bs-yP-jUb" id="USs-J3-33u"/>
                     </connections>
                 </viewController>

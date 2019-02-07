@@ -7,14 +7,14 @@
 //
 
 import UIKit
-
+import Charts
 
 
 var Prices = [String]()
 var Ingredients = ["なし"]
 let Person = ["1","2","3","4"]
 
-class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIScrollViewDelegate {
+class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UIScrollViewDelegate ,ChartViewDelegate{
 
     var TotalCost = 0
     var currentPerson = 1
@@ -30,13 +30,25 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     @IBOutlet weak var ingredients3: UITextField!
     @IBOutlet weak var ingredients4: UITextField!
     @IBOutlet weak var ingredients5: UITextField!
-
+    @IBOutlet weak var ingredients6: UITextField!
 
     @IBOutlet weak var prices1: UIPickerView!
     @IBOutlet weak var prices2: UIPickerView!
     @IBOutlet weak var prices3: UIPickerView!
     @IBOutlet weak var prices4: UIPickerView!
     @IBOutlet weak var prices5: UIPickerView!
+    @IBOutlet weak var prices6: UIPickerView!
+
+
+    @IBOutlet weak var tax1: UIButton!
+    @IBOutlet weak var tax2: UIButton!
+    @IBOutlet weak var tax3: UIButton!
+    @IBOutlet weak var tax4: UIButton!
+    @IBOutlet weak var tax5: UIButton!
+    @IBOutlet weak var tax6: UIButton!
+
+
+
     var ingpickerView: UIPickerView! = UIPickerView()
     @IBOutlet weak var personPickerView: UIPickerView!
 
@@ -45,8 +57,11 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
 
     @IBOutlet weak var scrollView: MyScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView2: UIView!
 
     @IBOutlet weak var pageControll: UIPageControl!
+
+    var barChartView: BarChartView!
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -84,11 +99,83 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
             case 3:cost3 = Int(Prices[row])!
             case 4:cost4 = Int(Prices[row])!
             case 5:cost5 = Int(Prices[row])!
+            case 6:cost6 = Int(Prices[row])!
             default:
                 return
             }
         }
+        taxInclude(tag: pickerView.tag)
 
+    }
+
+    @IBAction func taxChanged(_ sender: UIButton) {
+        if sender.currentTitle == "税抜き"{
+            sender.setTitle("税込", for: .normal)
+            sender.setTitleColor(.red, for: .normal)
+        }else{
+            sender.setTitle("税抜き", for: .normal)
+            sender.setTitleColor(.darkGray, for: .normal)
+        }
+
+        taxInclude(tag: sender.tag)
+
+
+    }
+
+    func taxInclude(tag: Int){
+
+        switch tag {
+        case 1:
+            let taxValue = Int(Double(cost1) * 0.08)
+            if tax1.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost1 += taxValue
+                self.calculate()
+                cost1 -= taxValue
+            }
+        case 2:
+            let taxValue = Int(Double(cost2) * 0.08)
+            if tax2.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost2 += taxValue
+                self.calculate()
+                cost2 -= taxValue
+            }
+        case 3:
+            let taxValue = Int(Double(cost3) * 0.08)
+            if tax3.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost3 += taxValue
+                self.calculate()
+                cost3 -= taxValue
+            }
+        case 4:
+            let taxValue = Int(Double(cost4) * 0.08)
+            if tax4.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost4 += taxValue
+                self.calculate()
+                cost4 -= taxValue
+            }
+        case 5:
+            let taxValue = Int(Double(cost5) * 0.08)
+            if tax5.currentTitle == "税込"{
+                self.calculate()
+            }else{
+                cost5 += taxValue
+                self.calculate()
+                cost5 -= taxValue
+            }
+        default:
+            return
+        }
+    }
+
+    func calculate(){
         TotalCost = cost1 + cost2 + cost3 + cost4 + cost5
         if TotalCost == 0{
             perCost.text = "0"
@@ -99,6 +186,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         }
         totalCost.text = String(TotalCost)
 
+        barChartView.removeFromSuperview()
+        drawChart()
     }
 
     override func viewDidLoad() {
@@ -138,9 +227,52 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         self.prices5.delegate = self
 
         scrollView.delegate = self
+
+
+
+        drawChart()
+
+
     }
 
+    func setChart(y: [Double]) {
 
+        // グラフタイトル
+        barChartView.chartDescription?.text = "testestest"
+
+        // アニメーション
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+
+        //横軸を非表示
+        barChartView.xAxis.enabled = false
+
+        // y軸
+        var data = [BarChartDataEntry]()
+
+        for (i, val) in y.enumerated() {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: val)
+            data.append(dataEntry)
+        }
+        // グラフをセット
+
+        let DataSet = BarChartDataSet(values: data, label: "test_charts")
+        barChartView.data = BarChartData(dataSet: DataSet)
+        // グラフの色
+        DataSet.colors = ChartColorTemplates.vordiplom()
+
+    }
+
+    func drawChart(){
+
+        barChartView = BarChartView.init(frame: CGRect(x: 20, y: 200, width: self.view.frame.width - 40, height:self.view.frame.size.height - 300))
+
+        self.barChartView.delegate = self
+
+        let Costs = [Double(cost1),Double(cost2),Double(cost3),Double(cost4),Double(cost5)]
+        setChart(y: Costs)
+
+        self.contentView2.addSubview(barChartView)
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         done()
@@ -177,6 +309,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients4.endEditing(true)
         ingredients5.endEditing(true)
     }
+
+
 
 
 
