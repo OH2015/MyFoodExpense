@@ -14,6 +14,7 @@
 		9D034E652209C1E000917824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D034E632209C1E000917824 /* LaunchScreen.storyboard */; };
 		9D034E702209C1E000917824 /* MyFoodExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E6F2209C1E000917824 /* MyFoodExpenseTests.swift */; };
 		9D034E7B2209C1E000917824 /* MyFoodExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */; };
+		9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05342E220BF1DE007C57ED /* MyScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		9D034E762209C1E000917824 /* MyFoodExpenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFoodExpenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodExpenseUITests.swift; sourceTree = "<group>"; };
 		9D034E7C2209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D05342E220BF1DE007C57ED /* MyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				9D034E612209C1E000917824 /* Assets.xcassets */,
 				9D034E632209C1E000917824 /* LaunchScreen.storyboard */,
 				9D034E662209C1E000917824 /* Info.plist */,
+				9D05342E220BF1DE007C57ED /* MyScrollView.swift */,
 			);
 			path = MyFoodExpense;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D034E5D2209C1DE00917824 /* ViewController.swift in Sources */,
+				9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */,
 				9D034E5B2209C1DE00917824 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T7886L96UG;
+				DEVELOPMENT_TEAM = TGM2ZQ6Z65;
 				INFOPLIST_FILE = MyFoodExpense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T7886L96UG;
+				DEVELOPMENT_TEAM = TGM2ZQ6Z65;
 				INFOPLIST_FILE = MyFoodExpense/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
