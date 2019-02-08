@@ -101,7 +101,6 @@
 				28E3767253CC25060E09C443 /* Pods-MyFoodExpenseUITests.debug.xcconfig */,
 				F30328F15E60E1ABD77C8D1E /* Pods-MyFoodExpenseUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

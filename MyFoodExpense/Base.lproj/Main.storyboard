@@ -21,8 +21,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGu-TL-qhH" customClass="MyScrollView" customModule="MyFoodExpense" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="828" height="852"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-6M-G7E" userLabel="ContentView2">
-                                        <rect key="frame" x="434" y="0.0" width="394" height="1500"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-6M-G7E" userLabel="ContentView2">
+                                        <rect key="frame" x="828" y="0.0" width="828" height="852"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bs-yP-jUb">
                                                 <rect key="frame" x="213" y="47" width="57" height="65"/>
@@ -66,38 +66,48 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WnS-cH-S56" customClass="PieChartView" customModule="Charts">
+                                                <rect key="frame" x="0.0" y="205.5" width="828" height="596.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.67276569660726449" green="0.8898401155094029" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="WnS-cH-S56" secondAttribute="bottom" constant="50" id="Gkc-g7-euA"/>
+                                            <constraint firstItem="WnS-cH-S56" firstAttribute="width" secondItem="kA3-6M-G7E" secondAttribute="width" id="VBT-vo-w87"/>
+                                            <constraint firstItem="WnS-cH-S56" firstAttribute="leading" secondItem="kA3-6M-G7E" secondAttribute="leading" id="XCw-wO-Bbn"/>
+                                            <constraint firstItem="WnS-cH-S56" firstAttribute="height" secondItem="kA3-6M-G7E" secondAttribute="height" multiplier="0.7" id="cM0-9P-vbf"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="anP-0B-xd5">
-                                        <rect key="frame" x="0.0" y="-22" width="426" height="1478"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anP-0B-xd5">
+                                        <rect key="frame" x="0.0" y="0.0" width="828" height="852"/>
                                         <subviews>
                                             <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlr-RA-sjm">
-                                                <rect key="frame" x="205" y="52" width="102" height="89"/>
+                                                <rect key="frame" x="205" y="52" width="504" height="89"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waS-tr-w8X">
-                                                <rect key="frame" x="205" y="149" width="102" height="89"/>
+                                                <rect key="frame" x="205" y="149" width="504" height="89"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5w-8S-pQn">
-                                                <rect key="frame" x="205" y="246" width="102" height="92"/>
+                                                <rect key="frame" x="205" y="246" width="504" height="92"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQg-gh-hfW">
-                                                <rect key="frame" x="205" y="346" width="102" height="102"/>
+                                                <rect key="frame" x="205" y="346" width="504" height="102"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wP3-p5-XL1">
-                                                <rect key="frame" x="205" y="456" width="102" height="96"/>
+                                                <rect key="frame" x="205" y="456" width="504" height="96"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tdg-cL-Kpo">
-                                                <rect key="frame" x="205" y="560" width="102" height="96"/>
+                                                <rect key="frame" x="205" y="560" width="504" height="96"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-0Q-WQa">
-                                                <rect key="frame" x="127" y="675" width="87" height="73"/>
+                                                <rect key="frame" x="127" y="675" width="489" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="2tR-yp-ix7"/>
@@ -273,21 +283,24 @@
                                                     <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fIn-hq-zig"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d20-Uw-0OH">
+                                                <rect key="frame" x="68" y="756" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.82106142922477154" blue="0.53644178533755738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.82106142920000003" blue="0.53644178529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="kA3-6M-G7E" firstAttribute="width" secondItem="anP-0B-xd5" secondAttribute="width" id="0mh-7O-noX"/>
+                                    <constraint firstAttribute="trailing" secondItem="kA3-6M-G7E" secondAttribute="trailing" id="0K7-g1-mWp"/>
                                     <constraint firstItem="anP-0B-xd5" firstAttribute="height" secondItem="GGu-TL-qhH" secondAttribute="height" id="2in-jL-Xuw"/>
                                     <constraint firstItem="kA3-6M-G7E" firstAttribute="height" secondItem="anP-0B-xd5" secondAttribute="height" id="35t-CF-63i"/>
                                     <constraint firstItem="anP-0B-xd5" firstAttribute="top" secondItem="GGu-TL-qhH" secondAttribute="top" id="AO5-ef-ENU"/>
                                     <constraint firstAttribute="bottom" secondItem="kA3-6M-G7E" secondAttribute="bottom" id="Cdz-Ri-VU1"/>
                                     <constraint firstAttribute="bottom" secondItem="anP-0B-xd5" secondAttribute="bottom" id="Jsu-N8-oKw"/>
-                                    <constraint firstItem="kA3-6M-G7E" firstAttribute="leading" secondItem="anP-0B-xd5" secondAttribute="trailing" id="NfB-iU-d7H"/>
-                                    <constraint firstAttribute="trailing" secondItem="kA3-6M-G7E" secondAttribute="trailing" id="aPb-7s-dpw"/>
-                                    <constraint firstItem="anP-0B-xd5" firstAttribute="width" secondItem="GGu-TL-qhH" secondAttribute="width" id="e1Z-DI-tny"/>
+                                    <constraint firstItem="kA3-6M-G7E" firstAttribute="leading" secondItem="anP-0B-xd5" secondAttribute="trailing" id="Xib-pp-rvZ"/>
                                     <constraint firstItem="anP-0B-xd5" firstAttribute="leading" secondItem="GGu-TL-qhH" secondAttribute="leading" id="uPG-EV-VyN"/>
                                     <constraint firstItem="kA3-6M-G7E" firstAttribute="top" secondItem="GGu-TL-qhH" secondAttribute="top" id="xwJ-dP-AfZ"/>
                                 </constraints>
@@ -298,15 +311,17 @@
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.24466697112098745" blue="0.13265612053732678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="CZI-Yp-NVk" firstAttribute="centerX" secondItem="IA7-Uy-lRJ" secondAttribute="centerX" id="2kj-hb-xju"/>
                             <constraint firstAttribute="bottom" secondItem="GGu-TL-qhH" secondAttribute="bottom" id="A5G-Nf-5DR"/>
                             <constraint firstItem="GGu-TL-qhH" firstAttribute="leading" secondItem="AvA-LV-iWE" secondAttribute="leading" id="Ma8-rW-n1r"/>
                             <constraint firstItem="GGu-TL-qhH" firstAttribute="top" secondItem="AvA-LV-iWE" secondAttribute="top" id="QWn-Dl-H29"/>
+                            <constraint firstItem="anP-0B-xd5" firstAttribute="width" secondItem="AvA-LV-iWE" secondAttribute="width" id="RoV-ck-HVy"/>
                             <constraint firstItem="GGu-TL-qhH" firstAttribute="trailing" secondItem="AvA-LV-iWE" secondAttribute="trailing" id="UTx-Kw-Tmy"/>
                             <constraint firstItem="AvA-LV-iWE" firstAttribute="bottom" secondItem="CZI-Yp-NVk" secondAttribute="bottom" constant="42" id="Wvs-QE-gzy"/>
                             <constraint firstItem="GGu-TL-qhH" firstAttribute="width" secondItem="AvA-LV-iWE" secondAttribute="width" id="Xgb-At-Pi1"/>
+                            <constraint firstItem="kA3-6M-G7E" firstAttribute="width" secondItem="AvA-LV-iWE" secondAttribute="width" id="u8W-Xz-7JC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AvA-LV-iWE"/>
                     </view>
@@ -324,6 +339,7 @@
                         <outlet property="pageControll" destination="CZI-Yp-NVk" id="CX3-AU-l0F"/>
                         <outlet property="perCost" destination="PcN-KG-3Ss" id="pDb-bL-dNS"/>
                         <outlet property="personPickerView" destination="UWK-0Q-WQa" id="eDX-u8-uAX"/>
+                        <outlet property="pieChartView" destination="WnS-cH-S56" id="4vJ-2f-Kw0"/>
                         <outlet property="prices1" destination="Rlr-RA-sjm" id="63P-Tm-Hk2"/>
                         <outlet property="prices2" destination="waS-tr-w8X" id="tfz-Mu-kYX"/>
                         <outlet property="prices3" destination="Y5w-8S-pQn" id="JRd-vK-7in"/>
@@ -342,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-162.31884057971016" y="-460.71428571428567"/>
+            <point key="canvasLocation" x="136" y="-808"/>
         </scene>
     </scenes>
 </document>
