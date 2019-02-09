@@ -114,65 +114,50 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     }
 
     func taxInclude(tag: Int){
-        switch tag {
-        case 1:
-            let taxValue = Int(Double(cost1) * 0.08)
-            if tax1.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost1 += taxValue
-                self.calculate()
-                cost1 -= taxValue
-            }
-        case 2:
-            let taxValue = Int(Double(cost2) * 0.08)
-            if tax2.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost2 += taxValue
-                self.calculate()
-                cost2 -= taxValue
-            }
-        case 3:
-            let taxValue = Int(Double(cost3) * 0.08)
-            if tax3.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost3 += taxValue
-                self.calculate()
-                cost3 -= taxValue
-            }
-        case 4:
-            let taxValue = Int(Double(cost4) * 0.08)
-            if tax4.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost4 += taxValue
-                self.calculate()
-                cost4 -= taxValue
-            }
-        case 5:
-            let taxValue = Int(Double(cost5) * 0.08)
-            if tax5.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost5 += taxValue
-                self.calculate()
-                cost5 -= taxValue
-            }
-        case 6:
-            let taxValue = Int(Double(cost6) * 0.08)
-            if tax6.currentTitle == "税込"{
-                self.calculate()
-            }else{
-                cost6 += taxValue
-                self.calculate()
-                cost6 -= taxValue
-            }
-        default:
-            return
+        let taxValue1 = Int(Double(cost1) * 0.08)
+        let taxValue2 = Int(Double(cost2) * 0.08)
+        let taxValue3 = Int(Double(cost3) * 0.08)
+        let taxValue4 = Int(Double(cost4) * 0.08)
+        let taxValue5 = Int(Double(cost5) * 0.08)
+        let taxValue6 = Int(Double(cost6) * 0.08)
+        if tax1.currentTitle == "税抜き"{
+            cost1 += taxValue1
         }
-    }
+        if tax2.currentTitle == "税抜き"{
+            cost2 += taxValue2
+        }
+        if tax3.currentTitle == "税抜き"{
+            cost3 += taxValue3
+        }
+        if tax4.currentTitle == "税抜き"{
+            cost4 += taxValue4
+        }
+        if tax5.currentTitle == "税抜き"{
+            cost5 += taxValue5
+        }
+        if tax6.currentTitle == "税抜き"{
+            cost6 += taxValue6
+        }
+        self.calculate()
+        if tax1.currentTitle == "税抜き"{
+            cost1 -= taxValue1
+        }
+        if tax2.currentTitle == "税抜き"{
+            cost2 -= taxValue2
+        }
+        if tax3.currentTitle == "税抜き"{
+            cost3 -= taxValue3
+        }
+        if tax4.currentTitle == "税抜き"{
+            cost4 -= taxValue4
+        }
+        if tax5.currentTitle == "税抜き"{
+            cost5 -= taxValue5
+        }
+        if tax6.currentTitle == "税抜き"{
+            cost6 -= taxValue6
+        }
+}
 
     func calculate(){
         TotalCost = cost1 + cost2 + cost3 + cost4 + cost5 + cost6
@@ -191,9 +176,14 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ingredients1.placeholder = "食材"
+        ingredients2.placeholder = "食材"
+        ingredients3.placeholder = "食材"
+        ingredients4.placeholder = "食材"
+        ingredients5.placeholder = "食材"
+        ingredients6.placeholder = "食材"
+
         var guradColors:[CGColor] = [startcolor.cgColor,endcolor.cgColor]
-
-
         let guradLayer:CAGradientLayer = CAGradientLayer()
         guradLayer.colors = guradColors
         guradLayer.frame = self.contentView.bounds
@@ -212,11 +202,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         self.prices6.delegate = self
 
         scrollView.delegate = self
-    }
-
-    func setChart(y: [Double]) {
-
-
     }
 
     func drawChart(){
@@ -243,7 +228,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     }
 
 
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         done()
     }
@@ -257,7 +241,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         pageControll.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
     }
 
-//    @objc
     func done() {
         ingredients1.endEditing(true)
         ingredients2.endEditing(true)
