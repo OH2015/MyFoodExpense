@@ -11,15 +11,20 @@ import UIKit
 class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    let userDefaults = UserDefaults.standard
     var index:Int?
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ct1s.count
+        let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
+        titles = DataArray[18]
+        return titles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        cell.textLabel?.text = String("aaa")
+        let userDefaults = UserDefaults.standard
+        let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
+        cell.textLabel?.text = DataArray[18][indexPath.row]
         return cell
     }
 
@@ -36,21 +41,35 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let userDefaults = UserDefaults.standard
-        let nextVC:ViewController = segue.destination as! ViewController
-        let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
+        if segue.identifier == "showSegue"{
+            let userDefaults = UserDefaults.standard
+            let nextVC:ViewController = segue.destination as! ViewController
+            let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
 
+            nextVC.newIng1 = DataArray[0][index!]
+            nextVC.newIng2 = DataArray[1][index!]
+            nextVC.newIng3 = DataArray[2][index!]
+            nextVC.newIng4 = DataArray[3][index!]
+            nextVC.newIng5 = DataArray[4][index!]
+            nextVC.newIng6 = DataArray[5][index!]
+            nextVC.newCT1 = DataArray[6][index!]
+            nextVC.newCT2 = DataArray[7][index!]
+            nextVC.newCT3 = DataArray[8][index!]
+            nextVC.newCT4 = DataArray[9][index!]
+            nextVC.newCT5 = DataArray[10][index!]
+            nextVC.newCT6 = DataArray[11][index!]
+            nextVC.newTax1 = DataArray[12][index!]
+            nextVC.newTax2 = DataArray[13][index!]
+            nextVC.newTax3 = DataArray[14][index!]
+            nextVC.newTax4 = DataArray[15][index!]
+            nextVC.newTax5 = DataArray[16][index!]
+            nextVC.newTax6 = DataArray[17][index!]
 
-        nextVC.newIng1 = DataArray[0][index!]
-        nextVC.newIng2 = DataArray[1][index!]
-        nextVC.newIng3 = DataArray[2][index!]
-        nextVC.newIng4 = DataArray[3][index!]
-        nextVC.newIng5 = DataArray[4][index!]
-        nextVC.newIng6 = DataArray[5][index!]
-        print(DataArray)
+            print(DataArray)
 
-        DispatchQueue.main.async {
-            nextVC.reloadData()
+            DispatchQueue.main.async {
+                nextVC.reloadData()
+            }
         }
 
     }

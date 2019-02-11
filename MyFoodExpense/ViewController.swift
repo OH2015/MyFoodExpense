@@ -38,6 +38,25 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     var newIng4:String?
     var newIng5:String?
     var newIng6:String?
+    var newCT1:String?
+    var newCT2:String?
+    var newCT3:String?
+    var newCT4:String?
+    var newCT5:String?
+    var newCT6:String?
+    var newTax1:String?
+    var newTax2:String?
+    var newTax3:String?
+    var newTax4:String?
+    var newTax5:String?
+    var newTax6:String?
+    var newTaxColor1:String?
+    var newTaxColor2:String?
+    var newTaxColor3:String?
+    var newTaxColor4:String?
+    var newTaxColor5:String?
+    var newTaxColor6:String?
+
 
     @IBOutlet weak var prices1: UIPickerView!
     @IBOutlet weak var prices2: UIPickerView!
@@ -52,6 +71,8 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     @IBOutlet weak var tax4: UIButton!
     @IBOutlet weak var tax5: UIButton!
     @IBOutlet weak var tax6: UIButton!
+
+    var Title: String?
 
     @IBOutlet weak var personPickerView: UIPickerView!
 
@@ -104,7 +125,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
                 return
             }
         }
-        taxInclude(tag: pickerView.tag)
+        taxInclude()
     }
 
 
@@ -117,10 +138,10 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
             sender.setTitleColor(.darkGray, for: .normal)
         }
 
-        taxInclude(tag: sender.tag)
+        taxInclude()
     }
 
-    func taxInclude(tag: Int){
+    func taxInclude(){
         let taxValue1 = Int(Double(cost1) * 0.08)
         let taxValue2 = Int(Double(cost2) * 0.08)
         let taxValue3 = Int(Double(cost3) * 0.08)
@@ -177,8 +198,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         }
         totalCost.text = String(TotalCost)
         drawChart()
-
-
     }
 
     override func viewDidLoad() {
@@ -258,14 +277,44 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     }
 
     @IBAction func storeValue(_ sender: Any) {
-        performSegue(withIdentifier: "storeSegue", sender: nil)
+//        performSegue(withIdentifier: "storeSegue", sender: nil)
+        setData()
 
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let _: UIViewController = segue.destination
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "storeSegue"{
+//            let _: UIViewController = segue.destination
+//            ing1s.append(ingredients1.text ?? "なし")
+//            ing2s.append(ingredients2.text ?? "なし")
+//            ing3s.append(ingredients3.text ?? "なし")
+//            ing4s.append(ingredients4.text ?? "なし")
+//            ing5s.append(ingredients5.text ?? "なし")
+//            ing6s.append(ingredients6.text ?? "なし")
+//            ct1s.append(String(cost1))
+//            ct2s.append(String(cost2))
+//            ct3s.append(String(cost3))
+//            ct4s.append(String(cost4))
+//            ct5s.append(String(cost5))
+//            ct6s.append(String(cost6))
+//            taxFlags1.append(tax1.currentTitle!)
+//            taxFlags2.append(tax2.currentTitle!)
+//            taxFlags3.append(tax3.currentTitle!)
+//            taxFlags4.append(tax4.currentTitle!)
+//            taxFlags5.append(tax5.currentTitle!)
+//            taxFlags6.append(tax6.currentTitle!)
+//
+//            DispatchQueue.main.async {
+//                let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6]
+//                let userDefaults = UserDefaults.standard
+//                userDefaults.removeObject(forKey: "KEY_dataArray")
+//                userDefaults.set(dataArray, forKey: "KEY_dataArray")
+//            }
+//        }
+//    }
+
+    func setData(){
         ing1s.append(ingredients1.text ?? "なし")
-//        print(dataArray)
         ing2s.append(ingredients2.text ?? "なし")
         ing3s.append(ingredients3.text ?? "なし")
         ing4s.append(ingredients4.text ?? "なし")
@@ -284,12 +333,13 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         taxFlags5.append(tax5.currentTitle!)
         taxFlags6.append(tax6.currentTitle!)
 
-        DispatchQueue.main.async {
-            let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6]
-            let userDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: "KEY_dataArray")
-            userDefaults.set(dataArray, forKey: "KEY_dataArray")
-        }
+
+//        DispatchQueue.main.async {
+//            let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6,titles]
+//
+//            userDefaults.set(dataArray, forKey: "KEY_dataArray")
+//        }
+
 
     }
 
@@ -300,6 +350,45 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients4.text = newIng4
         ingredients5.text = newIng5
         ingredients6.text = newIng6
+        prices1.selectRow(Int(newCT1!)!/10, inComponent: 0, animated: true)
+        prices2.selectRow(Int(newCT2!)!/10, inComponent: 0, animated: true)
+        prices3.selectRow(Int(newCT3!)!/10, inComponent: 0, animated: true)
+        prices4.selectRow(Int(newCT4!)!/10, inComponent: 0, animated: true)
+        prices5.selectRow(Int(newCT5!)!/10, inComponent: 0, animated: true)
+        prices6.selectRow(Int(newCT6!)!/10, inComponent: 0, animated: true)
+        cost1 = Int(newCT1!)!
+        cost2 = Int(newCT2!)!
+        cost3 = Int(newCT3!)!
+        cost4 = Int(newCT4!)!
+        cost5 = Int(newCT5!)!
+        cost6 = Int(newCT6!)!
+        if newTax1 == "税込"{
+            tax1.setTitle("税込", for: .normal)
+            tax1.setTitleColor(UIColor.red, for: .normal)
+        }
+        if newTax2 == "税込"{
+            tax2.setTitle("税込", for: .normal)
+            tax2.setTitleColor(UIColor.red, for: .normal)
+        }
+        if newTax3 == "税込"{
+            tax3.setTitle("税込", for: .normal)
+            tax3.setTitleColor(UIColor.red, for: .normal)
+        }
+        if newTax4 == "税込"{
+            tax4.setTitle("税込", for: .normal)
+            tax4.setTitleColor(UIColor.red, for: .normal)
+        }
+        if newTax5 == "税込"{
+            tax5.setTitle("税込", for: .normal)
+            tax5.setTitleColor(UIColor.red, for: .normal)
+        }
+        if newTax6 == "税込"{
+            tax6.setTitle("税込", for: .normal)
+            tax6.setTitleColor(UIColor.red, for: .normal)
+        }
+        DispatchQueue.main.async {
+            self.taxInclude()
+        }
 
     }
 

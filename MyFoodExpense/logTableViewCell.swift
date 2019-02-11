@@ -24,7 +24,7 @@ var taxFlags3 = [String]()
 var taxFlags4 = [String]()
 var taxFlags5 = [String]()
 var taxFlags6 = [String]()
-
+var titles = [String]()
 
 
 import UIKit

@@ -17,6 +17,7 @@
 		9D034E7B2209C1E000917824 /* MyFoodExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */; };
 		9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05342E220BF1DE007C57ED /* MyScrollView.swift */; };
 		9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15975222106D3700B959B8 /* logTableViewCell.swift */; };
+		9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1597542211753A00B959B8 /* popUpViewController.swift */; };
 		9DFFC9F5220EABD0004EA1DA /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */; };
 		B7B1B3093E8F736AF3AAB024 /* Pods_MyFoodExpenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */; };
 		C5BE181CA3A2AC8604417FAA /* Pods_MyFoodExpenseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D0E2381BB82E8967CC5AC9 /* Pods_MyFoodExpenseUITests.framework */; };
@@ -60,6 +61,7 @@
 		9D034E7C2209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D05342E220BF1DE007C57ED /* MyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
 		9D15975222106D3700B959B8 /* logTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logTableViewCell.swift; sourceTree = "<group>"; };
+		9D1597542211753A00B959B8 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D0E2381BB82E8967CC5AC9 /* Pods_MyFoodExpenseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpenseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 			children = (
 				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
 				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
+				9D1597542211753A00B959B8 /* popUpViewController.swift */,
 				9D034E5C2209C1DE00917824 /* ViewController.swift */,
 				9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */,
 				9D034E5E2209C1DE00917824 /* Main.storyboard */,
@@ -403,6 +406,7 @@
 				9D034E5D2209C1DE00917824 /* ViewController.swift in Sources */,
 				9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */,
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
+				9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */,
 				9DFFC9F5220EABD0004EA1DA /* secondViewController.swift in Sources */,
 				9D034E5B2209C1DE00917824 /* AppDelegate.swift in Sources */,
 			);

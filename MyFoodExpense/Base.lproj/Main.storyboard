@@ -497,9 +497,20 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d20-Uw-0OH">
                                                 <rect key="frame" x="295" y="756" width="46" height="54"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="保存"/>
                                                 <connections>
                                                     <action selector="storeValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w9G-0B-0nt"/>
+                                                    <segue destination="ASX-fa-Hpz" kind="presentation" modalTransitionStyle="crossDissolve" id="YYl-HI-lce"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcp-TY-Qy4">
+                                                <rect key="frame" x="62" y="779" width="62" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="リスト"/>
+                                                <connections>
+                                                    <segue destination="fWv-o9-7Ox" kind="show" id="9dV-Pb-XDN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -568,15 +579,66 @@
                         <outlet property="tax5" destination="e77-Tk-ucN" id="SNO-8y-3Y0"/>
                         <outlet property="tax6" destination="V1X-Hy-YcC" id="Mj5-Vc-Fxh"/>
                         <outlet property="totalCost" destination="9Bs-yP-jUb" id="USs-J3-33u"/>
-                        <segue destination="fWv-o9-7Ox" kind="show" identifier="storeSegue" id="36E-J9-fBl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="211.59420289855075" y="-648.21428571428567"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="t4A-8G-OzQ">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="ASX-fa-Hpz" customClass="popUpViewController" customModule="MyFoodExpense" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="TYt-Dp-emD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6re-tN-MZB">
+                                <rect key="frame" x="69" y="340" width="276" height="217"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8C-bX-LaQ">
+                                        <rect key="frame" x="77" y="162" width="123" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="名前をつけて保存"/>
+                                        <connections>
+                                            <action selector="buttonTapped:" destination="ASX-fa-Hpz" eventType="touchUpInside" id="Q6y-Ap-e5W"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-le-BHB">
+                                        <rect key="frame" x="62" y="93" width="152" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="タイトルをつけてください" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvO-kC-xQF">
+                                        <rect key="frame" x="34" y="32" width="208" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.24779387953367871" green="0.24779387953367871" blue="0.24779387953367871" alpha="0.797425176056338" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="AmH-oY-siw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="teG-cB-Luj"/>
+                    <connections>
+                        <outlet property="titleText" destination="dkm-le-BHB" id="mza-NF-qCq"/>
+                        <segue destination="fWv-o9-7Ox" kind="showDetail" identifier="storeSegue" id="88u-IZ-brb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbu-nV-Lu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-554" y="-1577"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qP5-aY-WXv"/>
+        <segue reference="9dV-Pb-XDN"/>
     </inferredMetricsTieBreakers>
 </document>
