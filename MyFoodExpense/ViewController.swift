@@ -32,6 +32,13 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     @IBOutlet weak var ingredients5: UITextField!
     @IBOutlet weak var ingredients6: UITextField!
 
+    var newIng1:String?
+    var newIng2:String?
+    var newIng3:String?
+    var newIng4:String?
+    var newIng5:String?
+    var newIng6:String?
+
     @IBOutlet weak var prices1: UIPickerView!
     @IBOutlet weak var prices2: UIPickerView!
     @IBOutlet weak var prices3: UIPickerView!
@@ -183,7 +190,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients5.placeholder = "食材"
         ingredients6.placeholder = "食材"
 
-        var guradColors:[CGColor] = [startcolor.cgColor,endcolor.cgColor]
+        let guradColors:[CGColor] = [startcolor.cgColor,endcolor.cgColor]
         let guradLayer:CAGradientLayer = CAGradientLayer()
         guradLayer.colors = guradColors
         guradLayer.frame = self.contentView.bounds
@@ -206,7 +213,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
 
     func drawChart(){
         pieChartView.drawHoleEnabled = false
-
         let Costs = [Double(cost1),Double(cost2),Double(cost3),Double(cost4),Double(cost5),Double(cost6)]
         let Ingredients = [ingredients1?.text,ingredients2?.text,ingredients3?.text,ingredients4?.text,ingredients5?.text,ingredients6?.text]
 
@@ -250,6 +256,54 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         ingredients6.endEditing(true)
         drawChart()
     }
+
+    @IBAction func storeValue(_ sender: Any) {
+        performSegue(withIdentifier: "storeSegue", sender: nil)
+
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let _: UIViewController = segue.destination
+        ing1s.append(ingredients1.text ?? "なし")
+//        print(dataArray)
+        ing2s.append(ingredients2.text ?? "なし")
+        ing3s.append(ingredients3.text ?? "なし")
+        ing4s.append(ingredients4.text ?? "なし")
+        ing5s.append(ingredients5.text ?? "なし")
+        ing6s.append(ingredients6.text ?? "なし")
+        ct1s.append(String(cost1))
+        ct2s.append(String(cost2))
+        ct3s.append(String(cost3))
+        ct4s.append(String(cost4))
+        ct5s.append(String(cost5))
+        ct6s.append(String(cost6))
+        taxFlags1.append(tax1.currentTitle!)
+        taxFlags2.append(tax2.currentTitle!)
+        taxFlags3.append(tax3.currentTitle!)
+        taxFlags4.append(tax4.currentTitle!)
+        taxFlags5.append(tax5.currentTitle!)
+        taxFlags6.append(tax6.currentTitle!)
+
+        DispatchQueue.main.async {
+            let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6]
+            let userDefaults = UserDefaults.standard
+            userDefaults.removeObject(forKey: "KEY_dataArray")
+            userDefaults.set(dataArray, forKey: "KEY_dataArray")
+        }
+
+    }
+
+    func reloadData(){
+        ingredients1.text = newIng1
+        ingredients2.text = newIng2
+        ingredients3.text = newIng3
+        ingredients4.text = newIng4
+        ingredients5.text = newIng5
+        ingredients6.text = newIng6
+
+    }
+
+
 
 }
 
