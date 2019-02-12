@@ -9,7 +9,6 @@
 import UIKit
 import Charts
 
-
 var Prices = [String]()
 
 let Person = ["1","2","3","4"]
@@ -56,6 +55,7 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
     var newTaxColor4:String?
     var newTaxColor5:String?
     var newTaxColor6:String?
+    var newPerson:String?
 
 
     @IBOutlet weak var prices1: UIPickerView!
@@ -262,10 +262,6 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         return true
     }
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        pageControll.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
-    }
-
     func done() {
         ingredients1.endEditing(true)
         ingredients2.endEditing(true)
@@ -276,71 +272,45 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         drawChart()
     }
 
-    @IBAction func storeValue(_ sender: Any) {
-//        performSegue(withIdentifier: "storeSegue", sender: nil)
-        setData()
-
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControll.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
     }
 
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "storeSegue"{
-//            let _: UIViewController = segue.destination
-//            ing1s.append(ingredients1.text ?? "なし")
-//            ing2s.append(ingredients2.text ?? "なし")
-//            ing3s.append(ingredients3.text ?? "なし")
-//            ing4s.append(ingredients4.text ?? "なし")
-//            ing5s.append(ingredients5.text ?? "なし")
-//            ing6s.append(ingredients6.text ?? "なし")
-//            ct1s.append(String(cost1))
-//            ct2s.append(String(cost2))
-//            ct3s.append(String(cost3))
-//            ct4s.append(String(cost4))
-//            ct5s.append(String(cost5))
-//            ct6s.append(String(cost6))
-//            taxFlags1.append(tax1.currentTitle!)
-//            taxFlags2.append(tax2.currentTitle!)
-//            taxFlags3.append(tax3.currentTitle!)
-//            taxFlags4.append(tax4.currentTitle!)
-//            taxFlags5.append(tax5.currentTitle!)
-//            taxFlags6.append(tax6.currentTitle!)
-//
-//            DispatchQueue.main.async {
-//                let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6]
-//                let userDefaults = UserDefaults.standard
-//                userDefaults.removeObject(forKey: "KEY_dataArray")
-//                userDefaults.set(dataArray, forKey: "KEY_dataArray")
-//            }
-//        }
-//    }
+
+    @IBAction func storeValue(_ sender: Any) {
+        let secVC = secondViewController
+        secVC.pickDataFromKey()
+        DispatchQueue.main.async {
+            setData()
+            performSegue(withIdentifier: "popUpSegue", sender: nil)
+        }
+    }
 
     func setData(){
-        ing1s.append(ingredients1.text ?? "なし")
-        ing2s.append(ingredients2.text ?? "なし")
-        ing3s.append(ingredients3.text ?? "なし")
-        ing4s.append(ingredients4.text ?? "なし")
-        ing5s.append(ingredients5.text ?? "なし")
-        ing6s.append(ingredients6.text ?? "なし")
+        let f = DateFormatter()
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
+
+        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text)
         ct1s.append(String(cost1))
-        ct2s.append(String(cost2))
-        ct3s.append(String(cost3))
-        ct4s.append(String(cost4))
-        ct5s.append(String(cost5))
-        ct6s.append(String(cost6))
-        taxFlags1.append(tax1.currentTitle!)
-        taxFlags2.append(tax2.currentTitle!)
-        taxFlags3.append(tax3.currentTitle!)
-        taxFlags4.append(tax4.currentTitle!)
-        taxFlags5.append(tax5.currentTitle!)
-        taxFlags6.append(tax6.currentTitle!)
-
-
-//        DispatchQueue.main.async {
-//            let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6,titles]
-//
-//            userDefaults.set(dataArray, forKey: "KEY_dataArray")
-//        }
-
-
+        ct1s.append(String(cost1))
+        ct1s.append(String(cost1))
+        ct1s.append(String(cost1))
+        ct1s.append(String(cost1))
+        ct1s.append(String(cost1))
+        taxFlags1.append(tax1.currentTitle)
+        taxFlags1.append(tax1.currentTitle)
+        taxFlags1.append(tax1.currentTitle)
+        taxFlags1.append(tax1.currentTitle)
+        taxFlags1.append(tax1.currentTitle)
+        taxFlags1.append(tax1.currentTitle)
+        dates.append(f.string(from: Date()))
+        person.append(String(currentPerson))
     }
 
     func reloadData(){
@@ -386,10 +356,15 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
             tax6.setTitle("税込", for: .normal)
             tax6.setTitleColor(UIColor.red, for: .normal)
         }
+        personPickerView.selectRow(Int(newPerson!)!-1, inComponent: 0, animated: true)
+        currentPerson = Int(newPerson!)!
+
         DispatchQueue.main.async {
             self.taxInclude()
         }
+    }
 
+    @IBAction func unwiiiin(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
     }
 
 

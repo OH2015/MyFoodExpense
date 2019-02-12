@@ -15,7 +15,6 @@ class popUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -29,12 +28,13 @@ class popUpViewController: UIViewController {
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-
         titles.append(titleText.text ?? "noTitle")
-        let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6,titles]
+        let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6,titles,dates,person]
         let userDefaults = UserDefaults.standard
-        userDefaults.set(dataArray, forKey: "KEY_dataArray")
-        performSegue(withIdentifier: "storeSegue", sender: nil)
+        DispatchQueue.main.async {
+            userDefaults.set(dataArray, forKey: "KEY_dataArray")
+            performSegue(withIdentifier: "storeSegue", sender: nil)
+        }
 
 
 

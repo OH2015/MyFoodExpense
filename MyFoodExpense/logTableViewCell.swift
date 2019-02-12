@@ -25,6 +25,8 @@ var taxFlags4 = [String]()
 var taxFlags5 = [String]()
 var taxFlags6 = [String]()
 var titles = [String]()
+var dates = [String]()
+var person = [String]()
 
 
 import UIKit
@@ -33,30 +35,16 @@ class logTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subTitle: UILabel!
-    @IBOutlet weak var ing1: UILabel!
-    @IBOutlet weak var ing2: UILabel!
-    @IBOutlet weak var ing3: UILabel!
-    @IBOutlet weak var ing4: UILabel!
-    @IBOutlet weak var ing5: UILabel!
-    @IBOutlet weak var ing6: UILabel!
-    @IBOutlet weak var ct1: UILabel!
-    @IBOutlet weak var ct2: UILabel!
-    @IBOutlet weak var ct3: UILabel!
-    @IBOutlet weak var ct4: UILabel!
-    @IBOutlet weak var ct5: UILabel!
-    @IBOutlet weak var ct6: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        print("hello")
 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+
     }
 
 }
