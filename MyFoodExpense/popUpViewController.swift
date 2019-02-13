@@ -33,7 +33,7 @@ class popUpViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         DispatchQueue.main.async {
             userDefaults.set(dataArray, forKey: "KEY_dataArray")
-            performSegue(withIdentifier: "storeSegue", sender: nil)
+            self.performSegue(withIdentifier: "storeSegue", sender: nil)
         }
 
 

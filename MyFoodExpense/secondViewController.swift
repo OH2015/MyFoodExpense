@@ -16,14 +16,16 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pickDataFromKey()
-        titles = DataArray[18]
         return titles.count
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
         let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
         cell.textLabel?.text = DataArray[18][indexPath.row]
+        let subTitle = cell.viewWithTag(2) as! UILabel
+        subTitle.text = DataArray[19][indexPath.row]
         return cell
     }
 
@@ -45,8 +47,10 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             DataArray[i].remove(at: indexPath.row)
         }
         DispatchQueue.main.async {
-            userDefaults.set(DataArray, forKey: "KEY_dataArray")
+            self.userDefaults.set(DataArray, forKey: "KEY_dataArray")
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -69,7 +73,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             DataArray[i].swapAt(sourceIndexPath.row, destinationIndexPath.row)
         }
         DispatchQueue.main.async {
-            userDefaults.set(DataArray, forKey: "KEY_dataArray")
+            self.userDefaults.set(DataArray, forKey: "KEY_dataArray")
         }
     }
 
@@ -93,6 +97,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         if segue.identifier == "showSegue"{
             let nextVC:ViewController = segue.destination as! ViewController
             let DataArray:[[String]] = self.userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
+            print(DataArray)
 
             nextVC.newIng1 = DataArray[0][index!]
             nextVC.newIng2 = DataArray[1][index!]
@@ -112,6 +117,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             nextVC.newTax4 = DataArray[15][index!]
             nextVC.newTax5 = DataArray[16][index!]
             nextVC.newTax6 = DataArray[17][index!]
+            nextVC.newPerson = DataArray[20][index!]
 
             DispatchQueue.main.async {
                 nextVC.reloadData()
@@ -119,9 +125,8 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
 
-
     func pickDataFromKey(){
-        let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
+        guard let DataArray:[[String]] =  userDefaults.array(forKey: "KEY_dataArray") as? [[String]] else{return}
         ing1s = DataArray[0]
         ing2s = DataArray[1]
         ing3s = DataArray[2]

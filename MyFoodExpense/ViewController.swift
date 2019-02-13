@@ -278,11 +278,11 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
 
 
     @IBAction func storeValue(_ sender: Any) {
-        let secVC = secondViewController
+        let secVC = secondViewController()
         secVC.pickDataFromKey()
         DispatchQueue.main.async {
-            setData()
-            performSegue(withIdentifier: "popUpSegue", sender: nil)
+            self.setData()
+            self.performSegue(withIdentifier: "popUpSegue", sender: nil)
         }
     }
 
@@ -291,24 +291,24 @@ class ViewController: UIViewController,UITextFieldDelegate,UIPickerViewDataSourc
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
 
-        ing1s.append(ingredients1.text)
-        ing1s.append(ingredients1.text)
-        ing1s.append(ingredients1.text)
-        ing1s.append(ingredients1.text)
-        ing1s.append(ingredients1.text)
-        ing1s.append(ingredients1.text)
+        ing1s.append(ingredients1.text ?? "")
+        ing2s.append(ingredients2.text ?? "")
+        ing3s.append(ingredients3.text ?? "")
+        ing4s.append(ingredients4.text ?? "")
+        ing5s.append(ingredients5.text ?? "")
+        ing6s.append(ingredients6.text ?? "")
         ct1s.append(String(cost1))
-        ct1s.append(String(cost1))
-        ct1s.append(String(cost1))
-        ct1s.append(String(cost1))
-        ct1s.append(String(cost1))
-        ct1s.append(String(cost1))
-        taxFlags1.append(tax1.currentTitle)
-        taxFlags1.append(tax1.currentTitle)
-        taxFlags1.append(tax1.currentTitle)
-        taxFlags1.append(tax1.currentTitle)
-        taxFlags1.append(tax1.currentTitle)
-        taxFlags1.append(tax1.currentTitle)
+        ct2s.append(String(cost2))
+        ct3s.append(String(cost3))
+        ct4s.append(String(cost4))
+        ct5s.append(String(cost5))
+        ct6s.append(String(cost6))
+        taxFlags1.append(tax1.currentTitle!)
+        taxFlags2.append(tax2.currentTitle!)
+        taxFlags3.append(tax3.currentTitle!)
+        taxFlags4.append(tax4.currentTitle!)
+        taxFlags5.append(tax5.currentTitle!)
+        taxFlags6.append(tax6.currentTitle!)
         dates.append(f.string(from: Date()))
         person.append(String(currentPerson))
     }
