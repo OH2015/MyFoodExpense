@@ -15,6 +15,7 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
 
     let SCREEN_SIZE = UIScreen.main.bounds.size
     let notificationCenter = NotificationCenter.default
+    let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +72,14 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        titles.append(titleText.text ?? "noTitle")
-        let dataArray = [ing1s,ing2s,ing3s,ing4s,ing5s,ing6s,ct1s,ct2s,ct3s,ct4s,ct5s,ct6s,taxFlags1,taxFlags2,taxFlags3,taxFlags4,taxFlags5,taxFlags6,titles,dates,person]
-        let userDefaults = UserDefaults.standard
+        let title = titleText.text
+        
+
+
+
+
         DispatchQueue.main.async {
-            userDefaults.set(dataArray, forKey: "KEY_dataArray")
+            self.userDefaults.set(RecordArray, forKey: "KEY_RecordArray")
             self.performSegue(withIdentifier: "storeSegue", sender: nil)
         }
 

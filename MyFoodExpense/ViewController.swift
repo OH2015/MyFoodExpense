@@ -12,7 +12,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     @IBOutlet weak var PerCostLabel: UILabel!
 
     @IBOutlet weak var pieChartView: PieChartView!
-    
+
     @IBOutlet weak var pageControll: UIPageControl!
     var box1 = Box(index:1)
     var box2 = Box(index:2)
@@ -140,12 +140,9 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     }
 
     @IBAction func storeValue(_ sender: Any) {
-        let secVC = secondViewController()
-        secVC.pickDataFromKey()
-        DispatchQueue.main.async {
-            self.setData()
-            self.performSegue(withIdentifier: "popUpSegue", sender: nil)
-        }
+        self.setData()
+        self.performSegue(withIdentifier: "popUpSegue", sender: nil)
+
     }
 
     func setData(){
@@ -153,11 +150,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
 
-
-        for i in 1...6{
-            let ingField = view.viewWithTag(i) as! UITextField
-            BoxArray[i].ingredient = ingField.text ?? ""
-        }
+        date = Date()
     }
 
     func reloadData(){
@@ -169,6 +162,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
             let box = BoxArray[i]
             let cost = box.cost
             let tax = box.tax
+            let ing = box.ingredient
 
 //            ingField.text =
 //            cost =
@@ -204,6 +198,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     func done() {
         for i in 1...6{
             let ingField = view.viewWithTag(i) as! UITextField
+            let box = BoxArray[i]
+            box.ingredient = ingField.text ?? ""
             ingField.endEditing(true)
         }
         drawChart()

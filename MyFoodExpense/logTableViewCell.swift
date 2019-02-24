@@ -8,6 +8,7 @@
 
 
 var PriceArray = [Int]()
+var RecordArray = [[Any]]()
 
 import UIKit
 
