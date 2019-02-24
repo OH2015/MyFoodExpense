@@ -6,28 +6,7 @@
 //  Copyright © 2019 123. All rights reserved.
 //
 
-var ing1s = [String]()
-var ing2s = [String]()
-var ing3s = [String]()
-var ing4s = [String]()
-var ing5s = [String]()
-var ing6s = [String]()
-var ct1s = [String]()
-var ct2s = [String]()
-var ct3s = [String]()
-var ct4s = [String]()
-var ct5s = [String]()
-var ct6s = [String]()
-var taxFlags1 = [String]()
-var taxFlags2 = [String]()
-var taxFlags3 = [String]()
-var taxFlags4 = [String]()
-var taxFlags5 = [String]()
-var taxFlags6 = [String]()
-var titles = [String]()
-var dates = [String]()
-var person = [String]()
-
+var DataArray = [Box]()
 
 import UIKit
 

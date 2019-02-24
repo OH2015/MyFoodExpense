@@ -191,13 +191,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4s-lv-tdn">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8It-7X-yT9">
+                                                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8It-7X-yT9">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmQ-s6-w2h">
+                                                                    <button opaque="NO" tag="21" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EmQ-s6-w2h">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="33" id="StV-zz-eTb"/>
@@ -208,7 +208,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3L-XI-CoQ">
+                                                                    <pickerView tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3L-XI-CoQ">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKW-gC-srw">
@@ -249,13 +249,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-in-jVP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPU-Ow-11e">
+                                                                    <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPU-Ow-11e">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-qE-kFS">
+                                                                    <button opaque="NO" tag="22" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8i9-qE-kFS">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="52" id="g8G-eJ-XFc"/>
@@ -266,7 +266,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyk-Eu-v8T">
+                                                                    <pickerView tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyk-Eu-v8T">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9k-pW-4dT">
@@ -307,13 +307,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bii-G2-ZLN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-ce-Ug1">
+                                                                    <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-ce-Ug1">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzP-PZ-DT4">
+                                                                    <button opaque="NO" tag="23" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzP-PZ-DT4">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="33" id="Rn9-nB-Iw0"/>
@@ -324,7 +324,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-zg-tbz">
+                                                                    <pickerView tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgd-zg-tbz">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbJ-YQ-9t0">
@@ -365,13 +365,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgq-OQ-Cmp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-x6-NvR">
+                                                                    <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-x6-NvR">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih8-K5-jVa">
+                                                                    <button opaque="NO" tag="24" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih8-K5-jVa">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="33" id="41q-Iq-fOk"/>
@@ -382,7 +382,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGU-ke-gXC">
+                                                                    <pickerView tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGU-ke-gXC">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1la-jO-yng">
@@ -420,16 +420,16 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="140" translatesAutoresizingMaskIntoConstraints="NO" id="oBL-3E-IZL">
                                                         <rect key="frame" x="0.0" y="468" width="828" height="117"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9V-9l-AJx">
+                                                            <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9V-9l-AJx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqZ-AZ-avj">
+                                                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IqZ-AZ-avj">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-9S-ER1">
+                                                                    <button opaque="NO" userInteractionEnabled="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-9S-ER1">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="33" id="6cN-lB-N04"/>
@@ -440,7 +440,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-mL-rcb">
+                                                                    <pickerView tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-mL-rcb">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZn-ec-tnD">
@@ -481,13 +481,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-df-oBh">
                                                                 <rect key="frame" x="0.0" y="0.0" width="828" height="117"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIj-gV-xO7">
+                                                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dIj-gV-xO7">
                                                                         <rect key="frame" x="30" y="20" width="337" height="77"/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnV-YH-CYf">
+                                                                    <button opaque="NO" tag="26" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnV-YH-CYf">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="52" id="Ooj-kt-PFJ"/>
@@ -498,7 +498,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                     </button>
-                                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-7p-spm">
+                                                                    <pickerView userInteractionEnabled="NO" tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-7p-spm">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-ZL-yO4">
@@ -535,12 +535,29 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-l3-4HL">
+                                                <rect key="frame" x="397" y="710" width="134" height="96"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="96" id="6V2-TM-gx4"/>
+                                                    <constraint firstAttribute="width" constant="134" id="tV4-Ra-KhW"/>
+                                                </constraints>
+                                            </pickerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9st-M9-MRE">
+                                                <rect key="frame" x="589" y="746.5" width="19.5" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.82106142920000003" blue="0.53644178529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="d20-Uw-0OH" secondAttribute="trailing" constant="50" id="5qz-Hp-pOl"/>
+                                            <constraint firstItem="ZZe-l3-4HL" firstAttribute="centerX" secondItem="anP-0B-xd5" secondAttribute="centerX" constant="50" id="6hE-Zc-fz9"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZZe-l3-4HL" secondAttribute="bottom" constant="46" id="AYG-ee-dfU"/>
+                                            <constraint firstItem="9st-M9-MRE" firstAttribute="leading" secondItem="ZZe-l3-4HL" secondAttribute="trailing" constant="58" id="G1a-EV-sBr"/>
                                             <constraint firstAttribute="bottom" secondItem="7oI-Of-Olv" secondAttribute="bottom" constant="150" id="cn9-bf-Mkx"/>
                                             <constraint firstItem="7oI-Of-Olv" firstAttribute="leading" secondItem="anP-0B-xd5" secondAttribute="leading" id="hAC-Mq-fKI"/>
+                                            <constraint firstItem="9st-M9-MRE" firstAttribute="centerY" secondItem="ZZe-l3-4HL" secondAttribute="centerY" id="oxz-So-NOa"/>
                                             <constraint firstAttribute="bottom" secondItem="d20-Uw-0OH" secondAttribute="bottom" constant="50" id="wvM-O4-Bd2"/>
                                             <constraint firstItem="7oI-Of-Olv" firstAttribute="top" secondItem="anP-0B-xd5" secondAttribute="top" id="x4q-25-F0X"/>
                                             <constraint firstAttribute="trailing" secondItem="7oI-Of-Olv" secondAttribute="trailing" id="xft-Rj-Skl"/>
@@ -595,7 +612,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="-681"/>
+            <point key="canvasLocation" x="33.333333333333336" y="-681.02678571428567"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="t4A-8G-OzQ">

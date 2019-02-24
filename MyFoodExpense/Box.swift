@@ -10,10 +10,23 @@ import Foundation
 import UIKit
 
 class Box{
+    var index:Int
     var ingredient = ""
     var tax = "税抜き"
     var title = ""
     var cost = 0
     var person = 0
     var date:Date?
+
+    init(index: Int){
+        self.index = index
+    }
+
+    class func boxWithIndex(_ index: Int)->Box{
+        if index == self.index{
+            return self
+        }
+
+    }
+
 }
