@@ -14,15 +14,16 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
     @IBOutlet weak var storeButton: UIButton!
 
     let SCREEN_SIZE = UIScreen.main.bounds.size
+    let notificationCenter = NotificationCenter.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         titleText.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        //ここでUIKeyboardWillShowという名前の通知のイベントをオブザーバー登録をしている
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        //ここでUIKeyboardWillHideという名前の通知のイベントをオブザーバー登録をしている
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
 
     }
 
@@ -46,20 +47,18 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
     }
 
     @objc func keyboardWillShow(_ notification: NSNotification){
-        let rect = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-        let margin = SCREEN_SIZE.height - (storeButton.frame.origin.y + 250 + storeButton.frame.size.height + (rect?.size.height)!)
-//        let duration: TimeInterval? = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
-        if  margin < 0{
-            print("ok")
-            UIView.animate(withDuration: 1.0, animations: { () in
-                let transform = CGAffineTransform(translationX: 0, y: margin)
-                self.view.transform = transform
-            })
+        let userInfo = (notification as NSNotification).userInfo
+        let keyboardFrame = (userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let fldFrame = view.convert(storeButton.frame, from: view.viewWithTag(2))
+
+        let overlap = fldFrame.maxY - keyboardFrame.minY
+
+        if  overlap > 0{
+            view.transform = CGAffineTransform(translationX: 0, y: -overlap)
         }
     }
 
     @objc func keyboardWillHide(_ notification: NSNotification){
-//        let duration: TimeInterval? = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? Double
         UIView.animate(withDuration: 1.0, animations: { () in
 
             self.view.transform = CGAffineTransform.identity

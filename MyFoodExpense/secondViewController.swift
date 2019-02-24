@@ -13,7 +13,6 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var tableView: UITableView!
     let userDefaults = UserDefaults.standard
     var index:Int?
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pickDataFromKey()
         return titles.count
