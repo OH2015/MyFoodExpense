@@ -72,13 +72,18 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        RecordArray = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
         let title = titleText.text
-        DataArray.append(title)
-        RecordArray.append(DataArray)
+        DataArray.append(title ?? "")
+        if var RecordArray = userDefaults.array(forKey: "KEY_RecordArray") as? [[Any]] {
+            RecordArray.append(DataArray)
+            self.userDefaults.set(RecordArray, forKey: "KEY_RecordArray")
+        }else{
+            let RecordArray = [DataArray]
+            self.userDefaults.set(RecordArray, forKey: "KEY_RecordArray")
+            print("RecordArray:\(RecordArray)")
+        }
 
         DispatchQueue.main.async {
-            self.userDefaults.set(RecordArray, forKey: "KEY_RecordArray")
             self.performSegue(withIdentifier: "storeSegue", sender: nil)
 
         }

@@ -23,16 +23,20 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         pickDataFromKey()
-        return RecordArray.count
+        let RecordArray = userDefaults.array(forKey: "KEY_RecordArray")
+        return RecordArray?.count ?? 0
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        let DataArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
-        cell.textLabel?.text = RecordArray[indexPath.row][3] as! String
+        let recordArray = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
+        cell.textLabel?.text = recordArray[indexPath.row][3] as! String
         let subTitle = cell.viewWithTag(2) as! UILabel
-        subTitle.text = RecordArray[indexPath.row][2] as! String
+        subTitle.text = recordArray[indexPath.row][2] as! String
+        print("ok")
         return cell
     }
 
@@ -66,9 +70,9 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var recordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
+        var RecordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
 
-        recordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        RecordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
 
         DispatchQueue.main.async {
             self.userDefaults.set(RecordArray, forKey: "KEY_recordArray")
@@ -95,15 +99,15 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         if segue.identifier == "showSegue"{
             let nextVC = segue.destination as! ViewController
 
-
-            nextVC.reloadData()
-
+            nextVC.reloadData(Ind: index!)
         }
     }
 
     func pickDataFromKey(){
-        guard let recordArray:[[Any]] =  userDefaults.array(forKey: "KEY_RecordArray") as? [[String]] else{return}
+        var RecordArray = userDefaults.array(forKey: "KEY_RecordArray")
+        guard let recordArray:[[Any]] =  userDefaults.array(forKey: "KEY_RecordArray") as? [[Any]] else{return}
         RecordArray = recordArray
+        print(RecordArray)
     }
     
 

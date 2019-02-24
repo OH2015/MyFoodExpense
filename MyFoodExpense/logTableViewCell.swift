@@ -9,7 +9,8 @@
 
 var PriceArray = [Int]()
 var DataArray = [Any]()
-var RecordArray = [[Any]]()
+var RecordArary = [[Any]]()
+
 
 import UIKit
 

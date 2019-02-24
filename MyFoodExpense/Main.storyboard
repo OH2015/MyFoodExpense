@@ -87,7 +87,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Stx-Vn-l1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="BLj-Xf-Whn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="-643.52678571428567"/>
+            <point key="canvasLocation" x="-1167" y="-698"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -394,7 +394,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hq0-1j-UVf"/>
+                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nmp-Nn-FTj"/>
                                                                         </connections>
                                                                     </button>
                                                                     <pickerView tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-mL-rcb">
@@ -458,7 +458,7 @@
                                                                             <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UQq-Xd-ugN"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <pickerView userInteractionEnabled="NO" tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-7p-spm">
+                                                                    <pickerView tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-7p-spm">
                                                                         <rect key="frame" x="377" y="5" width="331" height="107"/>
                                                                     </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fb-ZL-yO4">
@@ -620,13 +620,14 @@
                     <connections>
                         <outlet property="PerCostLabel" destination="PcN-KG-3Ss" id="X60-gQ-HNr"/>
                         <outlet property="TotalCostLabel" destination="9Bs-yP-jUb" id="QSS-S3-cgi"/>
-                        <outlet property="contentView" destination="anP-0B-xd5" id="ves-hY-ymc"/>
-                        <outlet property="contentView2" destination="kA3-6M-G7E" id="BS8-nn-NMT"/>
                         <outlet property="pageControll" destination="CZI-Yp-NVk" id="SRE-No-Ff2"/>
-                        <outlet property="perCost" destination="PcN-KG-3Ss" id="pDb-bL-dNS"/>
+                        <outlet property="pickerView1" destination="A3L-XI-CoQ" id="3no-WT-BfZ"/>
+                        <outlet property="pickerView2" destination="vyk-Eu-v8T" id="ZCs-ZM-NoC"/>
+                        <outlet property="pickerView3" destination="hgd-zg-tbz" id="XVG-Oz-nds"/>
+                        <outlet property="pickerView4" destination="vGU-ke-gXC" id="1vS-sY-moV"/>
+                        <outlet property="pickerView5" destination="OTY-mL-rcb" id="aNp-6f-7Bs"/>
+                        <outlet property="pickerView6" destination="5UA-7p-spm" id="Df8-BI-7Rl"/>
                         <outlet property="pieChartView" destination="WnS-cH-S56" id="cOZ-qb-A11"/>
-                        <outlet property="scrollView" destination="GGu-TL-qhH" id="ms2-km-8wj"/>
-                        <outlet property="totalCost" destination="9Bs-yP-jUb" id="USs-J3-33u"/>
                         <segue destination="ASX-fa-Hpz" kind="presentation" identifier="popUpSegue" modalTransitionStyle="crossDissolve" id="E90-LK-W3V"/>
                     </connections>
                 </viewController>
@@ -695,6 +696,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9dV-Pb-XDN"/>
+        <segue reference="88u-IZ-brb"/>
     </inferredMetricsTieBreakers>
 </document>

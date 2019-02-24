@@ -13,6 +13,13 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     @IBOutlet weak var pieChartView: PieChartView!
 
+    @IBOutlet weak var pickerView1: UIPickerView!
+    @IBOutlet weak var pickerView2: UIPickerView!
+    @IBOutlet weak var pickerView3: UIPickerView!
+    @IBOutlet weak var pickerView4: UIPickerView!
+    @IBOutlet weak var pickerView5: UIPickerView!
+    @IBOutlet weak var pickerView6: UIPickerView!
+
     @IBOutlet weak var pageControll: UIPageControl!
     var box1 = Box(index:1)
     var box2 = Box(index:2)
@@ -37,12 +44,18 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
             ingField.delegate = self
         }
 
-        for i in 11...16{
-            let costpicker = view.viewWithTag(i) as! UIPickerView
-            costpicker.delegate = self
-            costpicker.dataSource = self
-
-        }
+        pickerView1.delegate = self
+        pickerView2.delegate = self
+        pickerView3.delegate = self
+        pickerView4.delegate = self
+        pickerView5.delegate = self
+        pickerView6.delegate = self
+        pickerView1.dataSource = self
+        pickerView2.dataSource = self
+        pickerView3.dataSource = self
+        pickerView4.dataSource = self
+        pickerView5.dataSource = self
+        pickerView6.dataSource = self
 
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -86,8 +99,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     }
 
     func taxInclude(){
-        for i in 0...6{
-            let box = BoxArray[i]
+        for i in 1...6{
+            let box = BoxArray[i-1]
             let Tax = Int(Double(box.cost) * 1.08)
             if box.tax == "税抜き"{
                 box.cost += Tax
@@ -103,7 +116,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     func calculate(){
         for i in 1...6{
-            TotalCost += BoxArray[i].cost
+            TotalCost += BoxArray[i-1].cost
         }
         if TotalCost == 0{
             PerCostLabel.text = "0"
@@ -120,8 +133,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         var Costs = [Double]()
         var Ingredients = [String]()
         for i in 1...6{
-            Costs.append(Double(BoxArray[i].cost))
-            Ingredients.append(BoxArray[i].ingredient)
+            Costs.append(Double(BoxArray[i-1].cost))
+            Ingredients.append(BoxArray[i-1].ingredient)
         }
 
         var dataset = [PieChartDataEntry]()
@@ -146,9 +159,10 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     }
 
     func setData(){
-        let f = DateFormatter()
-        f.dateStyle = .full
-        f.locale = Locale(identifier: "ja_JP")
+//        let f = DateFormatter()
+//        f.dateStyle = .full
+//        f.locale = Locale(identifier: "ja_JP")
+        date = Date()
         DataArray.removeAll()
         DispatchQueue.main.async {
             DataArray.append(self.BoxArray)
@@ -157,24 +171,29 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         }
 
 
-        date = Date()
+
     }
 
-    func reloadData(){
+    func reloadData(Ind: Int){
         for i in 1...6{
             let ingField = view.viewWithTag(i) as! UITextField
             let costPicker = view.viewWithTag(i+10) as! UIPickerView
-            let personPicker = view.viewWithTag(0) as! UIPickerView
             let taxButton = view.viewWithTag(i+20) as! UIButton
-            let box = BoxArray[i]
-            let cost = box.cost
-            let tax = box.tax
-            let ing = box.ingredient
+            let personPicker = view.viewWithTag(0) as! UIPickerView
+            let box = BoxArray[i-1]
+            var cost = box.cost
+            var tax = box.tax
+            var ing = box.ingredient
 
-//            ingField.text =
-//            cost =
-//            tax =
-//            Person =
+            let recordArray = UserDefaults.standard.array(forKey: "KEY_RecordArray")
+            let dataArray = recordArray![Ind] as! [Any]
+            let newboxArray = dataArray[0] as! [Box]
+            let newBox = newboxArray[i-1]
+            cost = newBox.cost
+            tax = newBox.tax
+            Person = recordArray![1] as! Int
+            ing = newBox.ingredient
+            ingField.text = ing
             if tax == "税抜き"{}else{
                 taxButton.setTitle("税込", for: .normal)
             }
@@ -205,7 +224,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     func done() {
         for i in 1...6{
             let ingField = view.viewWithTag(i) as! UITextField
-            let box = BoxArray[i]
+            let box = BoxArray[i-1]
             box.ingredient = ingField.text ?? ""
             ingField.endEditing(true)
         }
