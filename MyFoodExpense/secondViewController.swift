@@ -7,25 +7,32 @@
 //
 
 import UIKit
+//DataArray = [BoxArray,Person,date,Title]
 
 class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     let userDefaults = UserDefaults.standard
     var index:Int?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pickDataFromKey()
-
-
-
+        return RecordArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        let DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
-        cell.textLabel?.text = DataArray[18][indexPath.row]
+        let DataArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
+        cell.textLabel?.text = RecordArray[indexPath.row][3] as! String
         let subTitle = cell.viewWithTag(2) as! UILabel
-        subTitle.text = DataArray[19][indexPath.row]
+        subTitle.text = RecordArray[indexPath.row][2] as! String
         return cell
     }
 
@@ -42,22 +49,13 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        var DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
-        for i in 0...20{
-            DataArray[i].remove(at: indexPath.row)
-        }
+        var recordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[String]]
+        recordArray.remove(at: indexPath.row)
+
         DispatchQueue.main.async {
-            self.userDefaults.set(DataArray, forKey: "KEY_dataArray")
+            self.userDefaults.set(recordArray, forKey: "KEY_RecordArray")
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-
-    }
-
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        //override前の処理を継続してさせる
-        super.setEditing(editing, animated: animated)
-        //tableViewの編集モードを切り替える
-        tableView.isEditing = editing
     }
 
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -68,20 +66,20 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var DataArray:[[String]] = userDefaults.array(forKey: "KEY_dataArray") as! [[String]]
-        for i in 0...20{
-            DataArray[i].swapAt(sourceIndexPath.row, destinationIndexPath.row)
-        }
+        var recordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
+
+        recordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+
         DispatchQueue.main.async {
-            self.userDefaults.set(DataArray, forKey: "KEY_dataArray")
+            self.userDefaults.set(RecordArray, forKey: "KEY_recordArray")
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        tableView.delegate = self
-        tableView.dataSource = self
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        //override前の処理を継続してさせる
+        super.setEditing(editing, animated: animated)
+        //tableViewの編集モードを切り替える
+        tableView.isEditing = editing
     }
 
     @IBAction func edit(_ sender: Any) {
@@ -95,22 +93,17 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSegue"{
-            let nextVC:ViewController = segue.destination as! ViewController
-            let RecordArray:[Any] = self.userDefaults.array(forKey: "KEY_RecordArray") as! [[String]]
+            let nextVC = segue.destination as! ViewController
 
 
+            nextVC.reloadData()
 
-
-            DispatchQueue.main.async {
-                nextVC.reloadData()
-            }
         }
     }
 
     func pickDataFromKey(){
-        guard let RecordArray:[[Any]] =  userDefaults.array(forKey: "KEY_RecordArray") as? [[String]] else{return}
-
-
+        guard let recordArray:[[Any]] =  userDefaults.array(forKey: "KEY_RecordArray") as? [[String]] else{return}
+        RecordArray = recordArray
     }
     
 

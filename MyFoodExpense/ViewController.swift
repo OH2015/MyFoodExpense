@@ -24,7 +24,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     var TotalCost = 0
     var Person = 1
     var date = Date()
-    var DataArray = [BoxArray,Person,date]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +149,13 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         let f = DateFormatter()
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
+        DataArray.removeAll()
+        DispatchQueue.main.async {
+            DataArray.append(self.BoxArray)
+            DataArray.append(self.Person)
+            DataArray.append(self.date)
+        }
+
 
         date = Date()
     }
