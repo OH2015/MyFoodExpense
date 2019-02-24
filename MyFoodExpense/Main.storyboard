@@ -622,7 +622,7 @@
                         <outlet property="TotalCostLabel" destination="9Bs-yP-jUb" id="QSS-S3-cgi"/>
                         <outlet property="contentView" destination="anP-0B-xd5" id="ves-hY-ymc"/>
                         <outlet property="contentView2" destination="kA3-6M-G7E" id="BS8-nn-NMT"/>
-                        <outlet property="pageControll" destination="CZI-Yp-NVk" id="CX3-AU-l0F"/>
+                        <outlet property="pageControll" destination="CZI-Yp-NVk" id="SRE-No-Ff2"/>
                         <outlet property="perCost" destination="PcN-KG-3Ss" id="pDb-bL-dNS"/>
                         <outlet property="pieChartView" destination="WnS-cH-S56" id="cOZ-qb-A11"/>
                         <outlet property="scrollView" destination="GGu-TL-qhH" id="ms2-km-8wj"/>

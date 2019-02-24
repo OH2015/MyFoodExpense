@@ -12,6 +12,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     @IBOutlet weak var PerCostLabel: UILabel!
 
     @IBOutlet weak var pieChartView: PieChartView!
+    
+    @IBOutlet weak var pageControll: UIPageControl!
     var box1 = Box(index:1)
     var box2 = Box(index:2)
     var box3 = Box(index:3)
@@ -21,6 +23,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     var BoxArray = [Box]()
     var TotalCost = 0
     var Person = 1
+    var date = Date()
+    var DataArray = [BoxArray,Person,date]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,15 +102,14 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     }
 
     func calculate(){
-        for i in 0...6{
-
+        for i in 1...6{
+            TotalCost += BoxArray[i].cost
         }
         if TotalCost == 0{
             PerCostLabel.text = "0"
         }else{
             let perc = TotalCost / Person
             PerCostLabel.text = String(perc)
-
         }
         TotalCostLabel.text = String(TotalCost)
         drawChart()
@@ -133,12 +136,77 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         dataSet.colors = ChartColorTemplates.colorful()
         let chartData = PieChartData(dataSet: dataSet)
 
-        print (dataSet)
-
         pieChartView.data = chartData
     }
 
+    @IBAction func storeValue(_ sender: Any) {
+        let secVC = secondViewController()
+        secVC.pickDataFromKey()
+        DispatchQueue.main.async {
+            self.setData()
+            self.performSegue(withIdentifier: "popUpSegue", sender: nil)
+        }
+    }
+
+    func setData(){
+        let f = DateFormatter()
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
+
+
+        for i in 1...6{
+            let ingField = view.viewWithTag(i) as! UITextField
+            BoxArray[i].ingredient = ingField.text ?? ""
+        }
+    }
+
+    func reloadData(){
+        for i in 1...6{
+            let ingField = view.viewWithTag(i) as! UITextField
+            let costPicker = view.viewWithTag(i+10) as! UIPickerView
+            let personPicker = view.viewWithTag(0) as! UIPickerView
+            let taxButton = view.viewWithTag(i+20) as! UIButton
+            let box = BoxArray[i]
+            let cost = box.cost
+            let tax = box.tax
+
+//            ingField.text =
+//            cost =
+//            tax =
+//            Person =
+            if tax == "税抜き"{}else{
+                taxButton.setTitle("税込", for: .normal)
+            }
+            costPicker.selectRow(cost/10, inComponent: 0, animated: true)
+            personPicker.selectRow(Person-1, inComponent: 0, animated: true)
+        }
+        DispatchQueue.main.async {
+            self.taxInclude()
+        }
+    }
+
     @IBAction func unwiiiin(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        pageControll.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        done()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        done()
+        return true
+    }
+
+    func done() {
+        for i in 1...6{
+            let ingField = view.viewWithTag(i) as! UITextField
+            ingField.endEditing(true)
+        }
+        drawChart()
     }
 
 
