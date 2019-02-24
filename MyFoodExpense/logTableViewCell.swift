@@ -6,7 +6,8 @@
 //  Copyright © 2019 123. All rights reserved.
 //
 
-var DataArray = [Box]()
+
+var PriceArray = [Int]()
 
 import UIKit
 
