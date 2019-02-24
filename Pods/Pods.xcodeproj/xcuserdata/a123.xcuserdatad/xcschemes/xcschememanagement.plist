@@ -17,7 +17,7 @@
 		<key>Pods-MyFoodExpense.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-MyFoodExpenseTests.xcscheme</key>
 		<dict>

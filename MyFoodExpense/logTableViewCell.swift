@@ -8,8 +8,18 @@
 
 
 var PriceArray = [Int]()
+var ingSet = [String]()
+var costSet = [String]()
+var taxSet = [String]()
+var BoxSet = [[String]]()
+var BoxArray = [[[String]]]()
+var DataSet = [String]()
 var DataArray = [Any]()
-var RecordArary = [[Any]]()
+
+enum KEY:String {
+    case box = "boxKey"
+    case data = "dataKey"
+}
 
 
 import UIKit

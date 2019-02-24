@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//DataArray = [BoxArray,Person,date,Title]
+
 
 class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
@@ -23,19 +23,19 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         pickDataFromKey()
-        let RecordArray = userDefaults.array(forKey: "KEY_RecordArray")
-        return RecordArray?.count ?? 0
+        print(DataArray)
 
+        return DataArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        let recordArray = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
-        cell.textLabel?.text = recordArray[indexPath.row][3] as! String
+        let dataSet = DataArray[indexPath.row] as! [String]
+
+        cell.textLabel?.text = dataSet[2]
         let subTitle = cell.viewWithTag(2) as! UILabel
-        subTitle.text = recordArray[indexPath.row][2] as! String
+        subTitle.text = dataSet[1]
         print("ok")
         return cell
     }
@@ -53,11 +53,12 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        var recordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[String]]
-        recordArray.remove(at: indexPath.row)
+        BoxArray.remove(at: indexPath.row)
+        DataArray.remove(at: indexPath.row)
 
         DispatchQueue.main.async {
-            self.userDefaults.set(recordArray, forKey: "KEY_RecordArray")
+            self.userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
+            self.userDefaults.set(DataArray, forKey: KEY.data.rawValue)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -70,12 +71,12 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var RecordArray:[[Any]] = userDefaults.array(forKey: "KEY_RecordArray") as! [[Any]]
-
-        RecordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        BoxArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        DataArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
 
         DispatchQueue.main.async {
-            self.userDefaults.set(RecordArray, forKey: "KEY_recordArray")
+            self.userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
+            self.userDefaults.set(DataArray, forKey: KEY.data.rawValue)
         }
     }
 
@@ -104,10 +105,8 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func pickDataFromKey(){
-        var RecordArray = userDefaults.array(forKey: "KEY_RecordArray")
-        guard let recordArray:[[Any]] =  userDefaults.array(forKey: "KEY_RecordArray") as? [[Any]] else{return}
-        RecordArray = recordArray
-        print(RecordArray)
+        BoxArray = userDefaults.array(forKey: KEY.box.rawValue) as! [[[String]]]
+        DataArray = userDefaults.array(forKey: KEY.data.rawValue)!
     }
     
 
