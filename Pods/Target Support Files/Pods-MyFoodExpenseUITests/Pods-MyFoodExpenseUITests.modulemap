@@ -1,0 +1,6 @@
+framework module Pods_MyFoodExpenseUITests {
+  umbrella header "Pods-MyFoodExpenseUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
