@@ -15,6 +15,7 @@
 		9D034E702209C1E000917824 /* MyFoodExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E6F2209C1E000917824 /* MyFoodExpenseTests.swift */; };
 		9D034E7B2209C1E000917824 /* MyFoodExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */; };
 		9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05342E220BF1DE007C57ED /* MyScrollView.swift */; };
+		9D0695D422224D5700643B6A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0695D322224D5700643B6A /* Box.swift */; };
 		9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15975222106D3700B959B8 /* logTableViewCell.swift */; };
 		9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1597542211753A00B959B8 /* popUpViewController.swift */; };
 		9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodExpenseUITests.swift; sourceTree = "<group>"; };
 		9D034E7C2209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D05342E220BF1DE007C57ED /* MyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
+		9D0695D322224D5700643B6A /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		9D15975222106D3700B959B8 /* logTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logTableViewCell.swift; sourceTree = "<group>"; };
 		9D1597542211753A00B959B8 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
 				9D1597542211753A00B959B8 /* popUpViewController.swift */,
 				9D034E5C2209C1DE00917824 /* ViewController.swift */,
+				9D0695D322224D5700643B6A /* Box.swift */,
 				9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */,
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
 				9D034E612209C1E000917824 /* Assets.xcassets */,
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D034E5D2209C1DE00917824 /* ViewController.swift in Sources */,
+				9D0695D422224D5700643B6A /* Box.swift in Sources */,
 				9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */,
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
 				9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */,
