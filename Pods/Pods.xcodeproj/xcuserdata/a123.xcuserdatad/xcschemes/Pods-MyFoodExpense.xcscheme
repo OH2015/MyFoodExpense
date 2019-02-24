@@ -7,6 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
+<<<<<<< HEAD
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
@@ -18,22 +19,45 @@
                BuildableName = "Pods_MyFoodExpense.framework"
                BlueprintName = "Pods-MyFoodExpense"
                ReferencedContainer = "container:Pods.xcodeproj">
+=======
+            buildForAnalyzing = "YES"
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "31BB304F97819D5EC5E6A0080544C426"
+               BlueprintName = "Pods-MyFoodExpense"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Pods-MyFoodExpense.framework">
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+<<<<<<< HEAD
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+=======
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+<<<<<<< HEAD
       buildConfiguration = "Debug"
+=======
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -41,6 +65,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
+<<<<<<< HEAD
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
@@ -51,15 +76,27 @@
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+=======
+      buildConfiguration = "Debug"
+      allowLocationSimulation = "YES">
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+<<<<<<< HEAD
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+=======
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES"
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

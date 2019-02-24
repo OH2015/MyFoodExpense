@@ -8,29 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 			<key>orderHint</key>
 			<integer>0</integer>
+=======
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
 		</dict>
 		<key>Pods-MyFoodExpense.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 			<key>orderHint</key>
 			<integer>1</integer>
+=======
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
 		</dict>
 		<key>Pods-MyFoodExpenseTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 			<key>orderHint</key>
 			<integer>2</integer>
+=======
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
 		</dict>
 		<key>Pods-MyFoodExpenseUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+<<<<<<< HEAD
 			<key>orderHint</key>
 			<integer>3</integer>
+=======
+>>>>>>> 96fa55654dc4a328040b586f0d482016fb51e5ba
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
