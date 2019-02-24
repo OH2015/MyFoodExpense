@@ -22,11 +22,6 @@ class Box{
         self.index = index
     }
 
-    class func boxWithIndex(_ index: Int)->Box{
-        if index == self.index{
-            return self
-        }
-
-    }
+    
 
 }

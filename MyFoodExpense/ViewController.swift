@@ -10,6 +10,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     @IBOutlet weak var TotalCostLabel: UILabel!
 
     @IBOutlet weak var PerCostLabel: UILabel!
+
+    @IBOutlet weak var pieChartView: PieChartView!
     var box1 = Box(index:1)
     var box2 = Box(index:2)
     var box3 = Box(index:3)
@@ -25,10 +27,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         for i in 0...100{
             PriceArray.append(10*i)
         }
-        for i in 1...6{
-            BoxArray.append(Box.boxWithIndex(i))
-        }
-
+        BoxArray = [box1,box2,box3,box4,box5,box6]
         for i in 1...6{
             let ingField = view.viewWithTag(i) as! UITextField
             ingField.delegate = self
@@ -84,7 +83,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     func taxInclude(){
         for i in 0...6{
-            let box = Box.boxWithIndex(i)
+            let box = BoxArray[i]
             let Tax = Int(Double(box.cost) * 1.08)
             if box.tax == "税抜き"{
                 box.cost += Tax
@@ -115,11 +114,15 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     func drawChart(){
         pieChartView.drawHoleEnabled = false
-        let Costs = [Double(cost1),Double(cost2),Double(cost3),Double(cost4),Double(cost5),Double(cost6)]
-        let Ingredients = [ingredients1?.text,ingredients2?.text,ingredients3?.text,ingredients4?.text,ingredients5?.text,ingredients6?.text]
+        var Costs = [Double]()
+        var Ingredients = [String]()
+        for i in 1...6{
+            Costs.append(Double(BoxArray[i].cost))
+            Ingredients.append(BoxArray[i].ingredient)
+        }
 
         var dataset = [PieChartDataEntry]()
-
+//値段が入っているデータだけエントリーする
         for i in 0...Costs.count-1{
             if Costs[i] != 0 {
                 dataset.append(PieChartDataEntry(value: Costs[i],label: Ingredients[i]))
@@ -133,6 +136,9 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         print (dataSet)
 
         pieChartView.data = chartData
+    }
+
+    @IBAction func unwiiiin(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
     }
 
 
