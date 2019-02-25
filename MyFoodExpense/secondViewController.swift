@@ -20,6 +20,9 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         tableView.delegate = self
         tableView.dataSource = self
+
+        tableView.rowHeight = 100
+//        self.tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,13 +30,14 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return DataArray.count
     }
 
+
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let dataSet = DataArray[indexPath.row] as! [String]
 
-        cell.textLabel?.text = dataSet[2]
-        let subTitle = cell.viewWithTag(2) as! UILabel
-        subTitle.text = dataSet[1]
+        let image = UIImage(named: "flog")
+        cell.setCell(imageName: image!, title: dataSet[2], date: dataSet[1])
 
         return cell
     }

@@ -26,12 +26,20 @@ import UIKit
 
 class logTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subTitle: UILabel!
+    @IBOutlet var title: UILabel!
+    @IBOutlet var subTitle: UILabel!
+    @IBOutlet var listImage: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+    }
 
+    func setCell(imageName:UIImage,title:String,date:String){
+        self.title.text = title
+        self.listImage.image = imageName
+        self.subTitle.text = date
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

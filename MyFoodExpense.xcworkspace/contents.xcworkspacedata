@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/a123/Desktop/MyFoodExpense&#x306e;&#x30b3;&#x30d2;&#x309a;&#x30fc;/MyFoodExpense/customCell.xib">
+   </FileRef>
+   <FileRef
       location = "group:MyFoodExpense.xcodeproj">
    </FileRef>
    <FileRef
