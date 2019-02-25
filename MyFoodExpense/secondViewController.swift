@@ -8,24 +8,22 @@
 
 import UIKit
 
-
+//DataArray = [[Person,date,Title]...]
 class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     let userDefaults = UserDefaults.standard
     var index:Int?
     var indexPath:IndexPath?
-    var fileName = ""
-    var images = [String]()
+    let fileManager = FileManager.default
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
-
         tableView.rowHeight = 100
-//        self.tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,13 +31,11 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return DataArray.count
     }
 
-
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
-        let dataSet = DataArray[indexPath.row] as! [String]
-
-        let image = readimage(indexPath: indexPath)
+        let dataSet = DataArray[indexPath.row]
+        let name = String(indexPath.row) + ".png"
+        let image:UIImage? = readimage(fileName: name)
         cell.setCell(imageName: image ?? nil, title: dataSet[2], date: dataSet[1])
 
         return cell
@@ -57,9 +53,11 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return .none
     }
 
+//削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         BoxArray.remove(at: indexPath.row)
         DataArray.remove(at: indexPath.row)
+        removeImage(indexPath: indexPath)
 
         DispatchQueue.main.async {
             self.userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
@@ -75,6 +73,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return false
     }
 
+//入れ替え
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         BoxArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
         DataArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
@@ -109,7 +108,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func pickDataFromKey(){
         BoxArray = userDefaults.array(forKey: KEY.box.rawValue) as! [[[String]]]
-        DataArray = userDefaults.array(forKey: KEY.data.rawValue)!
+        DataArray = userDefaults.array(forKey: KEY.data.rawValue)! as! [[String]]
     }
 
     @IBAction func imageTapped(_ sender: UIButton) {
@@ -118,42 +117,14 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         pickerController()
     }
 
-
-    func fileManage(){
-        let fileManager = FileManager()
-
-        // ファイル一覧の場所であるpathを文字列で取得
-        let path = Bundle.main.bundlePath
-        do {
-            let files = try fileManager.contentsOfDirectory(atPath: path)
-
-            // png画像だけを集める配列を用意
-            var images : [String] = []
-
-            for file in files {
-                // ファイル名の後方が.pngであればtrueとなる
-                if file.hasSuffix(".png") {
-                    images.append(file)
-                }
-            }
-            print(images,"あったよ")
-
-        }
-        catch let error {
-            print(error)
-        }
-    }
-
     func pickerController(){
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
-
     }
 
     func startCamera(){
-
         let sourceType:UIImagePickerController.SourceType =
             UIImagePickerController.SourceType.camera
         // カメラが利用可能かチェック
@@ -176,23 +147,20 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         if let pickedImage = info[.originalImage] as? UIImage {
             view.contentMode = .scaleAspectFit
             let pngImageData:Data = pickedImage.pngData()!
-            let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            fileName = String(indexPath!.row) + ".png"
-            let fileURL:URL = documentsURL.appendingPathComponent(fileName)
+            let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let name = String(indexPath!.row) + ".png"
+            let fileURL:URL = documentsURL.appendingPathComponent(name)
             do{
                 try pngImageData.write(to: fileURL)
-
-                reload()
+                tableView.reloadData()
             }catch{
                 print("書き込み失敗")
             }
         }
-        fileManage()
         dismiss(animated: true, completion: nil)
     }
 
-    func readimage(indexPath:IndexPath) -> UIImage?  {
-        fileName = String(indexPath.row) + ".png"
+    func readimage(fileName:String) -> UIImage?  {
         let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL:URL = documentsURL.appendingPathComponent(fileName)
         if let image = UIImage(contentsOfFile: fileURL.path){
@@ -201,13 +169,33 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         return nil
     }
 
-    func reload(){
-//ここでファイルの名前"インデックス番号.png"を与える
-        fileName = String(indexPath!.row) + ".png"
-        let cell = tableView.cellForRow(at: indexPath!)
-        let img = cell?.viewWithTag(1) as! UIImageView
-        img.image = readimage(indexPath: indexPath!)
+    func removeImage(indexPath:IndexPath){
+        if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
+            let name = String(indexPath.row)+".png"
+            let filePath = dir.appendingPathComponent(name).path
+            do {
+                try FileManager.default.removeItem( atPath: filePath)
+
+                for i in indexPath.row...DataArray.count+1{
+                    let path = String(i+1)+".png"
+                    let path2 = String(i)+".png"
+                    let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let fileURL:URL = documentsURL.appendingPathComponent(path)
+                    if let _ = UIImage(contentsOfFile: fileURL.path){
+                        try fileManager.moveItem(atPath: path, toPath: path2)
+                    }
+                }
+
+            } catch {
+                //エラー処理
+                print("error")
+            }
+        }
+
+
     }
+
+
 
 }
 

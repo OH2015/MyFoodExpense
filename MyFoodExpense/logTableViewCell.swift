@@ -14,13 +14,12 @@ var taxSet = [String]()
 var BoxSet = [[String]]()
 var BoxArray = [[[String]]]()
 var DataSet = [String]()
-var DataArray = [Any]()
-var imgArray = [String]()
+var DataArray = [[String]]()
+
 
 enum KEY:String {
     case box = "boxKey"
     case data = "dataKey"
-    case img = "imageKey"
 }
 
 import UIKit

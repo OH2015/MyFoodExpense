@@ -36,8 +36,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     override func viewDidLoad() {
         super.viewDidLoad()
         userDefaults.register(defaults: [KEY.box.rawValue:[[Box]](),
-                                         KEY.data.rawValue:[[String]](),
-                                         KEY.img.rawValue:[String]()])
+                                         KEY.data.rawValue:[[String]]()]
+                                         )
 
         for i in 0...100{
             PriceArray.append(10*i)
@@ -193,11 +193,11 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     func reloadData(Ind: Int){
         BoxArray = userDefaults.array(forKey: KEY.box.rawValue) as! [[[String]]]
-        DataArray = userDefaults.array(forKey: KEY.data.rawValue)!
+        DataArray = userDefaults.array(forKey: KEY.data.rawValue)! as! [[String]]
         BoxSet = BoxArray[Ind]
         DataSet = DataArray[Ind] as! [String]
-//        BoxSet = [ingSet[0...5],costSet[0...5],taxSet[0...5]]
-//        DataSet = [Person,date,Title]
+// BoxSet = [ingSet[0...5],costSet[0...5],taxSet[0...5]]
+// DataSet = [Person,date,Title]
 
         ingSet = BoxSet[0]
         costSet = BoxSet[1]
