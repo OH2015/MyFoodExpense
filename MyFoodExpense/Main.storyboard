@@ -327,7 +327,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ine-l3-rqH"/>
+                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uno-JL-2az"/>
                                                                         </connections>
                                                                     </button>
                                                                     <pickerView tag="14" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGU-ke-gXC">
@@ -383,7 +383,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                     </textField>
-                                                                    <button opaque="NO" userInteractionEnabled="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-9S-ER1">
+                                                                    <button opaque="NO" tag="25" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-9S-ER1">
                                                                         <rect key="frame" x="751" y="42" width="52" height="33"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="33" id="6cN-lB-N04"/>
@@ -394,7 +394,7 @@
                                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nmp-Nn-FTj"/>
+                                                                            <action selector="taxChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HFm-FE-SZf"/>
                                                                         </connections>
                                                                     </button>
                                                                     <pickerView tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTY-mL-rcb">
@@ -495,15 +495,15 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-l3-4HL">
-                                                <rect key="frame" x="397" y="710" width="134" height="96"/>
+                                            <pickerView tag="-1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-l3-4HL">
+                                                <rect key="frame" x="397" y="676" width="134" height="96"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="96" id="6V2-TM-gx4"/>
                                                     <constraint firstAttribute="width" constant="134" id="tV4-Ra-KhW"/>
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9st-M9-MRE">
-                                                <rect key="frame" x="589" y="746.5" width="19.5" height="23"/>
+                                                <rect key="frame" x="589" y="712.5" width="19.5" height="23"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -513,7 +513,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="d20-Uw-0OH" secondAttribute="trailing" constant="50" id="5qz-Hp-pOl"/>
                                             <constraint firstItem="ZZe-l3-4HL" firstAttribute="centerX" secondItem="anP-0B-xd5" secondAttribute="centerX" constant="50" id="6hE-Zc-fz9"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZZe-l3-4HL" secondAttribute="bottom" constant="46" id="AYG-ee-dfU"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZZe-l3-4HL" secondAttribute="bottom" constant="80" id="AYG-ee-dfU"/>
                                             <constraint firstItem="9st-M9-MRE" firstAttribute="leading" secondItem="ZZe-l3-4HL" secondAttribute="trailing" constant="58" id="G1a-EV-sBr"/>
                                             <constraint firstAttribute="bottom" secondItem="7oI-Of-Olv" secondAttribute="bottom" constant="150" id="cn9-bf-Mkx"/>
                                             <constraint firstItem="7oI-Of-Olv" firstAttribute="leading" secondItem="anP-0B-xd5" secondAttribute="leading" id="hAC-Mq-fKI"/>
@@ -523,8 +523,8 @@
                                             <constraint firstAttribute="trailing" secondItem="7oI-Of-Olv" secondAttribute="trailing" id="xft-Rj-Skl"/>
                                         </constraints>
                                     </view>
-                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-6M-G7E" userLabel="ContentView2">
-                                        <rect key="frame" x="361" y="0.0" width="498" height="860"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-6M-G7E" userLabel="ContentView2">
+                                        <rect key="frame" x="828" y="0.0" width="828" height="852"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Bs-yP-jUb">
                                                 <rect key="frame" x="213" y="47" width="57" height="65"/>
@@ -621,6 +621,7 @@
                         <outlet property="PerCostLabel" destination="PcN-KG-3Ss" id="X60-gQ-HNr"/>
                         <outlet property="TotalCostLabel" destination="9Bs-yP-jUb" id="QSS-S3-cgi"/>
                         <outlet property="pageControll" destination="CZI-Yp-NVk" id="SRE-No-Ff2"/>
+                        <outlet property="personPicker" destination="ZZe-l3-4HL" id="vTc-IO-oR9"/>
                         <outlet property="pickerView1" destination="A3L-XI-CoQ" id="3no-WT-BfZ"/>
                         <outlet property="pickerView2" destination="vyk-Eu-v8T" id="ZCs-ZM-NoC"/>
                         <outlet property="pickerView3" destination="hgd-zg-tbz" id="XVG-Oz-nds"/>
@@ -696,6 +697,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="88u-IZ-brb"/>
+        <segue reference="9dV-Pb-XDN"/>
     </inferredMetricsTieBreakers>
 </document>

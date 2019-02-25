@@ -24,8 +24,6 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pickDataFromKey()
-        print(DataArray)
-
         return DataArray.count
     }
 
@@ -36,7 +34,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         cell.textLabel?.text = dataSet[2]
         let subTitle = cell.viewWithTag(2) as! UILabel
         subTitle.text = dataSet[1]
-        print("ok")
+
         return cell
     }
 

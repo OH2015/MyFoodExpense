@@ -80,11 +80,7 @@ class popUpViewController: UIViewController ,UITextFieldDelegate{
         BoxArray.append(BoxSet)
 
         userDefaults.set(DataArray, forKey: KEY.data.rawValue)
-        print("でータセットok")
-        print(BoxArray)
         userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
-        print("ボックスセットok")
-
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "storeSegue", sender: nil)
 
