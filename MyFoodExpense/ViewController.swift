@@ -44,6 +44,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         BoxQueue = [box1,box2,box3,box4,box5,box6]
         for i in 1...6{
             let ingField = view.viewWithTag(i) as! UITextField
+            ingField.placeholder = "食材"
             ingField.delegate = self
         }
 
@@ -100,7 +101,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
             sender.setTitleColor(.red, for: .normal)
         }else{
             sender.setTitle("税抜き", for: .normal)
-            sender.setTitleColor(.darkGray, for: .normal)
+            sender.setTitleColor(.black, for: .normal)
         }
         let box = BoxQueue[sender.tag-21]
         box.tax = sender.currentTitle!
