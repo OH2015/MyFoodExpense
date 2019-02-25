@@ -15,6 +15,8 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     let userDefaults = UserDefaults.standard
     var index:Int?
     var indexPath:IndexPath?
+    var fileName = ""
+    var images = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +39,8 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let dataSet = DataArray[indexPath.row] as! [String]
 
-        let image = UIImage(named: "flog")
-        cell.setCell(imageName: image!, title: dataSet[2], date: dataSet[1])
+        let image = readimage(indexPath: indexPath)
+        cell.setCell(imageName: image ?? nil, title: dataSet[2], date: dataSet[1])
 
         return cell
     }
@@ -113,8 +115,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBAction func imageTapped(_ sender: UIButton) {
         let cell = sender.superview?.superview as! UITableViewCell
         indexPath = tableView.indexPath(for: cell)!
-
-        fileManage()
+        pickerController()
     }
 
 
@@ -123,17 +124,22 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         // ファイル一覧の場所であるpathを文字列で取得
         let path = Bundle.main.bundlePath
-
         do {
-
-            // pathにあるファイル名文字列で全て取得
             let files = try fileManager.contentsOfDirectory(atPath: path)
 
-            // 文字列のファイル名が配列で取得できる
-            print(files)
+            // png画像だけを集める配列を用意
+            var images : [String] = []
+
+            for file in files {
+                // ファイル名の後方が.pngであればtrueとなる
+                if file.hasSuffix(".png") {
+                    images.append(file)
+                }
+            }
+            print(images,"あったよ")
+
         }
         catch let error {
-            // pathが存在しない場合などエラーはこちらにくる
             print(error)
         }
     }
@@ -147,6 +153,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func startCamera(){
+
         let sourceType:UIImagePickerController.SourceType =
             UIImagePickerController.SourceType.camera
         // カメラが利用可能かチェック
@@ -170,27 +177,36 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             view.contentMode = .scaleAspectFit
             let pngImageData:Data = pickedImage.pngData()!
             let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let fileURL:URL = documentsURL.appendingPathComponent("image.png")
+            fileName = String(indexPath!.row) + ".png"
+            let fileURL:URL = documentsURL.appendingPathComponent(fileName)
             do{
                 try pngImageData.write(to: fileURL)
+
                 reload()
             }catch{
                 print("書き込み失敗")
             }
         }
+        fileManage()
         dismiss(animated: true, completion: nil)
     }
 
-    func readimage() -> UIImage?  {
+    func readimage(indexPath:IndexPath) -> UIImage?  {
+        fileName = String(indexPath.row) + ".png"
         let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let fileURL:URL = documentsURL.appendingPathComponent("image.png")
-        return UIImage(contentsOfFile: fileURL.path)
+        let fileURL:URL = documentsURL.appendingPathComponent(fileName)
+        if let image = UIImage(contentsOfFile: fileURL.path){
+            return image
+        }
+        return nil
     }
 
     func reload(){
+//ここでファイルの名前"インデックス番号.png"を与える
+        fileName = String(indexPath!.row) + ".png"
         let cell = tableView.cellForRow(at: indexPath!)
         let img = cell?.viewWithTag(1) as! UIImageView
-        img.image = readimage()
+        img.image = readimage(indexPath: indexPath!)
     }
 
 }

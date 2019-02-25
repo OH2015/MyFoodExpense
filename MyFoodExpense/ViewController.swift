@@ -36,7 +36,8 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
     override func viewDidLoad() {
         super.viewDidLoad()
         userDefaults.register(defaults: [KEY.box.rawValue:[[Box]](),
-                                         KEY.data.rawValue:[[String]]()])
+                                         KEY.data.rawValue:[[String]](),
+                                         KEY.img.rawValue:[String]()])
 
         for i in 0...100{
             PriceArray.append(10*i)

@@ -15,11 +15,12 @@ var BoxSet = [[String]]()
 var BoxArray = [[[String]]]()
 var DataSet = [String]()
 var DataArray = [Any]()
-
+var imgArray = [String]()
 
 enum KEY:String {
     case box = "boxKey"
     case data = "dataKey"
+    case img = "imageKey"
 }
 
 import UIKit
@@ -33,9 +34,11 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
         super.awakeFromNib()
     }
 
-    func setCell(imageName:UIImage,title:String,date:String){
+    func setCell(imageName:UIImage?,title:String,date:String){
         self.title.text = title
-        self.listImage.image = imageName
+        if let img = imageName{
+            self.listImage.image = imageName
+        }
         self.subTitle.text = date
     }
 

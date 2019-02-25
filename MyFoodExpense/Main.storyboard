@@ -632,7 +632,7 @@
                                 <color key="currentPageIndicatorTintColor" red="1" green="0.24466697112098745" blue="0.13265612053732678" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="1" green="0.82106142920000003" blue="0.53644178529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CZI-Yp-NVk" firstAttribute="centerX" secondItem="IA7-Uy-lRJ" secondAttribute="centerX" id="2kj-hb-xju"/>
                             <constraint firstAttribute="bottom" secondItem="GGu-TL-qhH" secondAttribute="bottom" id="A5G-Nf-5DR"/>
