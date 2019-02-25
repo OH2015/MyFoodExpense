@@ -16,24 +16,21 @@ var BoxArray = [[[String]]]()
 var DataSet = [String]()
 var DataArray = [Any]()
 
+
 enum KEY:String {
     case box = "boxKey"
     case data = "dataKey"
 }
 
-
 import UIKit
 
-class logTableViewCell: UITableViewCell {
-
+class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet var title: UILabel!
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var listImage: UIImageView!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-    
     }
 
     func setCell(imageName:UIImage,title:String,date:String){
@@ -44,8 +41,6 @@ class logTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-
     }
-
 }
+

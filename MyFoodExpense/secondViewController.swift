@@ -9,11 +9,12 @@
 import UIKit
 
 
-class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     let userDefaults = UserDefaults.standard
     var index:Int?
+    var indexPath:IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,8 +97,6 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.isEditing = true
     }
 
-
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSegue"{
             let nextVC = segue.destination as! ViewController
@@ -110,8 +109,95 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         BoxArray = userDefaults.array(forKey: KEY.box.rawValue) as! [[[String]]]
         DataArray = userDefaults.array(forKey: KEY.data.rawValue)!
     }
-    
+
+    @IBAction func imageTapped(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! UITableViewCell
+        indexPath = tableView.indexPath(for: cell)!
+
+        fileManage()
+    }
 
 
+    func fileManage(){
+        let fileManager = FileManager()
+
+        // ファイル一覧の場所であるpathを文字列で取得
+        let path = Bundle.main.bundlePath
+
+        do {
+
+            // pathにあるファイル名文字列で全て取得
+            let files = try fileManager.contentsOfDirectory(atPath: path)
+
+            // 文字列のファイル名が配列で取得できる
+            print(files)
+        }
+        catch let error {
+            // pathが存在しない場合などエラーはこちらにくる
+            print(error)
+        }
+    }
+
+    func pickerController(){
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = .photoLibrary
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+
+    }
+
+    func startCamera(){
+        let sourceType:UIImagePickerController.SourceType =
+            UIImagePickerController.SourceType.camera
+        // カメラが利用可能かチェック
+        if UIImagePickerController.isSourceTypeAvailable(
+            UIImagePickerController.SourceType.camera){
+            // インスタンスの作成
+            let cameraPicker = UIImagePickerController()
+            cameraPicker.sourceType = sourceType
+            cameraPicker.delegate = self
+            self.present(cameraPicker, animated: true, completion: nil)
+        }
+        else{
+        }
+
+    }
+
+
+    func imagePickerController(_ imagePicker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        if let pickedImage = info[.originalImage] as? UIImage {
+            view.contentMode = .scaleAspectFit
+            let pngImageData:Data = pickedImage.pngData()!
+            let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let fileURL:URL = documentsURL.appendingPathComponent("image.png")
+            do{
+                try pngImageData.write(to: fileURL)
+                reload()
+            }catch{
+                print("書き込み失敗")
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
+
+    func readimage() -> UIImage?  {
+        let documentsURL:URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL:URL = documentsURL.appendingPathComponent("image.png")
+        return UIImage(contentsOfFile: fileURL.path)
+    }
+
+    func reload(){
+        let cell = tableView.cellForRow(at: indexPath!)
+        let img = cell?.viewWithTag(1) as! UIImageView
+        img.image = readimage()
+    }
 
 }
+
+
+
+
+
+
+
