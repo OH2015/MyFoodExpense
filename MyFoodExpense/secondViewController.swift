@@ -67,7 +67,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if tableView.isEditing == true{
+        if tableView.isEditing{
             return true
         }
         return false
@@ -77,6 +77,7 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         BoxArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
         DataArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        swapImage(from: sourceIndexPath, to: destinationIndexPath)
 
         DispatchQueue.main.async {
             self.userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
@@ -92,10 +93,15 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     @IBAction func edit(_ sender: Any) {
-        if tableView.isEditing == true{
-            tableView.isEditing = false
+        tableView.isEditing = !tableView.isEditing
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+            let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
+            let files = contentUrls.map{$0.lastPathComponent}
+            print(contentUrls) //-> ["test1.txt", "test2.txt"]
+        } catch {
+            print(error)
         }
-        tableView.isEditing = true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -174,27 +180,44 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             let name = String(indexPath.row)+".png"
             let filePath = dir.appendingPathComponent(name).path
             do {
-                try FileManager.default.removeItem( atPath: filePath)
-
                 for i in indexPath.row...DataArray.count+1{
                     let path = String(i+1)+".png"
                     let path2 = String(i)+".png"
                     let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
                     let fileURL:URL = documentsURL.appendingPathComponent(path)
+                    let fileURL2:URL = documentsURL.appendingPathComponent(path2)
                     if let _ = UIImage(contentsOfFile: fileURL.path){
-                        try fileManager.moveItem(atPath: path, toPath: path2)
+                        try fileManager.moveItem(at: fileURL, to: fileURL2)
+                        print("交換")
                     }
                 }
+                try FileManager.default.removeItem( atPath: filePath)
+                print("削除")
+
+
 
             } catch {
                 //エラー処理
                 print("error")
             }
         }
+    }
 
+    func swapImage(from:IndexPath,to:IndexPath){
 
     }
 
+    @IBAction func trash(_ sender: Any) {
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+
+            try fileManager.removeItem(at: documentDirectoryURL)
+            tableView.reloadData()
+        } catch  {
+            print(error)
+        }
+
+    }
 
 
 }

@@ -97,11 +97,18 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="JdN-jP-rVs">
-                                        <barButtonItem key="leftBarButtonItem" title="編集" id="HaO-pk-ZY0">
-                                            <connections>
-                                                <action selector="edit:" destination="fWv-o9-7Ox" id="SI3-tV-Aca"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="編集" id="HaO-pk-ZY0">
+                                                <connections>
+                                                    <action selector="edit:" destination="fWv-o9-7Ox" id="SI3-tV-Aca"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="trash" id="3Ir-og-FgS">
+                                                <connections>
+                                                    <action selector="trash:" destination="fWv-o9-7Ox" id="yUH-gH-hIh"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                         <barButtonItem key="rightBarButtonItem" title="戻る" id="RQ8-kz-PEO">
                                             <connections>
                                                 <segue destination="BLj-Xf-Whn" kind="unwind" unwindAction="unwiiiinFor:towardsViewController:" id="Kk2-fz-mF3"/>
