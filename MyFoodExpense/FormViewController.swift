@@ -112,7 +112,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         print(tax)
     }
     @IBAction func send(_ sender: Any) {
-
         let alert = UIAlertController(title: "データを保存します", message: "タイトルをつけてください", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {textField in
             textField.delegate = self
@@ -122,10 +121,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         alert.addAction(
             UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "保存", style: .default, handler: {_ in
-            let textField = self.view.viewWithTag(-1) as! UITextField
-            self.Title = textField.text ?? ""
             self.store()
+
         }))
+        self.present(alert,animated: true)
     }
 
     @IBAction func insertCell(_ sender: Any) {
@@ -155,6 +154,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == -1{
+            Title = textField.text ?? ""
+
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -222,11 +227,17 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
 
     func store(){
+        let uds = UserDefaults.standard
         let f = DateFormatter()
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-        DataArray = [ingredients,prices,tax,String(person),date,Title] as! [[String]]
+
+        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]] as! [[String]]
+        var recordArray = uds.array(forKey: KEY.record.rawValue)
+        recordArray?.append(DataArray)
+        uds.set(recordArray, forKey: KEY.record.rawValue)
+        performSegue(withIdentifier: "recordSegue", sender: nil)
 
     }
 }

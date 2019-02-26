@@ -889,7 +889,7 @@
                         <outlet property="tableView" destination="ONv-Ha-Zdm" id="NCu-c5-b3p"/>
                         <outlet property="totalPriceLabel" destination="BMH-Ol-oKU" id="uve-L4-h3S"/>
                         <outlet property="totalTaxButton" destination="Qhp-7O-Dso" id="SQu-bE-Ajd"/>
-                        <segue destination="s8V-wd-IU0" kind="showDetail" id="Xvu-ND-gwh"/>
+                        <segue destination="s8V-wd-IU0" kind="show" identifier="recordSegue" id="Xvu-ND-gwh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJQ-W8-sUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -992,10 +992,10 @@
             </objects>
             <point key="canvasLocation" x="1028" y="-1298"/>
         </scene>
-        <!--Second View Controller-->
+        <!--List View Controller-->
         <scene sceneID="OJW-xU-Lx3">
             <objects>
-                <viewController id="s8V-wd-IU0" customClass="secondViewController" customModule="MyFoodExpense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="s8V-wd-IU0" customClass="ListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jT1-Wn-wwm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1125,7 +1125,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qP5-aY-WXv"/>
         <segue reference="9dV-Pb-XDN"/>
     </inferredMetricsTieBreakers>
 </document>

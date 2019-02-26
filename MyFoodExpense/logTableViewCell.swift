@@ -20,6 +20,7 @@ var DataArray = [[String]]()
 enum KEY:String {
     case box = "boxKey"
     case data = "dataKey"
+    case record = "recordKEY"
 }
 
 import UIKit
