@@ -49,8 +49,6 @@ class PickerTextField: UITextField ,UIPickerViewDataSource,UIPickerViewDelegate{
         self.inputAccessoryView = toolbar
     }
 
-
-
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 10
     }

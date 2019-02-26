@@ -8,9 +8,12 @@
 
 import UIKit
 
-class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource{
+class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
 
-
+    var ingredients = [String]()
+    var prices = [String]()
+    var tax = [String]()
+    var cellCount = 3
     //ピッカービュー
     private var pickerView:UIPickerView!
     private let pickerViewHeight:CGFloat = 160
@@ -41,18 +44,31 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cellCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let ingField = cell.viewWithTag(1) as! UITextField
+        ingField.delegate = self
 
-            
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+    }
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView.isEditing {
+            return .delete
+        }
+        return .none
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        cellCount -= 1
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
 //------------------------------------pickerView-------------------------------------------
@@ -71,20 +87,65 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //------------------------------------------------------------------------------------------
 
     @IBAction func wrote(_ sender: UITextField) {
+        reloadValue()
     }
 
-    @IBAction func costSelect(_ sender: PickerTextField) {
-        sender.setup()
+    @IBAction func costChanged(_ sender: PickerTextField) {
+        reloadValue()
     }
-//-------------------------------------------------------------------------------------------
-    func doneTapped(){
-        UIView.animate(withDuration: 0.2){
-            self.pickerToolbar.frame = CGRect(x:0,y:self.view.frame.height,
-                                              width:self.view.frame.width,height:self.toolbarHeight)
-            self.pickerView.frame = CGRect(x:0,y:self.view.frame.height + self.toolbarHeight,
-                                           width:self.view.frame.width,height:self.pickerViewHeight)
-            self.tableView.contentOffset.y = 0
+
+    @IBAction func taxChanged(_ sender: UIButton) {
+        if sender.currentTitle == "税抜き"{
+            sender.setTitle("税込", for: .normal)
+            sender.setTitleColor(UIColor.red, for: .normal)
+        }else{
+            sender.setTitle("税抜き", for: .normal)
+            sender.setTitleColor(UIColor.black, for: .normal)
         }
+        reloadValue()
+    }
+
+    @IBAction func check(_ sender: Any) {
+        print(ingredients)
+        print(prices)
+        print(tax)
+    }
+    @IBAction func send(_ sender: Any) {
+    }
+
+    @IBAction func insertCell(_ sender: Any) {
+        cellCount += 1
+        tableView.reloadData()
+    }
+
+    @IBAction func edit(_ sender: Any) {
+        tableView.isEditing = !tableView.isEditing
+    }
+    //-------------------------------------------------------------------------------------------
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    func reloadValue(){
+        ingredients.removeAll()
+        prices.removeAll()
+        tax.removeAll()
+        for i in 0...cellCount-1{
+            let cell = tableView.cellForRow(at: [0,i])
+            let ingField = cell?.viewWithTag(1) as! UITextField
+            let priceField = cell?.viewWithTag(2) as! PickerTextField
+            let taxButton = cell?.viewWithTag(3) as! UIButton
+            ingredients.append(ingField.text ?? "")
+            prices.append(priceField.text ?? "0")
+            tax.append(taxButton.currentTitle!)
+        }
+
     }
 }
 
