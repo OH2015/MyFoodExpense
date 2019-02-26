@@ -13,34 +13,29 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var ingredients = [String]()
     var prices = [String]()
     var tax = [String]()
+    var person = 1
+    var date = ""
+    var Title = ""
+    var totalPlice = 0
+    var DataArray = [[String]]()
     var cellCount = 3
-    //ピッカービュー
-    private var pickerView:UIPickerView!
-    private let pickerViewHeight:CGFloat = 160
 
-    //pickerViewの上にのせるtoolbar
-    private var pickerToolbar:UIToolbar!
-    private let toolbarHeight:CGFloat = 40.0
-
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var perPriceLabel: UILabel!
+    @IBOutlet weak var personPicker: UIPickerView!
+    @IBOutlet weak var totalTaxButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(0/10)
+        personPicker.dataSource = self
+        personPicker.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
 
         let width = self.view.frame.width
         let height = self.view.frame.height
-
-        //pickerView
-        pickerView = UIPickerView(frame:CGRect(x:0,y:height + toolbarHeight,
-                                               width:width,height:pickerViewHeight))
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        pickerView.backgroundColor = UIColor.gray
-        self.view.addSubview(pickerView)
-
-
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,11 +64,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         cellCount -= 1
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        reloadValue()
     }
 
 //------------------------------------pickerView-------------------------------------------
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 4
+        return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -81,7 +77,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(row)
+        return String(row+1)
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        person = row+1
+        perPriceLabel.text = String(totalPlice/person)
     }
 
 //------------------------------------------------------------------------------------------
@@ -111,6 +112,20 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         print(tax)
     }
     @IBAction func send(_ sender: Any) {
+
+        let alert = UIAlertController(title: "データを保存します", message: "タイトルをつけてください", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {textField in
+            textField.delegate = self
+            textField.tag = -1
+            })
+
+        alert.addAction(
+            UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "保存", style: .default, handler: {_ in
+            let textField = self.view.viewWithTag(-1) as! UITextField
+            self.Title = textField.text ?? ""
+            self.store()
+        }))
     }
 
     @IBAction func insertCell(_ sender: Any) {
@@ -121,6 +136,20 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
     }
+
+    @IBAction func totalTaxChanged(_ sender: UIButton) {
+        if sender.currentTitle == "(税込)"{
+            sender.setTitle("(税抜き)", for: .normal)
+            sender.setTitleColor(UIColor.black, for: .normal)
+        }else{
+            sender.setTitle("(税込)", for: .normal)
+            sender.setTitleColor(UIColor.red, for: .normal)
+        }
+        taxInclude()
+    }
+
+
+
     //-------------------------------------------------------------------------------------------
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -145,6 +174,59 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             prices.append(priceField.text ?? "0")
             tax.append(taxButton.currentTitle!)
         }
+        taxInclude()
+
+
+    }
+
+    func taxInclude(){
+        var IntPrices = prices.map{Int($0)}
+        let plusTax = prices.map{Double($0)!*0.08}
+        let minusTax = prices.map{Double($0)!*0.08/1.08}
+        if totalTaxButton.currentTitle == "(税込)"{
+            for i in 0...cellCount-1{
+                if tax[i] == "税抜き"{
+                    IntPrices[i] = IntPrices[i]! + Int(plusTax[i])
+                }
+            }
+            calculate(prices: IntPrices as! [Int])
+            for i in 0...cellCount-1{
+                if tax[i] == "税抜き"{
+                    IntPrices[i] = IntPrices[i]! - Int(plusTax[i])
+                }
+            }
+        }else{
+            for i in 0...cellCount-1{
+                if tax[i] == "税込"{
+                    IntPrices[i] = IntPrices[i]! - Int(minusTax[i])
+                }
+            }
+            calculate(prices: IntPrices as! [Int])
+            for i in 0...cellCount-1{
+                if tax[i] == "税込"{
+                    IntPrices[i] = IntPrices[i]! + Int(minusTax[i])
+                }
+            }
+
+        }
+    }
+
+    func calculate(prices: [Int]){
+        totalPlice = 0
+        prices.forEach{totalPlice += $0}
+        totalPriceLabel.text = String(totalPlice)
+        perPriceLabel.text = String(totalPlice/person)
+
+    }
+
+
+
+    func store(){
+        let f = DateFormatter()
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
+        date = f.string(from: Date())
+        DataArray = [ingredients,prices,tax,String(person),date,Title] as! [[String]]
 
     }
 }
