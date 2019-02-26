@@ -195,7 +195,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         BoxArray = userDefaults.array(forKey: KEY.box.rawValue) as! [[[String]]]
         DataArray = userDefaults.array(forKey: KEY.data.rawValue)! as! [[String]]
         BoxSet = BoxArray[Ind]
-        DataSet = DataArray[Ind] as! [String]
+        DataSet = DataArray[Ind]
 // BoxSet = [ingSet[0...5],costSet[0...5],taxSet[0...5]]
 // DataSet = [Person,date,Title]
 

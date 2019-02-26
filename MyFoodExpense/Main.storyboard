@@ -123,6 +123,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="LOJ-ex-WnJ" id="4Nh-2e-3lQ"/>
+                        <outlet property="trashButton" destination="3Ir-og-FgS" id="Vcq-hh-07n"/>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="showSegue" id="qP5-aY-WXv"/>
                         <segue destination="Gur-7w-BBD" kind="presentation" identifier="camera" id="SfD-Cx-e4D"/>
                     </connections>

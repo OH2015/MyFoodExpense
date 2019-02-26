@@ -11,7 +11,10 @@ import UIKit
 //DataArray = [[Person,date,Title]...]
 class secondViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
+
+    @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    let systemBlueColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
     let userDefaults = UserDefaults.standard
     var index:Int?
     var indexPath:IndexPath?
@@ -24,6 +27,8 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
+        trashButton.isEnabled = false
+        trashButton.tintColor = UIColor.clear
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,14 +96,21 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         //tableViewの編集モードを切り替える
         tableView.isEditing = editing
     }
-
+//編集ボタン
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
+        if tableView.isEditing && DataArray.count != 0{
+            trashButton.tintColor = systemBlueColor
+            trashButton.isEnabled = true
+        }else{
+            trashButton.tintColor = UIColor.clear
+            trashButton.isEnabled = false
+        }
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
             let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
             let files = contentUrls.map{$0.lastPathComponent}
-            print(contentUrls) //-> ["test1.txt", "test2.txt"]
+            print(files) //-> ["test1.txt", "test2.txt"]
         } catch {
             print(error)
         }
@@ -180,7 +192,10 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
             let name = String(indexPath.row)+".png"
             let filePath = dir.appendingPathComponent(name).path
             do {
-                for i in indexPath.row...DataArray.count+1{
+                if let _ = UIImage(contentsOfFile: filePath){
+                    try FileManager.default.removeItem(atPath: filePath)
+                }
+                for i in indexPath.row...DataArray.count{
                     let path = String(i+1)+".png"
                     let path2 = String(i)+".png"
                     let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -188,17 +203,10 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
                     let fileURL2:URL = documentsURL.appendingPathComponent(path2)
                     if let _ = UIImage(contentsOfFile: fileURL.path){
                         try fileManager.moveItem(at: fileURL, to: fileURL2)
-                        print("交換")
                     }
                 }
-                try FileManager.default.removeItem( atPath: filePath)
-                print("削除")
-
-
-
             } catch {
-                //エラー処理
-                print("error")
+                print(error)
             }
         }
     }
@@ -208,6 +216,20 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
 
     @IBAction func trash(_ sender: Any) {
+        let alert = UIAlertController(title: "削除しますか？", message: "全てのデータが消去されます", preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "削除", style: .destructive, handler: {_ in
+            self.destroy()
+        }))
+        self.present(alert,animated: true)
+    }
+
+    func destroy(){
+        DataArray.removeAll()
+        BoxArray.removeAll()
+        userDefaults.removeObject(forKey: KEY.data.rawValue)
+        userDefaults.removeObject(forKey: KEY.box.rawValue)
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
 
@@ -216,7 +238,10 @@ class secondViewController: UIViewController,UITableViewDelegate,UITableViewData
         } catch  {
             print(error)
         }
-
+        tableView.isEditing = false
+        trashButton.isEnabled = false
+        trashButton.tintColor = UIColor.clear
+        tableView.reloadData()
     }
 
 
