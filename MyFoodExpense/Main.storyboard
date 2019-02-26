@@ -679,6 +679,7 @@
                         <outlet property="pickerView5" destination="OTY-mL-rcb" id="aNp-6f-7Bs"/>
                         <outlet property="pickerView6" destination="5UA-7p-spm" id="Df8-BI-7Rl"/>
                         <outlet property="pieChartView" destination="WnS-cH-S56" id="cOZ-qb-A11"/>
+                        <outlet property="scrollView" destination="GGu-TL-qhH" id="wew-W9-fGV"/>
                         <segue destination="ASX-fa-Hpz" kind="presentation" identifier="popUpSegue" modalTransitionStyle="crossDissolve" id="E90-LK-W3V"/>
                     </connections>
                 </viewController>
@@ -769,6 +770,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="88u-IZ-brb"/>
+        <segue reference="9dV-Pb-XDN"/>
     </inferredMetricsTieBreakers>
 </document>

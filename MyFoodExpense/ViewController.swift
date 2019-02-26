@@ -11,6 +11,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
 
     @IBOutlet weak var PerCostLabel: UILabel!
 
+    @IBOutlet weak var scrollView: MyScrollView!
     @IBOutlet weak var pieChartView: PieChartView!
 
     @IBOutlet weak var pickerView1: UIPickerView!
@@ -48,6 +49,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
             ingField.placeholder = "食材"
             ingField.delegate = self
         }
+        scrollView.delegate = self
 
         pickerView1.delegate = self
         pickerView2.delegate = self
@@ -256,6 +258,7 @@ class ViewController:UIViewController,UIScrollViewDelegate,UITextFieldDelegate,C
         }
         drawChart()
     }
+
 
 
 
