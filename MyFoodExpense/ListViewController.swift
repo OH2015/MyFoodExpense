@@ -9,10 +9,7 @@
 
 import UIKit
 
-//DataArray = [[ingredients,prices,tax,person,date,Title]...]
-var RecordArray = [[[String]]]()
-let randomStrings = "6GGgHuCgowkP2auF1sxlwv7BglPFD7A02rNkH4vTmgYwmkXI5QrQSM68jLh4WlrIev7KWWJKbkmXBrI6pUww3Bl1LgPCiqx1yiFgfUj8vYT8vQfYweN7jBciCnIJSePlW1gpABv0hCxuQDienNPceHx2EN1ghUmpVrB68jD2BD6JfrH8U7DRANPlXvgST1ol0U0waoV2Vxld7n35SclVc41nVLi3xddwaftlQOaO1EUYv88fFT2R4rBaYri3qlWr1sovQI4XM4sjNCfs4kX36RfLpCyYfGNE7xJky725mIqJnGxlTrVtlmk7Ner0ygrNPnM6igpronMkk3eHIQ8Y0n0LvGuIOH8m80enp1hhX8w5xWmJ6jlBR7o0WXegYmPIYVQsTtFWesDyDcDNj3Q6u4LYhvpLgBBYVTCpgnwb2SSdc3PPaQrMm0UhLHCFN4HETL0OpmdQqAUSbU0EA0TJJtg7pG0At2IMH31rw1X16sK5Ig0DWBFcPDUPVNFuwqiewyNkBb11g1LfMLXw5NS8f33SPk8vOaICnBt7snD5LRxSElydwpF2Rs4Pj8n0KclVStCssrttaH7TeOU6PnnM8o70DIACPlYPiBYhddBxKLthVwCkIOq1fDN1kIFbmRIosQfY2YBbjDnClTbdfIoQJJf7XD1VMmyAWYN7GSBNgmMv5HtBLJV1Xtvjrsr73r4iI2cN2SeIiGtND74Wtq1UvE5h5Os2tciraFIQRMoJLTjUfifcmUvKKRqx304YD4uysvV20Wk6TyCFKjb0CUDYcjgyh6SKxPXWu6KpnVL5RiQHWe5X7II2CtSoOSaxSVaNN6rUg2WVXv7k7rGNUpYy5UY4yQP4NbUBfeAb5JPP0NGDjEJ2TPWDiv4EXeY8hbHo3wAh4riKBLGkVxB3kMBLkgxB3G4TeQPAhgJOpJ5ITEUN1HmGb33KfH6y6UMEGQFeCvhuMCXd21G7BLyH7Pu2wqTWxfOMAukE6eY1ehuFRlgSn1dcfGdTVEgGTCQl8pHbCcikkDS3uqKE4hwkaWSvewaJciVXkDfEHYY8oNhSLNpPBH3x003fe6tduTDwj2cfNwJURbwXeHyWaJvGl78eqssXC0jQQhGfisypJ2i07kLjhERdk0XWVvXcbslch5xFSE0IDEaSjcyIv26SwHhDjThau25aWImvnGvDYE30lRIY6cHuUXJj83likbf4mYlfrdqf57e3NX6gUQJkpAE6c3ntPxLOLhJLwUODQDRvyQr8sFR5cFtNqIX55shNV5oF2BmSQnyptS2V6cSmn7dR1N8dsaUcKNhdIvwM4iXwwQ2MYxFatAitXxRTPIIagaEdXqHQq0KTyam3bQAvkhGsCwRxIe56EFLg2Krh84wFPvkboLgMAaVMYEBS8y5Lm7PuYSyqlF1oSShqHpvSrXw3eExnYvlDWGr4E0ieLMdWuaD5bnmiuA6sJKTcFHiWRGn48W6LuqBn4GI8FuuPksu6Ag3URrs6GaQ8Rpc1Ya2usnfKndUtx5xf0UwQxWMydLLf2CUsEtVlG7D48tWlXQtpwbUD60Dmb6OaajKpDIYAxa6gfa3FNL0mILIpOU71mohjScIVUiUf0Qt3CPHdINdBq4SvVxWhGOyIELnyicuOLOQbOp2JqhWHohK2o7SfhCcXYtss42fsSRVwWNCxVegCphVYKqOGktihffmp5GAjJBBUXMiXktx2UIWXBT8TmS3ycv3QelbkTpBNWhasvcep0OcFJEQFlD65xtBYbdmp35pMa0HRHsjr5cWxHjM0cnuild4RtdI6V8WxTaBqTTOMJRpVByblep866vdSDSepnduDsJ3UbtpBOwgWRADwnQvCVCxHotuDEoGHHVr3tyDFEmXlqfVFBmSufi7kRjPsxDqDGpwpIgccIvxv5ICgyRRDAcRg7h1ICBiiuEyjO5SRy4XJvoO7CGp1G38TcaCSVbqxq4gBeVFtIFQpwJK8IoEVqSCLS58b5QTSSFbFwKterEvmFBupwqNRAbwtFOmqlvewub616A3mjmrhPN8MJSDLYOmi5UUspHGnpEp1rAfYGy5w1q2Gpyy4Sb02bVkQJUlyckyjau7aIdAyS6MGfGXY0b8iHD3qVNkqFBfJQlkwJHj6l0gYSo2kqJOqHfF8QTpeO4heE37fQWMvERfmpQ0TisklowWiWwStnbi20VkXcHIGgY5yakXsxkYPbofjhYLr0eFvqfHvQGmAgo7KXvve0j7WfIxFHDqT1E1BAYY1ftL4qMyxA7PjrE3nBmkpd8yyLGwgcuiCfagHiNXSEuqGTUXj4B4oCGpc6gUQpfgPGUqspWs6hpPNiFloKisj5Kr5C4CNf5dw31n2bIOfPMhV8KxyXiHcl6DRlb6OeBYxB5gA4LtTDW74"
-let keys = randomStrings.splitInto(8)
+
 
 class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
@@ -58,7 +55,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let DataArray = RecordArray[indexPath.row]
         let title = DataArray[5][0]
         let date = DataArray[4][0]
-        let name = keys[indexPath.row]
+        let name = "\(indexPath.row).JPEG"
         let image:UIImage? = readimage(fileName: name)
         cell.setCell(imageName: image ?? nil, title: title, date: date)
 
@@ -66,6 +63,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailSegue", sender: nil)
 
     }
 
@@ -215,16 +213,18 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func imagePickerController(_ imagePicker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let pickedImage = info[.originalImage] as? UIImage {
-            writeImage(img: pickedImage,row:indexPath!.row)
+            writeImageAsJPEG(img: pickedImage, row: indexPath!.row)
         }
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
 
-    func writeImage(img:UIImage,row:Int){
-        let pngImageData:Data = img.pngData()!
+
+    func writeImageAsJPEG(img:UIImage,row:Int){
+        let quality:CGFloat = 0.1
+        let pngImageData:Data = img.jpegData(compressionQuality: quality)!
         let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let name = keys[row]
+        let name = "\(row).JPEG"
         let fileURL:URL = documentsURL.appendingPathComponent(name)
         do{
             try pngImageData.write(to: fileURL)
@@ -245,15 +245,15 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func removeImage(indexPath:IndexPath){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let name = keys[indexPath.row]
+            let name = "\(indexPath.row).JPEG"
             let filePath = dir.appendingPathComponent(name)
             do {
                 if let _ = UIImage(contentsOfFile: filePath.path){
                     try FileManager.default.removeItem(at: filePath)
                 }
                 for i in indexPath.row...RecordArray.count{
-                    let path = keys[i+1]
-                    let path2 = keys[i]
+                    let path = "\(i+1).JPEG"
+                    let path2 = "\(i).JPEG"
                     let fileURL:URL = dir.appendingPathComponent(path)
                     let fileURL2:URL = dir.appendingPathComponent(path2)
                     if let _ = UIImage(contentsOfFile: fileURL.path){
@@ -268,11 +268,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func swapImage(from:IndexPath,to:IndexPath){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let fromName = keys[from.row]
-            let toName = keys[to.row]
+            let fromName = "\(from.row).JPEG"
+            let toName = "\(to.row).JPEG"
             let fromFilePath = dir.appendingPathComponent(fromName)
             let toFilePath = dir.appendingPathComponent(toName)
-            let postFilePath = dir.appendingPathComponent("post.png")
+            let postFilePath = dir.appendingPathComponent("postFile")
             do {
                 if let _ = UIImage(contentsOfFile: fromFilePath.path){
                     try self.fileManager.moveItem(at: fromFilePath,to: postFilePath)

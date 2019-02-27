@@ -7,13 +7,9 @@
 //
 
 
-var PriceArray = [Int]()
-var DataArray = [[String]]()
 
 
-enum KEY:String {
-    case record = "recordKEY"
-}
+
 
 import UIKit
 

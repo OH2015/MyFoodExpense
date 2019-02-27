@@ -22,6 +22,9 @@
 		9D851F53222672EF0024428E /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F52222672EF0024428E /* extension.swift */; };
 		9D851F5522267B910024428E /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5422267B910024428E /* imageViewController.swift */; };
 		9D851F5922267C940024428E /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5822267C940024428E /* imageViewController.swift */; };
+		9D851F5B2226BA100024428E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5A2226BA100024428E /* DataSource.swift */; };
+		9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5C2226CE5E0024428E /* DetailViewController.swift */; };
+		9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */; };
 		9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9EB652225270300522E26 /* InputTableViewCell.swift */; };
 		9DDFBE90222521C300642364 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDFBE8F222521C300642364 /* FormViewController.swift */; };
 		B7B1B3093E8F736AF3AAB024 /* Pods_MyFoodExpenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */; };
@@ -71,6 +74,9 @@
 		9D851F52222672EF0024428E /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		9D851F5422267B910024428E /* imageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageViewController.swift; path = "../MyFoodExpenseのコピー/MyFoodExpense/imageViewController.swift"; sourceTree = "<group>"; };
 		9D851F5822267C940024428E /* imageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = imageViewController.swift; path = "../../MyFoodExpenseのコピー/MyFoodExpense/imageViewController.swift"; sourceTree = "<group>"; };
+		9D851F5A2226BA100024428E /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		9D851F5C2226CE5E0024428E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailTableViewCell.swift; sourceTree = "<group>"; };
 		9DD9EB652225270300522E26 /* InputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
 		9DDFBE8F222521C300642364 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +166,10 @@
 				9D851F5822267C940024428E /* imageViewController.swift */,
 				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
 				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
+				9D851F5A2226BA100024428E /* DataSource.swift */,
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
+				9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */,
+				9D851F5C2226CE5E0024428E /* DetailViewController.swift */,
 				9D851F5022265F4A0024428E /* titleViewController.swift */,
 				9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */,
 				9D851F52222672EF0024428E /* extension.swift */,
@@ -418,12 +427,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */,
 				9D851F5122265F4A0024428E /* titleViewController.swift in Sources */,
+				9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */,
 				9D2CB83822253B7C0095CAEB /* PickerTextField.swift in Sources */,
 				9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */,
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
 				9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */,
 				9D851F5922267C940024428E /* imageViewController.swift in Sources */,
+				9D851F5B2226BA100024428E /* DataSource.swift in Sources */,
 				9D851F53222672EF0024428E /* extension.swift in Sources */,
 				9DDFBE90222521C300642364 /* FormViewController.swift in Sources */,
 				9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */,

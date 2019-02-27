@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -37,8 +41,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>カメラ使ってええか？</string>
+	<string>写真を撮影します</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>アルバムに追加すんで</string>
+	<string>アルバムから写真を選択します</string>
 </dict>
 </plist>

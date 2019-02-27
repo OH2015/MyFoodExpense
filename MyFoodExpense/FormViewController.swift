@@ -183,8 +183,9 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func taxInclude(){
         var IntPrices = prices.map{Int($0)}
-        let plusTax = prices.map{Double($0)!*0.08}
-        let minusTax = prices.map{Double($0)!*0.08/1.08}
+        let DoublePrices = prices.map{Double($0)!}
+        let plusTax = DoublePrices.map{$0 * 0.08}
+        let minusTax = DoublePrices.map{$0 * 0.08/1.08}
         if totalTaxButton.currentTitle == "(税込)"{
             for i in 0...cellCount-1{
                 if tax[i] == "税抜き"{

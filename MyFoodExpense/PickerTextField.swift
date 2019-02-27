@@ -34,7 +34,6 @@ class PickerTextField: UITextField ,UIPickerViewDataSource,UIPickerViewDelegate{
     }
 
     func setup() {
-
         let picker = UIPickerView()
         picker.delegate = self
         picker.dataSource = self
@@ -69,7 +68,7 @@ class PickerTextField: UITextField ,UIPickerViewDataSource,UIPickerViewDelegate{
     }
 
     @objc func cancel() {
-        self.text = ""
+        self.text = "0"
         self.endEditing(true)
     }
 
