@@ -19,6 +19,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var totalPlice = 0
     var DataArray = [[String]]()
     var cellCount = 3
+    let uds = UserDefaults.standard
 
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var perPriceLabel: UILabel!
@@ -28,7 +29,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(0/10)
+        uds.register(defaults: [KEY.record.rawValue:[[[String]]]()])
+
         personPicker.dataSource = self
         personPicker.delegate = self
         tableView.delegate = self
@@ -227,12 +229,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
 
     func store(){
-        let uds = UserDefaults.standard
         let f = DateFormatter()
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-
         DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]] as! [[String]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)

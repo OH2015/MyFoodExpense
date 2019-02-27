@@ -37,7 +37,7 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
     func setCell(imageName:UIImage?,title:String,date:String){
         self.title.text = title
         if let img = imageName{
-            self.listImage.image = imageName
+            self.listImage.image = img
         }
         self.subTitle.text = date
     }

@@ -13,17 +13,16 @@ import UIKit
 var RecordArray = [[[String]]]()
 class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
-
     @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     let systemBlueColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
-    let userDefaults = UserDefaults.standard
+    let uds = UserDefaults.standard
     var index:Int?
     var indexPath:IndexPath?
     let fileManager = FileManager.default
 
-
     override func viewDidLoad() {
+
         super.viewDidLoad()
 
         tableView.delegate = self
@@ -40,10 +39,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
-        let DataArray = RecordArray[indexPath.row].flatMap{$0}
+        let DataArray = RecordArray[indexPath.row]
+        let title = DataArray[5][0]
+        let date = DataArray[4][0]
         let name = String(indexPath.row) + ".png"
         let image:UIImage? = readimage(fileName: name)
-        cell.setCell(imageName: image ?? nil, title: DataArray[5], date: DataArray[4])
+        cell.setCell(imageName: image ?? nil, title: title, date: date)
 
         return cell
     }
@@ -66,8 +67,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         removeImage(indexPath: indexPath)
 
         DispatchQueue.main.async {
-            self.userDefaults.set(BoxArray, forKey: KEY.box.rawValue)
-            self.userDefaults.set(DataArray, forKey: KEY.data.rawValue)
+            self.uds.set(RecordArray, forKey: KEY.record.rawValue)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
@@ -85,7 +85,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         swapImage(from: sourceIndexPath, to: destinationIndexPath)
 
         DispatchQueue.main.async {
-            self.userDefaults.set(RecordArray, forKey: KEY.record.rawValue)
+            self.uds.set(RecordArray, forKey: KEY.record.rawValue)
         }
     }
 
@@ -124,7 +124,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func pickDataFromKey(){
-        RecordArray = userDefaults.array(forKey: KEY.record.rawValue) as! [[[String]]]
+        RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
 
     }
 
@@ -226,7 +226,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func destroy(){
         RecordArray.removeAll()
-        userDefaults.removeObject(forKey: KEY.record.rawValue)
+        uds.removeObject(forKey: KEY.record.rawValue)
 
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
