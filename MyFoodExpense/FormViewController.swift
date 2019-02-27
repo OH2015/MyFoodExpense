@@ -226,8 +226,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     }
 
-
-
     func store(){
         let f = DateFormatter()
         f.dateStyle = .full
@@ -237,8 +235,24 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
-        performSegue(withIdentifier: "recordSegue", sender: nil)
+        self.navigationController?.popToRootViewController(animated: true)
 
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let scrWidth = self.view.frame.width
+//        let navBar = UINavigationBar()
+//        navBar.frame = CGRect(x: 0, y: 0, width: scrWidth, height: 50)
+//
+//        //ナビゲーションアイテムを作り、タイトルと左側ボタンを設定する。
+//        let navItem: UINavigationItem = UINavigationItem(title:"")
+//        navItem.leftBarButtonItem = UIBarButtonItem(title:"戻る", style:UIBarButtonItem.Style.plain, target:self, action:"action:")
+//
+//        //ナビゲーションバーにナビゲーションアイテムを格納する。
+//        navBar.pushItem(navItem, animated:true)
+//
+//        //遷移先のビューにナビゲーションバーを追加する。
+//        segue.destination.view.addSubview(navBar)
+//    }
+
 }
 

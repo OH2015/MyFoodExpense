@@ -13,7 +13,7 @@ import UIKit
 var RecordArray = [[[String]]]()
 class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
-    @IBOutlet weak var trashButton: UIBarButtonItem!
+//    @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     let systemBlueColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
     let uds = UserDefaults.standard
@@ -22,15 +22,26 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let fileManager = FileManager.default
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
+        
+
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
-        trashButton.isEnabled = false
-        trashButton.tintColor = UIColor.clear
+//        trashButton.isEnabled = false
+//        trashButton.tintColor = UIColor.clear
+
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSegue"{
+            let nextVC = segue.destination as! ViewController
+
+            nextVC.reloadData(Ind: index!)
+        }
+    }
+//======================================================tableView====================================================
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pickDataFromKey()
@@ -95,16 +106,16 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //tableViewの編集モードを切り替える
         tableView.isEditing = editing
     }
-    //編集ボタン
+// ===============================================================================================================
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
-        if tableView.isEditing && DataArray.count != 0{
-            trashButton.tintColor = systemBlueColor
-            trashButton.isEnabled = true
-        }else{
-            trashButton.tintColor = UIColor.clear
-            trashButton.isEnabled = false
-        }
+//        if tableView.isEditing && RecordArray.count != 0{
+//            trashButton.tintColor = systemBlueColor
+//            trashButton.isEnabled = true
+//        }else{
+//            trashButton.tintColor = UIColor.clear
+//            trashButton.isEnabled = false
+//        }
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
             let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
@@ -114,26 +125,49 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print(error)
         }
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSegue"{
-            let nextVC = segue.destination as! ViewController
-
-            nextVC.reloadData(Ind: index!)
-        }
-    }
-
-    func pickDataFromKey(){
-        RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
-
-    }
-
     @IBAction func imageTapped(_ sender: UIButton) {
         let cell = sender.superview?.superview as! UITableViewCell
         indexPath = tableView.indexPath(for: cell)!
         pickerController()
     }
+//    @IBAction func trash(_ sender: Any) {
+//        let alert = UIAlertController(title: "削除しますか？", message: "全てのデータが消去されます", preferredStyle: .alert)
+//        alert.addAction(
+//            UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
+//        alert.addAction(UIAlertAction(title: "削除", style: .destructive, handler: {_ in
+//            self.destroy()
+//        }))
+//        self.present(alert,animated: true)
+//    }
 
+//----------------------------------------------------------------------------------------------------------------
+
+    func pickDataFromKey(){
+        RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
+    }
+
+    func destroy(){
+        RecordArray.removeAll()
+        uds.removeObject(forKey: KEY.record.rawValue)
+
+        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+
+            try fileManager.removeItem(at: documentDirectoryURL)
+            tableView.reloadData()
+        } catch  {
+            print(error)
+        }
+        tableView.isEditing = false
+//        trashButton.isEnabled = false
+//        trashButton.tintColor = UIColor.clear
+        tableView.reloadData()
+    }
+
+    
+
+
+//===========================================画像処理==============================================================
     func pickerController(){
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
@@ -189,17 +223,16 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func removeImage(indexPath:IndexPath){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
             let name = String(indexPath.row)+".png"
-            let filePath = dir.appendingPathComponent(name).path
+            let filePath = dir.appendingPathComponent(name)
             do {
-                if let _ = UIImage(contentsOfFile: filePath){
-                    try FileManager.default.removeItem(atPath: filePath)
+                if let _ = UIImage(contentsOfFile: filePath.path){
+                    try FileManager.default.removeItem(at: filePath)
                 }
                 for i in indexPath.row...DataArray.count{
                     let path = String(i+1)+".png"
                     let path2 = String(i)+".png"
-                    let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    let fileURL:URL = documentsURL.appendingPathComponent(path)
-                    let fileURL2:URL = documentsURL.appendingPathComponent(path2)
+                    let fileURL:URL = dir.appendingPathComponent(path)
+                    let fileURL2:URL = dir.appendingPathComponent(path2)
                     if let _ = UIImage(contentsOfFile: fileURL.path){
                         try fileManager.moveItem(at: fileURL, to: fileURL2)
                     }
@@ -211,36 +244,31 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func swapImage(from:IndexPath,to:IndexPath){
-
-    }
-
-    @IBAction func trash(_ sender: Any) {
-        let alert = UIAlertController(title: "削除しますか？", message: "全てのデータが消去されます", preferredStyle: .alert)
-        alert.addAction(
-            UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "削除", style: .destructive, handler: {_ in
-            self.destroy()
-        }))
-        self.present(alert,animated: true)
-    }
-
-    func destroy(){
-        RecordArray.removeAll()
-        uds.removeObject(forKey: KEY.record.rawValue)
-
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        do {
-
-            try fileManager.removeItem(at: documentDirectoryURL)
-            tableView.reloadData()
-        } catch  {
-            print(error)
+        if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
+            let fromName = String(from.row)+".png"
+            let toName = String(to.row)+".png"
+            let fromFilePath = dir.appendingPathComponent(fromName)
+            let toFilePath = dir.appendingPathComponent(toName)
+            let postFilePath = dir.appendingPathComponent("post.png")
+            do {
+                if let _ = UIImage(contentsOfFile: fromFilePath.path){
+                    try self.fileManager.moveItem(at: fromFilePath,to: postFilePath)
+                }
+                if let _ = UIImage(contentsOfFile: toFilePath.path){
+                    try self.fileManager.moveItem(at: toFilePath, to: fromFilePath)
+                }
+                if let _ = UIImage(contentsOfFile: fromFilePath.path){
+                    try self.fileManager.moveItem(at: postFilePath,to: fromFilePath)
+                }
+            } catch {
+                print(error)
+            }
         }
-        tableView.isEditing = false
-        trashButton.isEnabled = false
-        trashButton.tintColor = UIColor.clear
-        tableView.reloadData()
+
     }
+
+
+
 
 
 }
