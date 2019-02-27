@@ -140,7 +140,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             sendImage = img
             performSegue(withIdentifier: "showImage", sender: nil)
         }else{
-            let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+            let actionSheet = UIAlertController(title: "画像を追加します", message: "", preferredStyle: .actionSheet)
             actionSheet.addAction(UIAlertAction(title: "アルバムから追加する", style: .default, handler: {_ in
                 self.openAlbum()
                 }))

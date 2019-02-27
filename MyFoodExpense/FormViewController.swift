@@ -93,7 +93,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         reloadValue()
     }
 
-    @IBAction func costChanged(_ sender: PickerTextField) {
+    @IBAction func costChanged(_ sender: NumberTextField) {
         reloadValue()
     }
 
@@ -141,7 +141,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             sender.setTitle("(税込)", for: .normal)
             sender.setTitleColor(UIColor.red, for: .normal)
         }
-        taxInclude()
+        reloadValue()
     }
 
 
@@ -155,7 +155,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == -1{
             Title = textField.text ?? ""
-
         }
     }
 
@@ -170,15 +169,17 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         for i in 0...cellCount-1{
             let cell = tableView.cellForRow(at: [0,i])
             let ingField = cell?.viewWithTag(1) as! UITextField
-            let priceField = cell?.viewWithTag(2) as! PickerTextField
+            let priceField = cell?.viewWithTag(2) as! NumberTextField
+            var price = priceField.text
+            if price == "" {
+                price = "0"
+            }
             let taxButton = cell?.viewWithTag(3) as! UIButton
             ingredients.append(ingField.text ?? "")
-            prices.append(priceField.text ?? "0")
+            prices.append(price ?? "0")
             tax.append(taxButton.currentTitle!)
         }
         taxInclude()
-
-
     }
 
     func taxInclude(){
@@ -227,7 +228,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]] 
+        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
