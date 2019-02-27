@@ -23,6 +23,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var indexPath:IndexPath?
     let fileManager = FileManager.default
     var keys = randomStrings.splitInto(8)
+    var sendImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showImage"{
+            let imgVC = segue.destination as! imageViewController
+            imgVC.img = self.sendImage
+        }
+
     }
 //======================================================tableView====================================================
 
@@ -101,7 +106,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         //tableViewの編集モードを切り替える
         tableView.isEditing = editing
     }
-// ===============================================================================================================
+// ======================================================================================
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
         if tableView.isEditing && RecordArray.count != 0{
@@ -120,11 +125,19 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             print(error)
         }
     }
+
     @IBAction func imageTapped(_ sender: UIButton) {
         let cell = sender.superview?.superview as! UITableViewCell
         indexPath = tableView.indexPath(for: cell)!
-        pickerController()
+        let imageView = cell.viewWithTag(1) as! UIImageView
+        if let img = imageView.image{
+            sendImage = img
+            performSegue(withIdentifier: "showImage", sender: nil)
+        }else{
+            pickerController()
+        }
     }
+
     @IBAction func trash(_ sender: Any) {
         let alert = UIAlertController(title: "削除しますか？", message: "全てのデータが消去されます", preferredStyle: .alert)
         alert.addAction(
@@ -135,7 +148,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.present(alert,animated: true)
     }
 
-//----------------------------------------------------------------------------------------------------------------
+//===================================================================================
 
     func pickDataFromKey(){
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
@@ -147,7 +160,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
         let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
-
             try fileManager.removeItem(at: documentDirectoryURL)
             tableView.reloadData()
         } catch  {
