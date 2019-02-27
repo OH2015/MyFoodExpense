@@ -40,6 +40,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let imgVC = segue.destination as! imageViewController
             imgVC.img = self.sendImage
             imgVC.row = indexPath!.row
+        }else if segue.identifier == "detailSegue"{
+            let detailVC = segue.destination as! DetailViewController
+            detailVC.Row = indexPath!.row
         }
 
     }
@@ -63,6 +66,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.indexPath = indexPath
         performSegue(withIdentifier: "detailSegue", sender: nil)
 
     }

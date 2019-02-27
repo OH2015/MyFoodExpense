@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]]
 class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var Row:Int?
     let uds = UserDefaults.standard
@@ -20,20 +20,38 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var DataArray = RecordArray[Row!]
         return DataArray[0].count
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! detailTableViewCell
+        var DataArray = RecordArray[Row!]
+        let ing = DataArray[0][indexPath.row]
+        let price = DataArray[1][indexPath.row]
+        let tax = DataArray[2][indexPath.row]
+        print(ing,price,tax)
+        cell.setCell(ing: ing, price: price, tax: tax)
+        return cell
         
     }
 
+    @IBAction func totalTax(_ sender: UIButton) {
+        if sender.currentTitle == "(税込)"{
+            sender.setTitle("(税抜き)", for: .normal)
+            sender.setTitleColor(UIColor.black, for: .normal)
+        }else{
+            sender.setTitle("(税込)", for: .normal)
+            sender.setTitleColor(UIColor.black, for: .normal)
+        }
+    }
 
 
 }

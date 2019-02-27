@@ -227,7 +227,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]] as! [[String]]
+        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]] 
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
