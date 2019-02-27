@@ -63,7 +63,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vag-MD-izS">
+                                                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="食材" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vag-MD-izS">
                                                     <rect key="frame" x="12" y="10" width="104" height="23.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -95,7 +95,7 @@
                                                         <action selector="taxChanged:" destination="voH-L5-xtF" eventType="touchUpInside" id="RuS-5z-uct"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEO-lB-fAU" customClass="PickerTextField" customModule="MyFoodExpense" customModuleProvider="target">
+                                                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEO-lB-fAU" customClass="PickerTextField" customModule="MyFoodExpense" customModuleProvider="target">
                                                     <rect key="frame" x="216" y="11" width="104" height="21.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -135,38 +135,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egz-Fp-ear">
-                                <rect key="frame" x="257" y="763" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="確認"/>
-                                <connections>
-                                    <action selector="check:" destination="voH-L5-xtF" eventType="touchUpInside" id="5Lr-pm-Mal"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-JS-SNf">
-                                <rect key="frame" x="343" y="789" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="保存"/>
-                                <connections>
-                                    <action selector="send:" destination="voH-L5-xtF" eventType="touchUpInside" id="CRY-9Q-7YX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ziy-Or-leZ">
-                                <rect key="frame" x="150" y="789" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="セル追加"/>
-                                <connections>
-                                    <action selector="insertCell:" destination="voH-L5-xtF" eventType="touchUpInside" id="p5U-K4-kk6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARz-p4-zFk">
-                                <rect key="frame" x="343" y="704" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="編集"/>
-                                <connections>
-                                    <action selector="edit:" destination="voH-L5-xtF" eventType="touchUpInside" id="BoF-Tz-2eT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhp-7O-Dso">
                                 <rect key="frame" x="101" y="627" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -230,17 +198,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-JS-SNf">
+                                <rect key="frame" x="186.5" y="776" width="41" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eEF-JS-SNf" secondAttribute="height" multiplier="41:36" id="NGE-vo-JYo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="保存">
+                                    <color key="titleColor" red="1" green="0.42459457639331855" blue="0.21253856182225894" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="send:" destination="voH-L5-xtF" eventType="touchUpInside" id="CRY-9Q-7YX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ONv-Ha-Zdm" firstAttribute="leading" secondItem="so8-fN-pku" secondAttribute="leading" id="5iw-Ud-3lb"/>
                             <constraint firstItem="ONv-Ha-Zdm" firstAttribute="top" secondItem="so8-fN-pku" secondAttribute="top" id="JP9-pw-KmE"/>
+                            <constraint firstItem="eEF-JS-SNf" firstAttribute="centerX" secondItem="c9t-8j-ZNY" secondAttribute="centerX" id="X3R-fW-XbO"/>
+                            <constraint firstItem="so8-fN-pku" firstAttribute="bottom" secondItem="eEF-JS-SNf" secondAttribute="bottom" constant="50" id="dtN-O9-XTx"/>
                             <constraint firstItem="ONv-Ha-Zdm" firstAttribute="trailing" secondItem="so8-fN-pku" secondAttribute="trailing" id="efe-4e-d1N"/>
                             <constraint firstItem="ONv-Ha-Zdm" firstAttribute="height" secondItem="c9t-8j-ZNY" secondAttribute="height" multiplier="0.6" id="oNU-qh-D7J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="so8-fN-pku"/>
                     </view>
-                    <navigationItem key="navigationItem" id="stK-Pw-xPa"/>
+                    <navigationItem key="navigationItem" id="stK-Pw-xPa">
+                        <rightBarButtonItems>
+                            <barButtonItem title="編集" id="vxm-gT-jZp">
+                                <connections>
+                                    <action selector="edit:" destination="voH-L5-xtF" id="YYu-aP-x3r"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="7QS-1f-Pwn">
+                                <connections>
+                                    <action selector="insertCell:" destination="voH-L5-xtF" id="gPw-dx-NDo"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="perPriceLabel" destination="1cF-Ir-kqF" id="b4Y-z3-9C9"/>
                         <outlet property="personPicker" destination="2jW-JK-yIB" id="eND-YI-0nL"/>
@@ -374,36 +370,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-TX-eeO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-TX-eeO">
                                 <rect key="frame" x="0.0" y="94" width="414" height="618"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsL-yb-gg1">
                                 <rect key="frame" x="30" y="54" width="46" height="30"/>
-                                <state key="normal" title="閉じる"/>
+                                <state key="normal" title="閉じる">
+                                    <color key="titleColor" red="0.92540909819999995" green="0.25682277599999997" blue="0.26433602890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="close:" destination="I3f-Am-KEw" eventType="touchUpInside" id="Uei-7g-Zvm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvh-am-5DM">
-                                <rect key="frame" x="353" y="54" width="31" height="30"/>
-                                <state key="normal" title="完了"/>
+                                <rect key="frame" x="345" y="54" width="39" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="完了">
+                                    <color key="titleColor" red="0.92540909819999995" green="0.25682277599999997" blue="0.26433602890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="done:" destination="I3f-Am-KEw" eventType="touchUpInside" id="4mO-rS-0Uv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8x-yn-ALA">
                                 <rect key="frame" x="0.0" y="762" width="207" height="40"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ACV-0p-tlX"/>
                                 </constraints>
-                                <state key="normal" title="アルバム"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="アルバム">
+                                    <color key="titleColor" red="0.92540909819999995" green="0.25682277599999997" blue="0.26433602890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="album:" destination="I3f-Am-KEw" eventType="touchUpInside" id="Eef-bI-LwH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvR-9K-NdY">
                                 <rect key="frame" x="207" y="762" width="207" height="40"/>
-                                <state key="normal" title="カメラ"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="カメラ">
+                                    <color key="titleColor" red="0.92540909819999995" green="0.25682277599999997" blue="0.26433602890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="camera:" destination="I3f-Am-KEw" eventType="touchUpInside" id="Ywm-IW-x4U"/>
                                 </connections>

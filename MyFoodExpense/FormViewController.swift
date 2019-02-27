@@ -108,11 +108,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         reloadValue()
     }
 
-    @IBAction func check(_ sender: Any) {
-        print(ingredients)
-        print(prices)
-        print(tax)
-    }
     @IBAction func send(_ sender: Any) {
         let alert = UIAlertController(title: "データを保存します", message: "タイトルをつけてください", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {textField in
