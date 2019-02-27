@@ -342,15 +342,23 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="f1o-aL-GCf">
-                        <barButtonItem key="rightBarButtonItem" title="編集" id="EpZ-hZ-LIg">
-                            <connections>
-                                <action selector="edit:" destination="s8V-wd-IU0" id="lHm-dL-qIx"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="編集" id="EpZ-hZ-LIg">
+                                <connections>
+                                    <action selector="edit:" destination="s8V-wd-IU0" id="lHm-dL-qIx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="trash" id="x5g-Ss-9jS">
+                                <connections>
+                                    <action selector="trash:" destination="s8V-wd-IU0" id="KZk-vz-dxk"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="bEG-uE-K4L" id="iKZ-Cr-Pli"/>
+                        <outlet property="trashButton" destination="x5g-Ss-9jS" id="4Pk-WZ-Srv"/>
                         <segue destination="v2b-Uw-qrf" kind="show" identifier="backToTitle" id="cJF-lP-pNu"/>
                     </connections>
                 </viewController>

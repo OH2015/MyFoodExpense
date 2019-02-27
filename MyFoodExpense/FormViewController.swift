@@ -29,7 +29,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        uds.register(defaults: [KEY.record.rawValue:[[[String]]]()])
+        
 
         personPicker.dataSource = self
         personPicker.delegate = self

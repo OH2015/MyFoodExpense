@@ -8,18 +8,10 @@
 
 
 var PriceArray = [Int]()
-var ingSet = [String]()
-var costSet = [String]()
-var taxSet = [String]()
-var BoxSet = [[String]]()
-var BoxArray = [[[String]]]()
-var DataSet = [String]()
 var DataArray = [[String]]()
 
 
 enum KEY:String {
-    case box = "boxKey"
-    case data = "dataKey"
     case record = "recordKEY"
 }
 
@@ -38,6 +30,8 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
         self.title.text = title
         if let img = imageName{
             self.listImage.image = img
+        }else{
+            self.listImage.image = nil
         }
         self.subTitle.text = date
     }

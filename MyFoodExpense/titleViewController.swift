@@ -12,6 +12,7 @@ class titleViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.register(defaults: [KEY.record.rawValue:[[[String]]]()])
 
     }
     

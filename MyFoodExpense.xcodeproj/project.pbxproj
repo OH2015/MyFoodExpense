@@ -9,22 +9,19 @@
 /* Begin PBXBuildFile section */
 		310D406693AFC9297C606EB3 /* Pods_MyFoodExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */; };
 		9D034E5B2209C1DE00917824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E5A2209C1DE00917824 /* AppDelegate.swift */; };
-		9D034E5D2209C1DE00917824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E5C2209C1DE00917824 /* ViewController.swift */; };
 		9D034E622209C1E000917824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D034E612209C1E000917824 /* Assets.xcassets */; };
 		9D034E652209C1E000917824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D034E632209C1E000917824 /* LaunchScreen.storyboard */; };
 		9D034E702209C1E000917824 /* MyFoodExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E6F2209C1E000917824 /* MyFoodExpenseTests.swift */; };
 		9D034E7B2209C1E000917824 /* MyFoodExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */; };
 		9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05342E220BF1DE007C57ED /* MyScrollView.swift */; };
-		9D0695D422224D5700643B6A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0695D322224D5700643B6A /* Box.swift */; };
 		9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15975222106D3700B959B8 /* logTableViewCell.swift */; };
-		9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1597542211753A00B959B8 /* popUpViewController.swift */; };
 		9D2CB83822253B7C0095CAEB /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CB83722253B7C0095CAEB /* PickerTextField.swift */; };
 		9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */; };
 		9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */; };
 		9D851F5122265F4A0024428E /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5022265F4A0024428E /* titleViewController.swift */; };
+		9D851F53222672EF0024428E /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F52222672EF0024428E /* extension.swift */; };
 		9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9EB652225270300522E26 /* InputTableViewCell.swift */; };
 		9DDFBE90222521C300642364 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDFBE8F222521C300642364 /* FormViewController.swift */; };
-		9DFFC9F5220EABD0004EA1DA /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */; };
 		B7B1B3093E8F736AF3AAB024 /* Pods_MyFoodExpenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */; };
 		C5BE181CA3A2AC8604417FAA /* Pods_MyFoodExpenseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D0E2381BB82E8967CC5AC9 /* Pods_MyFoodExpenseUITests.framework */; };
 /* End PBXBuildFile section */
@@ -54,7 +51,6 @@
 		6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D034E572209C1DE00917824 /* MyFoodExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFoodExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D034E5A2209C1DE00917824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9D034E5C2209C1DE00917824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9D034E612209C1E000917824 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D034E642209C1E000917824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D034E662209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,16 +61,14 @@
 		9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodExpenseUITests.swift; sourceTree = "<group>"; };
 		9D034E7C2209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D05342E220BF1DE007C57ED /* MyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
-		9D0695D322224D5700643B6A /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		9D15975222106D3700B959B8 /* logTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logTableViewCell.swift; sourceTree = "<group>"; };
-		9D1597542211753A00B959B8 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		9D2CB83722253B7C0095CAEB /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9D851F5022265F4A0024428E /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
+		9D851F52222672EF0024428E /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		9DD9EB652225270300522E26 /* InputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
 		9DDFBE8F222521C300642364 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-		9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D0E2381BB82E8967CC5AC9 /* Pods_MyFoodExpenseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFoodExpenseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5EC8E5359A7C2D3E2EECD1B /* Pods-MyFoodExpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFoodExpense.debug.xcconfig"; path = "Target Support Files/Pods-MyFoodExpense/Pods-MyFoodExpense.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,14 +153,11 @@
 			children = (
 				9DD9EB652225270300522E26 /* InputTableViewCell.swift */,
 				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
-				9D0695D322224D5700643B6A /* Box.swift */,
-				9D1597542211753A00B959B8 /* popUpViewController.swift */,
-				9D034E5C2209C1DE00917824 /* ViewController.swift */,
-				9DFFC9F4220EABD0004EA1DA /* secondViewController.swift */,
 				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
 				9D851F5022265F4A0024428E /* titleViewController.swift */,
 				9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */,
+				9D851F52222672EF0024428E /* extension.swift */,
 				9D2CB83722253B7C0095CAEB /* PickerTextField.swift */,
 				9DDFBE8F222521C300642364 /* FormViewController.swift */,
 				9D034E612209C1E000917824 /* Assets.xcassets */,
@@ -421,15 +412,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D034E5D2209C1DE00917824 /* ViewController.swift in Sources */,
 				9D851F5122265F4A0024428E /* titleViewController.swift in Sources */,
 				9D2CB83822253B7C0095CAEB /* PickerTextField.swift in Sources */,
-				9D0695D422224D5700643B6A /* Box.swift in Sources */,
 				9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */,
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
 				9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */,
-				9D1597552211753A00B959B8 /* popUpViewController.swift in Sources */,
-				9DFFC9F5220EABD0004EA1DA /* secondViewController.swift in Sources */,
+				9D851F53222672EF0024428E /* extension.swift in Sources */,
 				9DDFBE90222521C300642364 /* FormViewController.swift in Sources */,
 				9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */,
 				9D034E5B2209C1DE00917824 /* AppDelegate.swift in Sources */,
