@@ -21,7 +21,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var index:Int?
     var indexPath:IndexPath?
     let fileManager = FileManager.default
-
+    var sortFlag = false
 
     var sendImage:UIImage?
 
@@ -172,6 +172,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.present(alert,animated: true)
     }
 
+    @IBAction func sortButtonTapped(_ sender: Any) {
+        sort()
+    }
+
+
 //===================================================================================
 
     func pickDataFromKey(){
@@ -301,7 +306,32 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                 print(error)
             }
         }
+    }
 
+    func sort(){
+        RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
+        var date = [String]()
+        for i in 0...RecordArray.count-1{
+            date.append(RecordArray[i][4][0])
+        }
+        var newRecordArray = [[[String]]]()
+        if sortFlag{
+            let sortedEnumDate = date.enumerated().sorted{$1 > $0}
+            for sortedDate in sortedEnumDate{
+                newRecordArray.append(RecordArray[sortedDate.offset])
+            }
+        }else{
+            let sortedEnumDate = date.enumerated().sorted{$1 > $0}
+            for sortedDate in sortedEnumDate{
+                newRecordArray.append(RecordArray[sortedDate.offset])
+            }
+        }
+
+        DispatchQueue.main.async {
+            RecordArray = newRecordArray
+        }
+        sortFlag = !sortFlag
+        tableView.reloadData()
     }
 
 

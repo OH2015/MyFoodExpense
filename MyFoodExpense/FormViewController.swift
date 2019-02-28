@@ -118,8 +118,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         alert.addAction(
             UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "保存", style: .default, handler: {_ in
-            self.store()
-
+            self.view.endEditing(true)
+            var realTitle = ""
+            realTitle = self.Title.replacingOccurrences(of: " ", with: "")
+            if realTitle != ""{
+                self.store()
+            }
         }))
         self.present(alert,animated: true)
     }
@@ -127,6 +131,13 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     @IBAction func insertCell(_ sender: Any) {
         cellCount += 1
         tableView.reloadData()
+    }
+
+    @IBAction func removeCell(_ sender: Any) {
+        if cellCount > 0{
+            cellCount -= 1
+            tableView.reloadData()
+        }
     }
 
     @IBAction func edit(_ sender: Any) {
