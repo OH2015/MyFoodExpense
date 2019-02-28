@@ -117,7 +117,7 @@
                                     <outlet property="delegate" destination="voH-L5-xtF" id="QQr-0t-bHf"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="8b6-TL-uRc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="8b6-TL-uRc">
                                 <rect key="frame" x="0.0" y="440" width="414" height="373"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -265,7 +265,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="so8-fN-pku"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="AddImage" id="AjF-sP-H3l"/>
+                    <tabBarItem key="tabBarItem" image="eatImage" selectedImage="eatImage" id="AjF-sP-H3l"/>
                     <navigationItem key="navigationItem" id="stK-Pw-xPa">
                         <rightBarButtonItems>
                             <barButtonItem title="編集" id="vxm-gT-jZp">
@@ -672,7 +672,7 @@
         <scene sceneID="XfI-9x-J0l">
             <objects>
                 <navigationController storyboardIdentifier="listNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="TEV-T8-8UQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="リスト" id="U1i-y1-FfI"/>
+                    <tabBarItem key="tabBarItem" title="リスト" image="bookImage" selectedImage="bookImage" id="U1i-y1-FfI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yct-b9-Nj3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -689,8 +689,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddImage" width="30" height="30"/>
-        <image name="backGroundImage" width="925" height="617"/>
+        <image name="Image" width="640" height="427"/>
+        <image name="bookImage" width="30" height="30"/>
+        <image name="eatImage" width="30" height="30"/>
         <image name="tabBarBackground" width="320" height="49"/>
     </resources>
 </document>
