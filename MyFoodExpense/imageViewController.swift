@@ -25,16 +25,22 @@ class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UIN
 
     @IBAction func close(_ sender: Any) {
         let storyboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "listNavigationController") as! UINavigationController
+        let nextView = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+        nextView.selectedIndex = 1
 
-        self.present(nextView, animated: true, completion: nil)
+        self.present(nextView, animated: false, completion: nil)
 //        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func done(_ sender: Any) {
         let listVC = ListViewController()
         listVC.writeImageAsJPEG(img: imageView.image!, row: row!)
-        dismiss(animated: true, completion: nil)
+        let storyboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+        nextView.selectedIndex = 1
+
+        self.present(nextView, animated: false, completion: nil)
+
     }
 
     @IBAction func album(_ sender: Any) {
@@ -45,7 +51,14 @@ class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UIN
         launchCamera()
     }
 
-//==========================================================================================
+    @IBAction func share(_ sender: Any) {
+        guard let shareImage = imageView.image else {return}
+        let sharedText = "シェアします"
+        let activities = [sharedText,shareImage] as [Any]
+        let activityVC = UIActivityViewController(activityItems: activities, applicationActivities: nil)
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    //==========================================================================================
     func openAlbum(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary){
             let pickerController = UIImagePickerController()
