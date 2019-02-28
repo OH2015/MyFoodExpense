@@ -29,7 +29,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        uds.register(defaults: [KEY.record.rawValue:[[[String]]]()])
 
         personPicker.dataSource = self
         personPicker.delegate = self
@@ -224,6 +224,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func store(){
+        reloadValue()
         let f = DateFormatter()
         f.dateStyle = .full
         f.locale = Locale(identifier: "ja_JP")
@@ -232,7 +233,11 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
-        self.navigationController?.popToRootViewController(animated: true)
+        let storyboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+        nextView.selectedIndex = 1
+
+        self.present(nextView, animated: false, completion: nil)
 
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
