@@ -31,6 +31,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(sender:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
         trashButton.isEnabled = false
         trashButton.tintColor = UIColor.clear
     }
@@ -111,6 +114,13 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.setEditing(editing, animated: animated)
         //tableViewの編集モードを切り替える
         tableView.isEditing = editing
+    }
+    @objc func refreshControlValueChanged(sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            sender.endRefreshing()
+        })
+        tableView.reloadData()
+        print("テーブルを下に引っ張った時に呼ばれる")
     }
 // ======================================================================================
     @IBAction func edit(_ sender: Any) {

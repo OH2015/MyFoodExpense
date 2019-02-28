@@ -26,6 +26,7 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
         self.title.text = title
         if let img = imageName{
             self.listImage.image = img
+            self.listImage.backgroundColor = UIColor.white
         }else{
             self.listImage.image = nil
         }

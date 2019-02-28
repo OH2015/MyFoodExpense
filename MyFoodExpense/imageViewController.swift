@@ -24,7 +24,11 @@ class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UIN
     }
 
     @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "listNavigationController") as! UINavigationController
+
+        self.present(nextView, animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func done(_ sender: Any) {
