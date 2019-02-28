@@ -88,11 +88,6 @@
                                                         <action selector="costChanged:" destination="voH-L5-xtF" eventType="editingDidEnd" id="Cr3-1s-cds"/>
                                                     </connections>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsS-Wc-dMt">
-                                                    <rect key="frame" x="158" y="8" width="31" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="タグ"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vag-MD-izS" firstAttribute="leading" secondItem="dwB-CW-s4x" secondAttribute="leading" constant="12" id="ANm-JI-XeV"/>
@@ -117,9 +112,8 @@
                                     <outlet property="delegate" destination="voH-L5-xtF" id="QQr-0t-bHf"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="8b6-TL-uRc">
-                                <rect key="frame" x="0.0" y="440" width="414" height="373"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="8b6-TL-uRc">
+                                <rect key="frame" x="0.0" y="446.5" width="414" height="366.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計金額" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-VV-UT4">
                                 <rect key="frame" x="50.5" y="494" width="69.5" height="20.5"/>
@@ -236,12 +230,16 @@
                             <constraint firstItem="ONv-Ha-Zdm" firstAttribute="leading" secondItem="so8-fN-pku" secondAttribute="leading" id="5iw-Ud-3lb"/>
                             <constraint firstItem="so8-fN-pku" firstAttribute="bottom" secondItem="eEF-JS-SNf" secondAttribute="bottom" constant="30" id="6hD-EB-bdO"/>
                             <constraint firstItem="eEF-JS-SNf" firstAttribute="height" secondItem="BMH-Ol-oKU" secondAttribute="height" id="7T7-9j-QKm"/>
+                            <constraint firstItem="8b6-TL-uRc" firstAttribute="leading" secondItem="so8-fN-pku" secondAttribute="leading" id="CQ4-PD-fhP"/>
+                            <constraint firstItem="8b6-TL-uRc" firstAttribute="bottom" secondItem="so8-fN-pku" secondAttribute="bottom" id="Eey-v7-EI6"/>
                             <constraint firstItem="Qhp-7O-Dso" firstAttribute="leading" secondItem="c5T-VV-UT4" secondAttribute="trailing" id="FuA-GW-Slc"/>
                             <constraint firstItem="1cF-Ir-kqF" firstAttribute="leading" secondItem="w7y-j0-8k0" secondAttribute="trailing" constant="20" id="HYc-Fm-xtp"/>
                             <constraint firstItem="c5T-VV-UT4" firstAttribute="centerY" secondItem="BMH-Ol-oKU" secondAttribute="centerY" id="Icm-NL-Pld"/>
                             <constraint firstItem="BMH-Ol-oKU" firstAttribute="top" secondItem="ONv-Ha-Zdm" secondAttribute="bottom" constant="10" id="LBD-bW-mRQ"/>
                             <constraint firstItem="oig-1d-7Oj" firstAttribute="leading" secondItem="BMH-Ol-oKU" secondAttribute="trailing" constant="20" id="LJn-BV-Cp3"/>
+                            <constraint firstItem="8b6-TL-uRc" firstAttribute="trailing" secondItem="so8-fN-pku" secondAttribute="trailing" id="M9Z-fv-lVb"/>
                             <constraint firstItem="LQw-WK-Opx" firstAttribute="trailing" secondItem="so8-fN-pku" secondAttribute="trailing" id="McE-kj-AoN"/>
+                            <constraint firstItem="8b6-TL-uRc" firstAttribute="top" secondItem="ONv-Ha-Zdm" secondAttribute="bottom" id="NhN-sj-YLa"/>
                             <constraint firstItem="2jW-JK-yIB" firstAttribute="centerX" secondItem="c9t-8j-ZNY" secondAttribute="centerX" id="P87-2j-1xE"/>
                             <constraint firstItem="BMH-Ol-oKU" firstAttribute="centerX" secondItem="c9t-8j-ZNY" secondAttribute="centerX" id="Qkw-qg-wSQ"/>
                             <constraint firstItem="LQw-WK-Opx" firstAttribute="top" secondItem="so8-fN-pku" secondAttribute="top" id="T1W-aw-eiP"/>
@@ -265,7 +263,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="so8-fN-pku"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="eatImage" selectedImage="eatImage" id="AjF-sP-H3l"/>
+                    <tabBarItem key="tabBarItem" image="eatImage" selectedImage="eatImage" id="AjF-sP-H3l">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="stK-Pw-xPa">
                         <rightBarButtonItems>
                             <barButtonItem title="編集" id="vxm-gT-jZp">
@@ -345,9 +345,20 @@
                                                         <action selector="imageTapped:" destination="s8V-wd-IU0" eventType="touchUpInside" id="qxC-hR-l62"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIU-JB-5LK">
+                                                    <rect key="frame" x="294" y="21" width="80" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="3ey-eE-NGO"/>
+                                                        <constraint firstAttribute="height" constant="25" id="5Iy-Zm-SpA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="frh-kH-uwL" firstAttribute="top" secondItem="xrj-Rz-K4G" secondAttribute="top" constant="10" id="2Fh-9N-8T1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eIU-JB-5LK" secondAttribute="trailing" constant="20" id="2eG-EG-cYx"/>
                                                 <constraint firstItem="b4b-VN-d8m" firstAttribute="leading" secondItem="xrj-Rz-K4G" secondAttribute="leading" id="4c4-bx-Hbz"/>
                                                 <constraint firstAttribute="trailing" secondItem="RE1-UO-3ht" secondAttribute="trailing" constant="40" id="6BW-rV-3LV"/>
                                                 <constraint firstItem="b4b-VN-d8m" firstAttribute="top" secondItem="xrj-Rz-K4G" secondAttribute="top" id="BLQ-bW-oci"/>
@@ -356,11 +367,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="b4b-VN-d8m" secondAttribute="bottom" id="gYK-cE-nZa"/>
                                                 <constraint firstAttribute="bottom" secondItem="s9Q-G7-QWe" secondAttribute="bottom" id="if9-0h-QVT"/>
                                                 <constraint firstItem="frh-kH-uwL" firstAttribute="leading" secondItem="s9Q-G7-QWe" secondAttribute="trailing" constant="30" id="mDs-Ab-ohC"/>
+                                                <constraint firstItem="eIU-JB-5LK" firstAttribute="top" secondItem="xrj-Rz-K4G" secondAttribute="topMargin" constant="10" id="rpI-KM-tjQ"/>
                                                 <constraint firstItem="s9Q-G7-QWe" firstAttribute="top" secondItem="xrj-Rz-K4G" secondAttribute="top" id="sAD-Zf-x7q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="listImage" destination="s9Q-G7-QWe" id="pHJ-mw-gP1"/>
+                                            <outlet property="priceLabel" destination="eIU-JB-5LK" id="K9J-8K-gwF"/>
                                             <outlet property="subTitle" destination="RE1-UO-3ht" id="e4t-WK-aee"/>
                                             <outlet property="title" destination="frh-kH-uwL" id="m6J-98-kyO"/>
                                         </connections>
@@ -391,7 +404,7 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="並び替え" id="9Yf-kx-NkB">
+                        <barButtonItem key="rightBarButtonItem" title="日付順" id="9Yf-kx-NkB">
                             <connections>
                                 <action selector="sortButtonTapped:" destination="s8V-wd-IU0" id="SQN-aM-Jbb"/>
                             </connections>
@@ -672,7 +685,9 @@
         <scene sceneID="XfI-9x-J0l">
             <objects>
                 <navigationController storyboardIdentifier="listNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="TEV-T8-8UQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="リスト" image="bookImage" selectedImage="bookImage" id="U1i-y1-FfI"/>
+                    <tabBarItem key="tabBarItem" title="リスト" image="bookImage" selectedImage="bookImage" id="U1i-y1-FfI">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yct-b9-Nj3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -689,9 +704,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="640" height="427"/>
-        <image name="bookImage" width="30" height="30"/>
-        <image name="eatImage" width="30" height="30"/>
+        <image name="Image" width="640" height="453"/>
+        <image name="bookImage" width="40" height="40"/>
+        <image name="eatImage" width="40" height="40"/>
         <image name="tabBarBackground" width="320" height="49"/>
     </resources>
 </document>

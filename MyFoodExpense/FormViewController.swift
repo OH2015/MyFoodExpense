@@ -46,6 +46,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = cellColor
         let ingField = cell.viewWithTag(1) as! UITextField
         ingField.delegate = self
 

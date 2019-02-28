@@ -61,9 +61,13 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let DataArray = RecordArray[indexPath.row]
         let title = DataArray[5][0]
         let date = DataArray[4][0]
+        var totalPrice = 0
+        for price in DataArray[1]{
+            totalPrice += Int(price)!
+        }
         let name = "\(indexPath.row).JPEG"
         let image:UIImage? = readimage(fileName: name)
-        cell.setCell(imageName: image ?? nil, title: title, date: date)
+        cell.setCell(imageName: image ?? nil, title: title, date: date,price:String(totalPrice))
 
         return cell
     }
@@ -316,7 +320,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         var newRecordArray = [[[String]]]()
         if sortFlag{
-            let sortedEnumDate = date.enumerated().sorted{$1 > $0}
+            let sortedEnumDate = date.enumerated().sorted{$0 > $1}
             for sortedDate in sortedEnumDate{
                 newRecordArray.append(RecordArray[sortedDate.offset])
             }
@@ -329,6 +333,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
         DispatchQueue.main.async {
             RecordArray = newRecordArray
+            self.uds.set(RecordArray, forKey: KEY.record.rawValue)
         }
         sortFlag = !sortFlag
         tableView.reloadData()

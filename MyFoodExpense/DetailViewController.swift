@@ -7,6 +7,7 @@
 //
 
 import UIKit
+let cellColor = #colorLiteral(red: 0.6963857193, green: 0.819903064, blue: 1, alpha: 1)
 //DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]]
 class DetailViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var Row:Int?
@@ -40,6 +41,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! detailTableViewCell
+        cell.backgroundColor = cellColor
         var DataArray = RecordArray[Row!]
         let ing = DataArray[0][indexPath.row]
         let price = DataArray[1][indexPath.row]

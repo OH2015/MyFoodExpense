@@ -16,13 +16,15 @@ import UIKit
 class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet var title: UILabel!
     @IBOutlet var subTitle: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+
     @IBOutlet var listImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setCell(imageName:UIImage?,title:String,date:String){
+    func setCell(imageName:UIImage?,title:String,date:String,price:String){
         self.title.text = title
         if let img = imageName{
             self.listImage.image = img
@@ -31,6 +33,7 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
             self.listImage.image = nil
         }
         self.subTitle.text = date
+        self.priceLabel.text = "合計\(price)円"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
