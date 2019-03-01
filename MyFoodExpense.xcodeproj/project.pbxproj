@@ -22,6 +22,8 @@
 		9D851F53222672EF0024428E /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F52222672EF0024428E /* extension.swift */; };
 		9D851F5B2226BA100024428E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5A2226BA100024428E /* DataSource.swift */; };
 		9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5C2226CE5E0024428E /* DetailViewController.swift */; };
+		9D8ACB202229185C00123F54 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8ACB1F2229185C00123F54 /* Charts.framework */; };
+		9D8ACB22222918D500123F54 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8ACB21222918D500123F54 /* GraphViewController.swift */; };
 		9D957B6C222797780025860E /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D957B6B222797770025860E /* imageViewController.swift */; };
 		9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */; };
 		9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9EB652225270300522E26 /* InputTableViewCell.swift */; };
@@ -73,6 +75,8 @@
 		9D851F52222672EF0024428E /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		9D851F5A2226BA100024428E /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		9D851F5C2226CE5E0024428E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9D8ACB1F2229185C00123F54 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D8ACB21222918D500123F54 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		9D957B6B222797770025860E /* imageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageViewController.swift; sourceTree = "<group>"; };
 		9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailTableViewCell.swift; sourceTree = "<group>"; };
 		9DD9EB652225270300522E26 /* InputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8ACB202229185C00123F54 /* Charts.framework in Frameworks */,
 				310D406693AFC9297C606EB3 /* Pods_MyFoodExpense.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +132,7 @@
 		92175C0C6A66A9599C88BE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D8ACB1F2229185C00123F54 /* Charts.framework */,
 				6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */,
 				AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */,
 				B0D0E2381BB82E8967CC5AC9 /* Pods_MyFoodExpenseUITests.framework */,
@@ -137,6 +143,7 @@
 		9D034E4E2209C1DE00917824 = {
 			isa = PBXGroup;
 			children = (
+				9D8ACB21222918D500123F54 /* GraphViewController.swift */,
 				9D034E592209C1DE00917824 /* MyFoodExpense */,
 				9D034E6E2209C1E000917824 /* MyFoodExpenseTests */,
 				9D034E792209C1E000917824 /* MyFoodExpenseUITests */,
@@ -433,6 +440,7 @@
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
 				9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */,
 				9D851F5B2226BA100024428E /* DataSource.swift in Sources */,
+				9D8ACB22222918D500123F54 /* GraphViewController.swift in Sources */,
 				9D851F53222672EF0024428E /* extension.swift in Sources */,
 				9DDFBE90222521C300642364 /* FormViewController.swift in Sources */,
 				9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */,
