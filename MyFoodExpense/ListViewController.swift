@@ -21,6 +21,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var indexPath:IndexPath?
     let fileManager = FileManager.default
     var sortFlag = false
+    var sectionFlgs = [Bool]()
 
     var sendImage:UIImage?
 
@@ -28,6 +29,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
 
         pickDataFromKey()
+        sectionFlgs = [Bool](repeating: true, count: strDatesInDay().count)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
@@ -53,32 +55,42 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func numberOfSections(in tableView: UITableView) -> Int {
         pickDataFromKey()
-//        var dates = [Date]()
-//        for DataArray in RecordArray{
-//            let strDate = DataArray[4][0]
-//            let f = DateFormatter()
-//            f.locale = Locale(identifier: "ja_JP")
-//            f.dateStyle = .full
-//            let date = f.date(from: strDate)
-//            print(date)
-//            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
-//        }
+        return strDatesInDay().count
+    }
 
-        return devideByDate().count
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let myView: UIView = UIView()
+        var label = UILabel()
+        label.sizeToFit()
+        label.text = strDatesInDay()[section]
+        label.textColor = UIColor.red
+
+        myView.addSubview(label)
+        myView.tag = section
+        myView.backgroundColor = UIColor.clear
+        myView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapHeader(gestureRecognizer:))))
+
+        return myView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(50)
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return devideByDate()[section]
+        return strDatesInDay()[section]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let filterdRecord = RecordArray.filter{$0[4][0]==devideByDate()[section]}
-        print(filterdRecord)
-        return filterdRecord.count
+        let filterdRecord = RecordArray.filter{$0[4][0]==strDatesInDay()[section]}
+        if sectionFlgs[section]{
+            return filterdRecord.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
-        DataArray = RecordArray[indexPath.row]
+        let filterdRecord = RecordArray.filter{$0[4][0]==strDatesInDay()[indexPath[0]]}
+        DataArray = filterdRecord[indexPath.row]
         let title = DataArray[5][0]
         let date = DataArray[4][0]
         var totalPrice = 0
@@ -145,6 +157,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         })
         tableView.reloadData()
         print("テーブルを下に引っ張った時に呼ばれる")
+    }
+    @objc func tapHeader(gestureRecognizer: UITapGestureRecognizer) {
+        guard let section = gestureRecognizer.view?.tag as Int! else {return}
+        sectionFlgs[section] = !sectionFlgs[section]
+        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .none)
     }
 // ======================================================================================
     @IBAction func edit(_ sender: Any) {
@@ -358,7 +375,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.reloadData()
     }
 
-    func devideByDate()->[String]{
+    func strDatesInDay()->[String]{
         var dates = [String]()
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]
@@ -368,11 +385,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         return dates
     }
-
-
-
-
-
 }
 
 
