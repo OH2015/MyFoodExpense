@@ -54,7 +54,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -68,6 +68,15 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         cellCount -= 1
         tableView.deleteRows(at: [indexPath], with: .automatic)
         reloadValue()
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if tableView.isEditing{
+            return true
+        }
+        return false
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
 
 //------------------------------------pickerView-------------------------------------------

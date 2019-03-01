@@ -13,7 +13,6 @@ import UIKit
 
 class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
-
     @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     let systemBlueColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
@@ -28,6 +27,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        pickDataFromKey()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
@@ -51,14 +51,34 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 //======================================================tableView====================================================
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         pickDataFromKey()
-        return RecordArray.count
+//        var dates = [Date]()
+//        for DataArray in RecordArray{
+//            let strDate = DataArray[4][0]
+//            let f = DateFormatter()
+//            f.locale = Locale(identifier: "ja_JP")
+//            f.dateStyle = .full
+//            let date = f.date(from: strDate)
+//            print(date)
+//            let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
+//        }
+
+        return devideByDate().count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return devideByDate()[section]
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let filterdRecord = RecordArray.filter{$0[4][0]==devideByDate()[section]}
+        print(filterdRecord)
+        return filterdRecord.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
-        let DataArray = RecordArray[indexPath.row]
+        DataArray = RecordArray[indexPath.row]
         let title = DataArray[5][0]
         let date = DataArray[4][0]
         var totalPrice = 0
@@ -204,10 +224,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.reloadData()
     }
 
-
-    
-
-
 //===========================================画像処理==============================================================
     func openAlbum(){
         let pickerController = UIImagePickerController()
@@ -312,9 +328,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
 
+// ==================================================================================
+
     func sort(){
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
         var date = [String]()
+        if RecordArray.count == 0{return}
         for i in 0...RecordArray.count-1{
             date.append(RecordArray[i][4][0])
         }
@@ -337,6 +356,17 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         sortFlag = !sortFlag
         tableView.reloadData()
+    }
+
+    func devideByDate()->[String]{
+        var dates = [String]()
+        for DataArray in RecordArray{
+            let strDate = DataArray[4][0]
+            if !(dates.contains(strDate)){
+                dates.append(strDate)
+            }
+        }
+        return dates
     }
 
 
