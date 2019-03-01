@@ -83,7 +83,7 @@ class GraphViewController: UIViewController {
         barChartView.xAxis.labelCount = 6
         barChartView.xAxis.axisLineWidth = 3
         barChartView.xAxis.labelFont = UIFont.systemFont(ofSize: 20)
-        barChartView.leftAxis.minWidth = 100
+
         barChartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 20)
         barChartView.scaleXEnabled = true
         barChartView.scaleYEnabled = true
@@ -128,8 +128,19 @@ class GraphViewController: UIViewController {
     func month()->String{
         var calender = Calendar.current.dateComponents([.year,.month], from: Date())
         calender.month = calender.month! + interval
-        return "\(calender.year!)年\(calender.month!)月"
 
+        calender.year = calender.year! + calender.month!/12
+        if calender.month!%12 == 0{
+            calender.month = 12
+        }else{
+            calender.month = calender.month!%12
+        }
+        if calender.month! <= 0{
+            calender.year = calender.year! - 1
+
+        }
+
+        return "\(calender.year!)年\(calender.month!)月"
 
     }
 }
