@@ -93,7 +93,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         person = row+1
-        tableView.reloadData()
+        reloadValue()
     }
 
 //------------------------------------------------------------------------------------------

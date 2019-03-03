@@ -418,9 +418,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-TX-eeO">
-                                <rect key="frame" x="0.0" y="94" width="414" height="627"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZJ-R5-2Md" userLabel="heightView">
+                                <rect key="frame" x="414" y="93" width="0.0" height="709"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" id="W4D-bo-y7j"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsL-yb-gg1">
                                 <rect key="frame" x="30" y="54" width="62" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -433,6 +437,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvh-am-5DM">
                                 <rect key="frame" x="339" y="54" width="45" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="e9F-ot-cI0"/>
+                                    <constraint firstAttribute="width" constant="45" id="hFC-cy-Hq9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="完了">
                                     <color key="titleColor" red="0.92540909819999995" green="0.25682277599999997" blue="0.26433602890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -466,18 +474,41 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6r-FW-gpQ">
+                                <rect key="frame" x="0.0" y="93" width="414" height="709"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-TX-eeO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="709"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="d5S-tL-2pN" appends="YES" id="PjN-bw-3ib"/>
+                                        </connections>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Qpb-TX-eeO" firstAttribute="top" secondItem="d6r-FW-gpQ" secondAttribute="top" id="8i5-zx-7bi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qpb-TX-eeO" secondAttribute="trailing" id="BN4-lJ-hV7"/>
+                                    <constraint firstItem="Qpb-TX-eeO" firstAttribute="leading" secondItem="d6r-FW-gpQ" secondAttribute="leading" id="KCG-It-eyI"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qpb-TX-eeO" secondAttribute="bottom" id="zmB-IN-5Vx"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.71591659330000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="trailing" secondItem="woe-W4-rBt" secondAttribute="trailing" id="2vm-fq-6wG"/>
-                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="height" secondItem="9j1-p7-8YD" secondAttribute="height" multiplier="0.7" id="5JY-ma-gMu"/>
+                            <constraint firstItem="KVL-1M-pDn" firstAttribute="top" secondItem="VZJ-R5-2Md" secondAttribute="bottom" id="1tP-0R-1w2"/>
                             <constraint firstItem="HsL-yb-gg1" firstAttribute="leading" secondItem="woe-W4-rBt" secondAttribute="leading" constant="30" id="A95-ez-Ab3"/>
-                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="leading" secondItem="woe-W4-rBt" secondAttribute="leading" id="FHz-Ug-7Ef"/>
+                            <constraint firstItem="VZJ-R5-2Md" firstAttribute="top" secondItem="Lvh-am-5DM" secondAttribute="bottom" id="B1a-09-HAl"/>
                             <constraint firstItem="Lvh-am-5DM" firstAttribute="top" secondItem="woe-W4-rBt" secondAttribute="top" constant="10" id="G3V-Ib-f6B"/>
+                            <constraint firstItem="d6r-FW-gpQ" firstAttribute="leading" secondItem="woe-W4-rBt" secondAttribute="leading" id="HIS-t8-h1f"/>
+                            <constraint firstItem="d6r-FW-gpQ" firstAttribute="trailing" secondItem="woe-W4-rBt" secondAttribute="trailing" id="Qw2-1V-w5b"/>
+                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="height" secondItem="VZJ-R5-2Md" secondAttribute="height" id="TSF-he-CMH"/>
                             <constraint firstItem="KVL-1M-pDn" firstAttribute="leading" secondItem="woe-W4-rBt" secondAttribute="leading" id="WV7-oF-6Dq"/>
-                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="top" secondItem="woe-W4-rBt" secondAttribute="top" constant="50" id="YS1-L4-FeY"/>
+                            <constraint firstItem="Qpb-TX-eeO" firstAttribute="width" secondItem="woe-W4-rBt" secondAttribute="width" id="ivT-XQ-26e"/>
                             <constraint firstItem="woe-W4-rBt" firstAttribute="trailing" secondItem="Lvh-am-5DM" secondAttribute="trailing" constant="30" id="izc-2T-oVi"/>
+                            <constraint firstItem="d6r-FW-gpQ" firstAttribute="top" secondItem="Lvh-am-5DM" secondAttribute="bottom" id="k6A-l2-rVm"/>
+                            <constraint firstItem="woe-W4-rBt" firstAttribute="trailing" secondItem="VZJ-R5-2Md" secondAttribute="trailing" id="pqd-VW-yA4"/>
                             <constraint firstItem="KVL-1M-pDn" firstAttribute="bottom" secondItem="woe-W4-rBt" secondAttribute="bottom" id="rHV-MS-Dos"/>
+                            <constraint firstItem="KVL-1M-pDn" firstAttribute="top" secondItem="d6r-FW-gpQ" secondAttribute="bottom" id="rsP-GN-RQd"/>
                             <constraint firstItem="HsL-yb-gg1" firstAttribute="top" secondItem="woe-W4-rBt" secondAttribute="top" constant="10" id="u4Z-jc-kGY"/>
                             <constraint firstItem="KVL-1M-pDn" firstAttribute="trailing" secondItem="woe-W4-rBt" secondAttribute="trailing" id="wnc-Df-CCa"/>
                         </constraints>
@@ -485,11 +516,13 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="Qpb-TX-eeO" id="H3B-zc-1vd"/>
+                        <outlet property="scrollView" destination="d6r-FW-gpQ" id="3KS-OZ-1h3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fe0-Jq-CFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="d5S-tL-2pN"/>
             </objects>
-            <point key="canvasLocation" x="-232" y="1163"/>
+            <point key="canvasLocation" x="-233.33333333333334" y="1162.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="kFg-zj-vjP">

@@ -8,19 +8,55 @@
 
 import UIKit
 
-class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate{
     var img:UIImage?
     var row:Int?
+    var currentScale:CGFloat = 1.0
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     let fileManager = FileManager.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 3.0
+        scrollView.isScrollEnabled = true
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action:#selector(self.doubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        self.imageView.addGestureRecognizer(doubleTapGesture)
         if let img = img{
             imageView.image = img
         }
+    }
 
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+
+    @objc func doubleTap(gesture: UITapGestureRecognizer){
+        if (self.scrollView.zoomScale < self.scrollView.maximumZoomScale) {
+            let newScale = self.scrollView.zoomScale * 3
+            let zoomRect = self.zoomRectForScale(scale: newScale, center: gesture.location(in: gesture.view))
+            self.scrollView.zoom(to: zoomRect, animated: true)
+        } else {
+            self.scrollView.setZoomScale(1.0, animated: true)
+        }
+    }
+
+    func zoomRectForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+        let size = CGSize(
+            width: self.scrollView.frame.size.width / scale,
+            height: self.scrollView.frame.size.height / scale
+        )
+        return CGRect(
+            origin: CGPoint(
+                x: center.x - size.width / 2.0,
+                y: center.y - size.height / 2.0
+            ),
+            size: size
+        )
     }
 
     @IBAction func close(_ sender: Any) {
