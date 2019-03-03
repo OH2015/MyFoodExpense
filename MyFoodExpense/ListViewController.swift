@@ -41,14 +41,14 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = tableView.cellForRow(at: indexPath!) as! logTableViewCell
         if segue.identifier == "showImage"{
             let imgVC = segue.destination as! imageViewController
             imgVC.img = self.sendImage
-            imgVC.row = indexPath!.row
+            imgVC.row = cell.tag
         }else if segue.identifier == "detailSegue"{
             let detailVC = segue.destination as! DetailViewController
-// 要変更
-            detailVC.Row = indexPath!.row
+            detailVC.Row = cell.tag
         }
 
     }
@@ -267,19 +267,19 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func imagePickerController(_ imagePicker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let pickedImage = info[.originalImage] as? UIImage {
-            writeImageAsJPEG(img: pickedImage, indexPath: indexPath!)
+            let cell = tableView.cellForRow(at: indexPath!) as! logTableViewCell
+            writeImageAsJPEG(img: pickedImage, row: cell.tag)
         }
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
 
 
-    func writeImageAsJPEG(img:UIImage,indexPath:IndexPath){
+    func writeImageAsJPEG(img:UIImage,row:Int){
         let quality:CGFloat = 0.1
         let pngImageData:Data = img.jpegData(compressionQuality: quality)!
         let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
-        let name = "\(cell.timeID!).JPEG"
+        let name = "\(RecordArray[row][4][0]).JPEG"
         let fileURL:URL = documentsURL.appendingPathComponent(name)
         do{
             try pngImageData.write(to: fileURL)
