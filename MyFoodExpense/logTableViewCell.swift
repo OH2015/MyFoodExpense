@@ -18,15 +18,15 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var listImage: UIImageView!
 
-    var timeID:String?
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setCell(imageName:UIImage?,title:String,price:String,time:String){
+    func setCell(imageName:UIImage?,title:String,price:String){
         self.title.text = title
-        self.timeID = time
+        
         if let img = imageName{
             self.listImage.image = img
             self.listImage.backgroundColor = UIColor.white

@@ -22,6 +22,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let fileManager = FileManager.default
     var sortFlag = false
     var sectionFlgs = [Bool]()
+    var throughRowPass = 0
 
     var sendImage:UIImage?
 
@@ -85,25 +86,33 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cellの中身決めて暗号渡すよー")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
         let filterdRecordTuple = RecordTuple.filter{$0.element[4][0]==strDatesInDay()[indexPath[0]]}
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
         let row = DataTuple.offset
+        throughRowPass = row
 //RecordArrayの中で何番めか
         cell.tag = row
         let title = DataArray[5][0]
         let totalPrice = DataArray[1].reduce(0,{Int($0)+Int($1)!})
         let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
-        let time = DataArray[4][0]
-        cell.setCell(imageName: image ?? nil, title: title,price:String(totalPrice), time: time)
+        cell.setCell(imageName: image ?? nil, title: title,price:String(totalPrice))
 
         return cell
     }
 
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let name = "\(RecordArray[throughRowPass][4][0]).JPEG"
+        print(readimage(fileName: name))
+        if readimage(fileName: name) != nil{
+            return CGFloat(100)
+        }
+        return CGFloat(30)
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
@@ -119,8 +128,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     //削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        RecordArray.remove(at: indexPath.row)
-        removeImage(indexPath: indexPath)
+        let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
+        RecordArray.remove(at: cell.tag)
+        removeImage(row: cell.tag)
 
         DispatchQueue.main.async {
             self.uds.set(RecordArray, forKey: KEY.record.rawValue)
@@ -137,8 +147,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     //入れ替え
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        RecordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-//        swapImage(from: sourceIndexPath, to: destinationIndexPath)
+        let souceCell = tableView.cellForRow(at: sourceIndexPath) as! logTableViewCell
+        let destinationCell = tableView.cellForRow(at: destinationIndexPath) as! logTableViewCell
+        RecordArray.swapAt(souceCell.tag, destinationCell.tag)
 
         DispatchQueue.main.async {
             self.uds.set(RecordArray, forKey: KEY.record.rawValue)
@@ -286,7 +297,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }catch{
             print("書き込み失敗")
         }
-
     }
 
     func readimage(fileName:String) -> UIImage?  {
@@ -298,10 +308,10 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return nil
     }
 
-    func removeImage(indexPath:IndexPath){
+    func removeImage(row:Int){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
-            let name = "\(cell.timeID!).JPEG"
+
+            let name = "\(RecordArray[row][4][0]).JPEG"
             let filePath = dir.appendingPathComponent(name)
             do {
                 if let _ = UIImage(contentsOfFile: filePath.path){
