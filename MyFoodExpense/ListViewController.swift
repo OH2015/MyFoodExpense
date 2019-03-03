@@ -59,24 +59,20 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let myView: UIView = UIView()
-        var label = UILabel()
-        label.sizeToFit()
-        label.text = strDatesInDay()[section]
-        label.textColor = UIColor.red
-
-        myView.addSubview(label)
-        myView.tag = section
-        myView.backgroundColor = UIColor.clear
-        myView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tapHeader(gestureRecognizer:))))
-
-        return myView
+        var cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") as? CustomHeaderFooterView
+        if cell == nil {
+            cell = CustomHeaderFooterView(reuseIdentifier: "Header")
+            cell?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader)))
+        }
+        cell!.tag = section
+        cell!.textLabel!.text = strDatesInDay()[section]
+        cell!.section = section
+        cell!.setExpanded(expanded:sectionFlgs[section])
+        return cell
     }
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(50)
-    }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return strDatesInDay()[section]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,24 +86,25 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let filterdRecord = RecordArray.filter{$0[4][0]==strDatesInDay()[indexPath[0]]}
-        DataArray = filterdRecord[indexPath.row]
+        let DataArray = filterdRecord[indexPath.row]
         let title = DataArray[5][0]
-        let date = DataArray[4][0]
         var totalPrice = 0
         for price in DataArray[1]{
             totalPrice += Int(price)!
         }
-        let name = "\(indexPath.row).JPEG"
+        let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
-        cell.setCell(imageName: image ?? nil, title: title, date: date,price:String(totalPrice))
+        let time = DataArray[4][0]
+        cell.setCell(imageName: image ?? nil, title: title,price:String(totalPrice), time: time)
 
         return cell
     }
 
+
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         performSegue(withIdentifier: "detailSegue", sender: nil)
-
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -138,7 +135,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     //入れ替え
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         RecordArray.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-        swapImage(from: sourceIndexPath, to: destinationIndexPath)
+//        swapImage(from: sourceIndexPath, to: destinationIndexPath)
 
         DispatchQueue.main.async {
             self.uds.set(RecordArray, forKey: KEY.record.rawValue)
@@ -146,9 +143,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
-        //override前の処理を継続してさせる
         super.setEditing(editing, animated: animated)
-        //tableViewの編集モードを切り替える
         tableView.isEditing = editing
     }
     @objc func refreshControlValueChanged(sender: UIRefreshControl) {
@@ -156,8 +151,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             sender.endRefreshing()
         })
         tableView.reloadData()
-        print("テーブルを下に引っ張った時に呼ばれる")
     }
+
     @objc func tapHeader(gestureRecognizer: UITapGestureRecognizer) {
         guard let section = gestureRecognizer.view?.tag as Int! else {return}
         sectionFlgs[section] = !sectionFlgs[section]
@@ -269,18 +264,28 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func imagePickerController(_ imagePicker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         if let pickedImage = info[.originalImage] as? UIImage {
-            writeImageAsJPEG(img: pickedImage, row: indexPath!.row)
+            writeImageAsJPEG(img: pickedImage, indexPath: indexPath!)
         }
         tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
 
+    func sortImage(oldRecord:[[[String]]],newRecord:[[[String]]]){
+        for (i,val) in oldRecord.enumerated(){
+//            let newIndex =
 
-    func writeImageAsJPEG(img:UIImage,row:Int){
+        }
+    }
+
+
+    func writeImageAsJPEG(img:UIImage,indexPath:IndexPath){
         let quality:CGFloat = 0.1
         let pngImageData:Data = img.jpegData(compressionQuality: quality)!
         let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let name = "\(row).JPEG"
+        let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
+        print("cellはこれです\(cell)")
+        print("タイムI.D.\(cell.timeID)")
+        let name = "\(cell.timeID!).JPEG"
         let fileURL:URL = documentsURL.appendingPathComponent(name)
         do{
             try pngImageData.write(to: fileURL)
@@ -301,7 +306,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func removeImage(indexPath:IndexPath){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let name = "\(indexPath.row).JPEG"
+            let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
+            let name = "\(cell.timeID).JPEG"
             let filePath = dir.appendingPathComponent(name)
             do {
                 if let _ = UIImage(contentsOfFile: filePath.path){
@@ -322,28 +328,28 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
 
-    func swapImage(from:IndexPath,to:IndexPath){
-        if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-            let fromName = "\(from.row).JPEG"
-            let toName = "\(to.row).JPEG"
-            let fromFilePath = dir.appendingPathComponent(fromName)
-            let toFilePath = dir.appendingPathComponent(toName)
-            let postFilePath = dir.appendingPathComponent("postFile")
-            do {
-                if let _ = UIImage(contentsOfFile: fromFilePath.path){
-                    try self.fileManager.moveItem(at: fromFilePath,to: postFilePath)
-                }
-                if let _ = UIImage(contentsOfFile: toFilePath.path){
-                    try self.fileManager.moveItem(at: toFilePath, to: fromFilePath)
-                }
-                if let _ = UIImage(contentsOfFile: fromFilePath.path){
-                    try self.fileManager.moveItem(at: postFilePath,to: fromFilePath)
-                }
-            } catch {
-                print(error)
-            }
-        }
-    }
+//    func swapImage(from:IndexPath,to:IndexPath){
+//        if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
+//            let fromName = "\(from.row).JPEG"
+//            let toName = "\(to.row).JPEG"
+//            let fromFilePath = dir.appendingPathComponent(fromName)
+//            let toFilePath = dir.appendingPathComponent(toName)
+//            let postFilePath = dir.appendingPathComponent("postFile")
+//            do {
+//                if let _ = UIImage(contentsOfFile: fromFilePath.path){
+//                    try self.fileManager.moveItem(at: fromFilePath,to: postFilePath)
+//                }
+//                if let _ = UIImage(contentsOfFile: toFilePath.path){
+//                    try self.fileManager.moveItem(at: toFilePath, to: fromFilePath)
+//                }
+//                if let _ = UIImage(contentsOfFile: fromFilePath.path){
+//                    try self.fileManager.moveItem(at: postFilePath,to: fromFilePath)
+//                }
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 
 // ==================================================================================
 
@@ -355,16 +361,10 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             date.append(RecordArray[i][4][0])
         }
         var newRecordArray = [[[String]]]()
-        if sortFlag{
-            let sortedEnumDate = date.enumerated().sorted{$0 > $1}
-            for sortedDate in sortedEnumDate{
-                newRecordArray.append(RecordArray[sortedDate.offset])
-            }
-        }else{
-            let sortedEnumDate = date.enumerated().sorted{$1 > $0}
-            for sortedDate in sortedEnumDate{
-                newRecordArray.append(RecordArray[sortedDate.offset])
-            }
+
+        let sortedEnumDate = sortFlag ? date.enumerated().sorted(by: <):date.enumerated().sorted(by: >)
+        for sortedDate in sortedEnumDate{
+            newRecordArray.append(RecordArray[sortedDate.offset])
         }
 
         DispatchQueue.main.async {

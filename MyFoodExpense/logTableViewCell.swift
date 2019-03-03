@@ -15,24 +15,25 @@ import UIKit
 
 class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet var title: UILabel!
-    @IBOutlet var subTitle: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-
     @IBOutlet var listImage: UIImageView!
+
+    var timeID:String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setCell(imageName:UIImage?,title:String,date:String,price:String){
+    func setCell(imageName:UIImage?,title:String,price:String,time:String){
         self.title.text = title
+        self.timeID = time
         if let img = imageName{
             self.listImage.image = img
             self.listImage.backgroundColor = UIColor.white
         }else{
             self.listImage.image = nil
         }
-        self.subTitle.text = date
+
         self.priceLabel.text = "合計\(price)円"
     }
 

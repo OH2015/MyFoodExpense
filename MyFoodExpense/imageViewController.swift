@@ -34,7 +34,7 @@ class imageViewController: UIViewController ,UIImagePickerControllerDelegate,UIN
 
     @IBAction func done(_ sender: Any) {
         let listVC = ListViewController()
-        listVC.writeImageAsJPEG(img: imageView.image!, row: row!)
+        listVC.writeImageAsJPEG(img: imageView.image!, indexPath: [0,0])
         let storyboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
         nextView.selectedIndex = 1
