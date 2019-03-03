@@ -47,6 +47,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             imgVC.row = indexPath!.row
         }else if segue.identifier == "detailSegue"{
             let detailVC = segue.destination as! DetailViewController
+// 要変更
             detailVC.Row = indexPath!.row
         }
 
@@ -85,13 +86,15 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
-        let filterdRecord = RecordArray.filter{$0[4][0]==strDatesInDay()[indexPath[0]]}
-        let DataArray = filterdRecord[indexPath.row]
+        let RecordTuple = RecordArray.enumerated()
+        let filterdRecordTuple = RecordTuple.filter{$0.element[4][0]==strDatesInDay()[indexPath[0]]}
+        let DataTuple = filterdRecordTuple[indexPath.row]
+        let DataArray = DataTuple.element
+        let row = DataTuple.offset
+//RecordArrayの中で何番めか
+        cell.tag = row
         let title = DataArray[5][0]
-        var totalPrice = 0
-        for price in DataArray[1]{
-            totalPrice += Int(price)!
-        }
+        let totalPrice = DataArray[1].reduce(0,{Int($0)+Int($1)!})
         let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
         let time = DataArray[4][0]
@@ -270,21 +273,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         dismiss(animated: true, completion: nil)
     }
 
-    func sortImage(oldRecord:[[[String]]],newRecord:[[[String]]]){
-        for (i,val) in oldRecord.enumerated(){
-//            let newIndex =
-
-        }
-    }
-
 
     func writeImageAsJPEG(img:UIImage,indexPath:IndexPath){
         let quality:CGFloat = 0.1
         let pngImageData:Data = img.jpegData(compressionQuality: quality)!
         let documentsURL:URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
-        print("cellはこれです\(cell)")
-        print("タイムI.D.\(cell.timeID)")
         let name = "\(cell.timeID!).JPEG"
         let fileURL:URL = documentsURL.appendingPathComponent(name)
         do{
@@ -307,49 +301,17 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func removeImage(indexPath:IndexPath){
         if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
             let cell = tableView.cellForRow(at: indexPath) as! logTableViewCell
-            let name = "\(cell.timeID).JPEG"
+            let name = "\(cell.timeID!).JPEG"
             let filePath = dir.appendingPathComponent(name)
             do {
                 if let _ = UIImage(contentsOfFile: filePath.path){
                     try FileManager.default.removeItem(at: filePath)
-                }
-                for i in indexPath.row...RecordArray.count{
-                    let path = "\(i+1).JPEG"
-                    let path2 = "\(i).JPEG"
-                    let fileURL:URL = dir.appendingPathComponent(path)
-                    let fileURL2:URL = dir.appendingPathComponent(path2)
-                    if let _ = UIImage(contentsOfFile: fileURL.path){
-                        try fileManager.moveItem(at: fileURL, to: fileURL2)
-                    }
                 }
             } catch {
                 print(error)
             }
         }
     }
-
-//    func swapImage(from:IndexPath,to:IndexPath){
-//        if let dir = fileManager.urls( for: .documentDirectory, in: .userDomainMask ).first {
-//            let fromName = "\(from.row).JPEG"
-//            let toName = "\(to.row).JPEG"
-//            let fromFilePath = dir.appendingPathComponent(fromName)
-//            let toFilePath = dir.appendingPathComponent(toName)
-//            let postFilePath = dir.appendingPathComponent("postFile")
-//            do {
-//                if let _ = UIImage(contentsOfFile: fromFilePath.path){
-//                    try self.fileManager.moveItem(at: fromFilePath,to: postFilePath)
-//                }
-//                if let _ = UIImage(contentsOfFile: toFilePath.path){
-//                    try self.fileManager.moveItem(at: toFilePath, to: fromFilePath)
-//                }
-//                if let _ = UIImage(contentsOfFile: fromFilePath.path){
-//                    try self.fileManager.moveItem(at: postFilePath,to: fromFilePath)
-//                }
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
 
 // ==================================================================================
 

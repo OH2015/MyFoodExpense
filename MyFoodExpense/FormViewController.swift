@@ -16,7 +16,9 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var person = 1
     var date = ""
     var Title = ""
-    var totalPlice = 0
+    var totalPrice = 0
+    var nonTaxTotalPrice = 0
+    var TaxTotalPrice = 0
     var DataArray = [[String]]()
     var cellCount = 3
     let uds = UserDefaults.standard
@@ -35,9 +37,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         personPicker.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-
-        let width = self.view.frame.width
-        let height = self.view.frame.height
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,7 +93,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         person = row+1
-        perPriceLabel.text = String(totalPlice/person)
+        tableView.reloadData()
     }
 
 //------------------------------------------------------------------------------------------
@@ -208,40 +207,41 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         let DoublePrices = prices.map{Double($0)!}
         let plusTax = DoublePrices.map{$0 * 0.08}
         let minusTax = DoublePrices.map{$0 * 0.08/1.08}
-        if totalTaxButton.currentTitle == "(税込)"{
-            for i in 0...cellCount-1{
-                if tax[i] == "税抜き"{
-                    IntPrices[i] = IntPrices[i]! + Int(plusTax[i])
-                }
+        for i in 0...cellCount-1{
+            if tax[i] == "税抜き"{
+                IntPrices[i] = IntPrices[i]! + Int(plusTax[i])
             }
-            calculate(prices: IntPrices as! [Int])
-            for i in 0...cellCount-1{
-                if tax[i] == "税抜き"{
-                    IntPrices[i] = IntPrices[i]! - Int(plusTax[i])
-                }
-            }
-        }else{
-            for i in 0...cellCount-1{
-                if tax[i] == "税込"{
-                    IntPrices[i] = IntPrices[i]! - Int(minusTax[i])
-                }
-            }
-            calculate(prices: IntPrices as! [Int])
-            for i in 0...cellCount-1{
-                if tax[i] == "税込"{
-                    IntPrices[i] = IntPrices[i]! + Int(minusTax[i])
-                }
-            }
-
         }
+        calculate(prices: IntPrices as! [Int], tax: true)
+        for i in 0...cellCount-1{
+            if tax[i] == "税抜き"{
+                IntPrices[i] = IntPrices[i]! - Int(plusTax[i])
+            }
+        }
+        for i in 0...cellCount-1{
+            if tax[i] == "税込"{
+                IntPrices[i] = IntPrices[i]! - Int(minusTax[i])
+            }
+        }
+        calculate(prices: IntPrices as! [Int], tax: false)
+        for i in 0...cellCount-1{
+            if tax[i] == "税込"{
+                IntPrices[i] = IntPrices[i]! + Int(minusTax[i])
+            }
+        }
+        let counterpartTotalPrice = (totalTaxButton.currentTitle == "税込") ? TaxTotalPrice:nonTaxTotalPrice
+        totalPriceLabel.text = String(counterpartTotalPrice)
+        perPriceLabel.text = String(counterpartTotalPrice/person)
     }
 
-    func calculate(prices: [Int]){
-        totalPlice = 0
-        prices.forEach{totalPlice += $0}
-        totalPriceLabel.text = String(totalPlice)
-        perPriceLabel.text = String(totalPlice/person)
-
+    func calculate(prices: [Int],tax:Bool){
+        totalPrice = 0
+        prices.forEach{totalPrice += $0}
+        if tax{
+            TaxTotalPrice = totalPrice
+        }else{
+            nonTaxTotalPrice = totalPrice
+        }
     }
 
     func store(){
@@ -251,7 +251,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]]
+        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
