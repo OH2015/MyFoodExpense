@@ -22,7 +22,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     let fileManager = FileManager.default
     var sortFlag = false
     var sectionFlgs = [Bool]()
-    var throughRowPass = 0
     let GVC = GraphViewController()
 
     var sendImage:UIImage?
@@ -94,7 +93,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
         let row = DataTuple.offset
-        throughRowPass = row
+
 //RecordArrayの中で何番めか
         cell.tag = row
         let title = DataArray[5][0]
@@ -106,13 +105,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let name = "\(RecordArray[throughRowPass][4][0]).JPEG"
-        if readimage(fileName: name) != nil{
-            return CGFloat(100)
-        }
-        return CGFloat(40)
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
@@ -182,14 +174,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }else{
             trashButton.tintColor = UIColor.clear
             trashButton.isEnabled = false
-        }
-        let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        do {
-            let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
-            let files = contentUrls.map{$0.lastPathComponent}
-            print(files) //-> ["test1.txt", "test2.txt"]
-        } catch {
-            print(error)
         }
     }
 
