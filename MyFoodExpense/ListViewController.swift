@@ -23,6 +23,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var sortFlag = false
     var sectionFlgs = [Bool]()
     var throughRowPass = 0
+    let GVC = GraphViewController()
 
     var sendImage:UIImage?
 
@@ -30,7 +31,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
 
         pickDataFromKey()
-        sectionFlgs = [Bool](repeating: true, count: strDatesInDay().count)
+        sectionFlgs = [Bool](repeating: true, count: stringDates().count)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 100
@@ -57,7 +58,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func numberOfSections(in tableView: UITableView) -> Int {
         pickDataFromKey()
-        return strDatesInDay().count
+// 要変更
+        return stringDates().count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -67,7 +69,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader)))
         }
         cell!.tag = section
-        cell!.textLabel!.text = strDatesInDay()[section]
+        cell!.textLabel!.text = stringDates()[section]
         cell!.section = section
         cell!.setExpanded(expanded:sectionFlgs[section])
         return cell
@@ -78,9 +80,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let filterdRecord = RecordArray.filter{$0[4][0]==strDatesInDay()[section]}
+        let recordsInDay = RecordArray.filter{GVC.stringToDateComponents(strDate: $0[4][0]) == dateComponentsByDate()[section]}
         if sectionFlgs[section]{
-            return filterdRecord.count
+            return recordsInDay.count
         }
         return 0
     }
@@ -88,7 +90,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
-        let filterdRecordTuple = RecordTuple.filter{$0.element[4][0]==strDatesInDay()[indexPath[0]]}
+        let filterdRecordTuple = RecordTuple.filter{GVC.stringToDateComponents(strDate: $0.element[4][0]) == dateComponentsByDate()[indexPath[0]]}
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
         let row = DataTuple.offset
@@ -109,7 +111,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if readimage(fileName: name) != nil{
             return CGFloat(100)
         }
-        return CGFloat(30)
+        return CGFloat(40)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -346,15 +348,25 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.reloadData()
     }
 
-    func strDatesInDay()->[String]{
-        var dates = [String]()
+    func dateComponentsByDate()->[DateComponents]{
+        var dates = [DateComponents]()
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]
-            if !(dates.contains(strDate)){
-                dates.append(strDate)
+            var dateComponents = GVC.stringToDateComponents(strDate: strDate)
+            if !(dates.contains(dateComponents)){
+                dates.append(dateComponents)
             }
         }
         return dates
+    }
+
+    func stringDates()->[String]{
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateStyle = .full
+        let dates = dateComponentsByDate().map{Calendar.current.date(from: $0)}
+        let stringDates = dates.map{f.string(from: $0 as! Date)}
+        return stringDates
     }
 }
 

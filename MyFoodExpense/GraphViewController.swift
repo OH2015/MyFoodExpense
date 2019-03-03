@@ -45,7 +45,7 @@ class GraphViewController: UIViewController {
             var yVal = 0
             var dataInDay = [[[String]]]()
             for DataArray in monthData{
-                let dateComponents = stringToDateComponets(strDate: DataArray[4][0])
+                let dateComponents = stringToDateComponents(strDate: DataArray[4][0])
                 if dateComponents.day == i+1{
                     dataInDay.append(DataArray)
                 }
@@ -107,7 +107,7 @@ class GraphViewController: UIViewController {
         currentMonth.month = currentMonth.month! + interval
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]
-            let dateComponents = stringToDateComponets(strDate: strDate)
+            let dateComponents = stringToDateComponents(strDate: strDate)
             if dateComponents.year == currentMonth.year && dateComponents.month == currentMonth.month{
                 dataInMonth.append(DataArray)
             }
@@ -115,7 +115,7 @@ class GraphViewController: UIViewController {
         return dataInMonth
 
     }
-    func stringToDateComponets(strDate:String)->DateComponents{
+    func stringToDateComponents(strDate:String)->DateComponents{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateStyle = .full
@@ -129,14 +129,15 @@ class GraphViewController: UIViewController {
         var calender = Calendar.current.dateComponents([.year,.month], from: Date())
         calender.month = calender.month! + interval
 
-        calender.year = calender.year! + calender.month!/12
+        if calender.month! > 0{
+            calender.year = calender.year! + (calender.month!-1)/12
+            calender.month = calender.month!%12
+        }else{
+            calender.year = calender.year! + calender.month!/12 - 1
+            calender.month = 12-((12-calender.month!)%12)
+        }
         if calender.month!%12 == 0{
             calender.month = 12
-        }else{
-            calender.month = calender.month!%12
-        }
-        if calender.month! <= 0{
-            calender.year = calender.year! - 1
         }
         return "\(calender.year!)年\(calender.month!)月"
 

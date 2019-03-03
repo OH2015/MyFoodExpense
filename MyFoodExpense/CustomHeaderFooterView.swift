@@ -27,7 +27,7 @@ class CustomHeaderFooterView: UITableViewHeaderFooterView {
     }
 
     func setExpanded(expanded: Bool) {
-        arrow.image = UIImage(named: expanded ? "ArrowUp" : "ArrowDown")
+        arrow.image = UIImage(named: expanded ? "ArrowDown" : "ArrowUp")
     }
 
 }
