@@ -86,7 +86,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellの中身決めて暗号渡すよー")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
         let filterdRecordTuple = RecordTuple.filter{$0.element[4][0]==strDatesInDay()[indexPath[0]]}
@@ -97,7 +96,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 //RecordArrayの中で何番めか
         cell.tag = row
         let title = DataArray[5][0]
-        let totalPrice = DataArray[1].reduce(0,{Int($0)+Int($1)!})
+        let totalPrice = DataArray[6][0]
         let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
         cell.setCell(imageName: image ?? nil, title: title,price:String(totalPrice))
@@ -107,7 +106,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let name = "\(RecordArray[throughRowPass][4][0]).JPEG"
-        print(readimage(fileName: name))
         if readimage(fileName: name) != nil{
             return CGFloat(100)
         }
@@ -170,7 +168,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @objc func tapHeader(gestureRecognizer: UITapGestureRecognizer) {
         guard let section = gestureRecognizer.view?.tag as Int! else {return}
         sectionFlgs[section] = !sectionFlgs[section]
-        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .none)
+//        tableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .none)
+        tableView.reloadData()
     }
 // ======================================================================================
     @IBAction func edit(_ sender: Any) {
@@ -193,10 +192,10 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     @IBAction func imageTapped(_ sender: UIButton) {
-        let cell = sender.superview?.superview as! UITableViewCell
+        let cell = sender.superview?.superview as! logTableViewCell
+        let name = "\(RecordArray[cell.tag][4][0]).JPEG"
         indexPath = tableView.indexPath(for: cell)!
-        let imageView = cell.viewWithTag(1) as! UIImageView
-        if let img = imageView.image{
+        if let img = readimage(fileName: name){
             sendImage = img
             performSegue(withIdentifier: "showImage", sender: nil)
         }else{

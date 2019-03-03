@@ -18,22 +18,19 @@ class logTableViewCell: UITableViewCell, UIImagePickerControllerDelegate,UINavig
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var listImage: UIImageView!
 
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     func setCell(imageName:UIImage?,title:String,price:String){
         self.title.text = title
-        
         if let img = imageName{
             self.listImage.image = img
             self.listImage.backgroundColor = UIColor.white
         }else{
-            self.listImage.image = nil
+            self.listImage.image = UIImage(named: "noImage")
+            self.listImage.contentMode = UIImageView.ContentMode.scaleAspectFill
         }
-
         self.priceLabel.text = "合計\(price)円"
     }
 

@@ -17,7 +17,6 @@ class GraphViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         RecordArray = UserDefaults.standard.array(forKey: KEY.record.rawValue) as! [[[String]]]
         monthLabel.text = month()
         setChart()
@@ -120,6 +119,7 @@ class GraphViewController: UIViewController {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateStyle = .full
+        f.timeStyle = .medium
         let date = f.date(from: strDate)
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date!)
         return dateComponents
@@ -137,9 +137,7 @@ class GraphViewController: UIViewController {
         }
         if calender.month! <= 0{
             calender.year = calender.year! - 1
-
         }
-
         return "\(calender.year!)年\(calender.month!)月"
 
     }
