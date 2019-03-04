@@ -246,16 +246,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func launchCamera(){
         let sourceType:UIImagePickerController.SourceType =
             UIImagePickerController.SourceType.camera
-        // カメラが利用可能かチェック
         if UIImagePickerController.isSourceTypeAvailable(
             UIImagePickerController.SourceType.camera){
-            // インスタンスの作成
             let cameraPicker = UIImagePickerController()
             cameraPicker.sourceType = sourceType
             cameraPicker.delegate = self
             self.present(cameraPicker, animated: true, completion: nil)
-        }
-        else{
         }
 
     }
