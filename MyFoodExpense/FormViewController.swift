@@ -229,9 +229,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                 IntPrices[i] = IntPrices[i]! + Int(minusTax[i])
             }
         }
-        let counterpartTotalPrice = (totalTaxButton.currentTitle == "税込") ? TaxTotalPrice:nonTaxTotalPrice
+
+        let counterpartTotalPrice = (totalTaxButton.currentTitle == "(税込)") ? TaxTotalPrice:nonTaxTotalPrice
         totalPriceLabel.text = String(counterpartTotalPrice)
         perPriceLabel.text = String(counterpartTotalPrice/person)
+
+
     }
 
     func calculate(prices: [Int],tax:Bool){
