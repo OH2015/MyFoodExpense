@@ -14,6 +14,7 @@
 		9D034E702209C1E000917824 /* MyFoodExpenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E6F2209C1E000917824 /* MyFoodExpenseTests.swift */; };
 		9D034E7B2209C1E000917824 /* MyFoodExpenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */; };
 		9D05342F220BF1DF007C57ED /* MyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05342E220BF1DE007C57ED /* MyScrollView.swift */; };
+		9D131F7C222D3B1500E7DB68 /* customButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D131F7B222D3B1500E7DB68 /* customButton.swift */; };
 		9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15975222106D3700B959B8 /* logTableViewCell.swift */; };
 		9D2CB83822253B7C0095CAEB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CB83722253B7C0095CAEB /* NumberTextField.swift */; };
 		9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		9D034E7A2209C1E000917824 /* MyFoodExpenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodExpenseUITests.swift; sourceTree = "<group>"; };
 		9D034E7C2209C1E000917824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D05342E220BF1DE007C57ED /* MyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrollView.swift; sourceTree = "<group>"; };
+		9D131F7B222D3B1500E7DB68 /* customButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButton.swift; sourceTree = "<group>"; };
 		9D15975222106D3700B959B8 /* logTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logTableViewCell.swift; sourceTree = "<group>"; };
 		9D2CB83722253B7C0095CAEB /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
 		9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				9D851F5A2226BA100024428E /* DataSource.swift */,
 				9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */,
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
+				9D131F7B222D3B1500E7DB68 /* customButton.swift */,
 				9D855CAC222D1FCE00C6D395 /* CalculatorViewController.swift */,
 				9D851F5C2226CE5E0024428E /* DetailViewController.swift */,
 				9D851F5022265F4A0024428E /* titleViewController.swift */,
@@ -440,6 +443,7 @@
 				9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */,
 				9D851F5122265F4A0024428E /* titleViewController.swift in Sources */,
 				9D855CAD222D1FCE00C6D395 /* CalculatorViewController.swift in Sources */,
+				9D131F7C222D3B1500E7DB68 /* customButton.swift in Sources */,
 				9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */,
 				9DD358F2222A355F006FFA64 /* CustomHeaderFooterView.swift in Sources */,
 				9D957B6C222797780025860E /* imageViewController.swift in Sources */,

@@ -10,21 +10,97 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
 
+    var formula = ""
+
+    var performingMath = false
+    var equalTapped = false
+    var isFirstNumber = true
+
+    var operation = 0; //  + , - , × , ÷
+
+    @IBOutlet weak var label: UILabel! // 計算結果表示
+    @IBOutlet weak var formulaLabel: UILabel!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func numbers(_ sender: customButton) {   // 記号を打った直後にはラベルの中身を初期化する必要があるので分岐
+        if isFirstNumber && (sender.tag == 0 || sender.tag == 100){
+            return
+        }
+        if  performingMath{
+            if operation != 11{
+//=以外の記号をformulaに足す
+                let button = view.viewWithTag(operation) as! customButton
+                formula = formula + button.currentTitle!
+            }
+            label.text = sender.currentTitle!
+            performingMath = false
+        }
+        else{
+            label.text = label.text! + sender.currentTitle!
+            formulaLabel.text = formula + label.text!
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        }
+        isFirstNumber = false
+        formulaLabel.text = formula + label.text!
+
     }
-    */
+
+
+    @IBAction func buttons(_ sender: UIButton) {
+        if label.text != "" && sender.tag != 11 && sender.tag != -1{
+// 初めて記号をタップした時のみに,確定した数値をformulaに足す。
+            if !performingMath || operation == 11{
+                formula = formula + label.text!
+            }
+            formulaLabel.text = formula + sender.currentTitle!
+            operation = sender.tag
+            performingMath = true;
+        }
+        else if sender.tag == 11 // = が押された時の処理
+        {
+            formula = formula + label.text!
+            let plus = formula.hasSuffix("+")
+            let minus = formula.hasSuffix("-")
+            let by = formula.hasSuffix("×")
+            let split = formula.hasSuffix("÷")
+            if plus || minus || by || split || formula == ""{
+                print("後ろに記号がついてるか、四季がないよ")
+                return
+            }
+            if !equalTapped{
+                formula = formula + ".0"
+            }
+            let a = formula.replacingOccurrences(of: "×",with: "*")
+            let rightFormula = a.replacingOccurrences(of: "÷", with: "/")
+
+            let expression = NSExpression(format: rightFormula)
+            let result = expression.expressionValue(with: nil, context: nil) as! Double?
+            if let result = result{
+                label.text = String(result)
+                formulaLabel.text = formula + "=" + String(result)
+                formula = ""
+                performingMath = true
+                equalTapped = true
+                operation = 11
+            }else{
+                label.text = "error"
+            }
+        }
+        else if sender.tag == -1{ // C が押された時の処理
+            label.text = ""
+            formulaLabel.text = ""
+            formula = ""
+            operation = 0
+            performingMath = false
+            equalTapped = false
+        }
+        isFirstNumber = true
+    }
+
 
 }
