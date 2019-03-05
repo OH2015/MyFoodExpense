@@ -38,6 +38,7 @@ class CalculatorViewController: UIViewController {
                 formula = formula + button.currentTitle!
             }
             label.text = sender.currentTitle!
+            equalTapped = false
             performingMath = false
         }
         else{
@@ -52,18 +53,21 @@ class CalculatorViewController: UIViewController {
 
 
     @IBAction func buttons(_ sender: UIButton) {
+        if !performingMath || operation == 11{//まだ記号が押されてないか、=を押した直後
+            formula = formula + label.text!
+            if !equalTapped{//=を押した直後以外はラベルに小数点は入っていない
+                formula = formula + ".0"
+            }
+        }
         if label.text != "" && sender.tag != 11 && sender.tag != -1{
 // 初めて記号をタップした時のみに,確定した数値をformulaに足す。
-            if !performingMath || operation == 11{
-                formula = formula + label.text!
-            }
+
             formulaLabel.text = formula + sender.currentTitle!
             operation = sender.tag
             performingMath = true;
         }
         else if sender.tag == 11 // = が押された時の処理
         {
-            formula = formula + label.text!
             let plus = formula.hasSuffix("+")
             let minus = formula.hasSuffix("-")
             let by = formula.hasSuffix("×")
@@ -72,9 +76,7 @@ class CalculatorViewController: UIViewController {
                 print("後ろに記号がついてるか、四季がないよ")
                 return
             }
-            if !equalTapped{
-                formula = formula + ".0"
-            }
+
             let a = formula.replacingOccurrences(of: "×",with: "*")
             let rightFormula = a.replacingOccurrences(of: "÷", with: "/")
 
