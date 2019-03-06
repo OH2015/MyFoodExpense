@@ -207,7 +207,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.present(alert,animated: true)
     }
 
-    @IBAction func sortButtonTapped(_ sender: Any) {
+    @IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
+        sender.title = sortFlag ? "日付(昇順)":"日付(降順)"
         sort()
     }
 
@@ -307,15 +308,20 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 // ==================================================================================
 
     func sort(){
+        let GVC = GraphViewController()
+// 要変更
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
-        var date = [String]()
+        var dates = [Date]()
         if RecordArray.count == 0{return}
         for i in 0...RecordArray.count-1{
-            date.append(RecordArray[i][4][0])
+            let dateComponents = GVC.stringToDateComponents(strDate: RecordArray[i][4][0])
+            let date = Calendar.current.date(from: dateComponents)
+            dates.append(date!)
         }
+        let enumdate = dates.enumerated()
         var newRecordArray = [[[String]]]()
 
-        let sortedEnumDate = sortFlag ? date.enumerated().sorted(by: <):date.enumerated().sorted(by: >)
+        let sortedEnumDate = sortFlag ? enumdate.sorted{$0.element > $1.element}:enumdate.sorted{$0.element < $1.element}
         for sortedDate in sortedEnumDate{
             newRecordArray.append(RecordArray[sortedDate.offset])
         }
@@ -323,12 +329,16 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         DispatchQueue.main.async {
             RecordArray = newRecordArray
             self.uds.set(RecordArray, forKey: KEY.record.rawValue)
+            self.sortFlag = !self.sortFlag
+            self.tableView.reloadData()
         }
-        sortFlag = !sortFlag
-        tableView.reloadData()
+
+
+
     }
 
     func dateComponentsByDate()->[DateComponents]{
+        RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
         var dates = [DateComponents]()
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]

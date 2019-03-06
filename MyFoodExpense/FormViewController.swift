@@ -22,6 +22,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var DataArray = [[String]]()
     var cellCount = 3
     let uds = UserDefaults.standard
+    let color1 = #colorLiteral(red: 1, green: 0.349108652, blue: 0.2915136688, alpha: 0.5)
 
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var perPriceLabel: UILabel!
@@ -37,6 +38,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         personPicker.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.alpha = 0.5
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -253,7 +256,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.dateStyle = .full
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
-        date = f.string(from: Date())
+        let randomTime = Int.random(in: -1000000...1000000)
+        date = f.string(from: Date().addingTimeInterval(TimeInterval(randomTime)))
         DataArray = [ingredients,prices,tax,[String(person)],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)

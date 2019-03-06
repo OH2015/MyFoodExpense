@@ -57,7 +57,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
             sender.setTitleColor(UIColor.black, for: .normal)
         }else{
             sender.setTitle("(税込)", for: .normal)
-            sender.setTitleColor(UIColor.black, for: .normal)
+            sender.setTitleColor(UIColor.red, for: .normal)
         }
         taxChange()
     }
@@ -71,7 +71,9 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func taxChange(){
         let totalPrice = (totalTaxButton.currentTitle == "(税込)") ? DataArray[6][0]:DataArray[7][0]
+        let perPrice = Int(totalPrice)!/person
         totalPriceLabel.text = totalPrice
+        perPriceLabel.text = String(perPrice)
 
     }
 

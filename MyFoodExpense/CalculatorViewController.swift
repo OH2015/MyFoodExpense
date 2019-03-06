@@ -69,6 +69,7 @@ class CalculatorViewController: UIViewController {
         }
         else if sender.tag == 11 // = が押された時の処理
         {
+            equalTapped = true
             let plus = formula.hasSuffix("+")
             let minus = formula.hasSuffix("-")
             let by = formula.hasSuffix("×")
@@ -83,13 +84,21 @@ class CalculatorViewController: UIViewController {
 
             var expression = NSExpression(format: rightFormula)
             let result = expression.expressionValue(with: nil, context: nil) as! Double?
-            if let result = result{
-                label.text = String(result)
-                formulaLabel.text = ex + "=" + String(result)
+            if var result = result{
+                if String(result).hasSuffix(".0"){
+                    let intResult = String(result).replacingOccurrences(of: ".0", with: "")
+                    label.text = String(intResult)
+                    formulaLabel.text = ex + "=" + String(intResult)
+                    equalTapped = false
+                }else{
+                    label.text = String(result)
+                    formulaLabel.text = ex + "=" + String(result)
+                }
+
                 formula = ""
                 ex = ""
                 performingMath = true
-                equalTapped = true
+
                 operation = 11
             }else{
                 label.text = "error"
