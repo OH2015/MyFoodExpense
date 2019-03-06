@@ -12,8 +12,10 @@ import Charts
 class GraphViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var monthLabel: UILabel!
-
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    
     var interval = 0
+    var totalPrice = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,9 @@ class GraphViewController: UIViewController {
         barChartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
         let monthData = dataInMonth()
+        totalPrice = 0
 
-        for i in 0..<numOfDaysInMonthOf()-1{
+        for i in 0..<numOfDaysInMonth()-1{
             var yVal = 0
             var dataInDay = [[[String]]]()
             for DataArray in monthData{
@@ -51,12 +54,10 @@ class GraphViewController: UIViewController {
                 }
             }
             for data in dataInDay{
-                let intPrice = data[1].map{Int($0)}
-                let dataprice = intPrice.reduce(0,{num1,num2 in
-                    num1 + num2!
-                })
-                yVal += dataprice
+                let dataPrice = data[6][0]
+                yVal += Int(dataPrice)!
             }
+            totalPrice += yVal
             let dataEntry = BarChartDataEntry(x: Double(i+1), y: Double(yVal))
             dataEntries.append(dataEntry)
         }
@@ -89,9 +90,10 @@ class GraphViewController: UIViewController {
         barChartView.rightAxis.labelFont = UIFont.systemFont(ofSize: 20)
 
         barChartView.data = chartData
+        totalPriceLabel.text = "合計(税込)\(totalPrice)円"
     }
 
-    func numOfDaysInMonthOf()->Int{
+    func numOfDaysInMonth()->Int{
         var dateComponents = Calendar.current.dateComponents([.year,.month,.day], from: Date())
         dateComponents.month = dateComponents.month! + 1 + interval
         dateComponents.day = 0
@@ -113,8 +115,8 @@ class GraphViewController: UIViewController {
             }
         }
         return dataInMonth
-
     }
+
     func stringToDateComponents(strDate:String)->DateComponents{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
@@ -140,6 +142,5 @@ class GraphViewController: UIViewController {
             calender.month = 12
         }
         return "\(calender.year!)年\(calender.month!)月"
-
     }
 }
