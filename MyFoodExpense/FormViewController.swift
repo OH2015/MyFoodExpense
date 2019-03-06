@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
+class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
 
     var ingredients = [String]()
     var prices = [String]()
     var tax = [String]()
-    var person = 1
+    var taxRate = "0.08"
     var date = ""
     var Title = ""
     var totalPrice = 0
@@ -22,24 +22,18 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var DataArray = [[String]]()
     var cellCount = 3
     let uds = UserDefaults.standard
-    let color1 = #colorLiteral(red: 1, green: 0.349108652, blue: 0.2915136688, alpha: 0.5)
 
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var perPriceLabel: UILabel!
-    @IBOutlet weak var personPicker: UIPickerView!
-    @IBOutlet weak var totalTaxButton: UIButton!
+    @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         uds.register(defaults: [KEY.record.rawValue:[[[String]]]()])
 
-        personPicker.dataSource = self
-        personPicker.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.alpha = 0.5
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,26 +74,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
     }
-
-//------------------------------------pickerView-------------------------------------------
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 10
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(row+1)
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        person = row+1
-        reloadValue()
-    }
-
-//------------------------------------------------------------------------------------------
 
     @IBAction func wrote(_ sender: UITextField) {
         reloadValue()
@@ -156,17 +130,15 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         tableView.isEditing = !tableView.isEditing
     }
 
-    @IBAction func totalTaxChanged(_ sender: UIButton) {
-        if sender.currentTitle == "(税込)"{
-            sender.setTitle("(税抜き)", for: .normal)
-            sender.setTitleColor(UIColor.black, for: .normal)
-        }else{
-            sender.setTitle("(税込)", for: .normal)
-            sender.setTitleColor(UIColor.red, for: .normal)
-        }
+    @IBAction func taxRateChange(_ sender: UISegmentedControl) {
         reloadValue()
+        switch sender.selectedSegmentIndex {
+        case 0:taxRate = "0.08"
+        case 1:taxRate = "0.10"
+        default:break
+        }
+        taxInclude()
     }
-
 
 
     //-------------------------------------------------------------------------------------------
@@ -199,17 +171,18 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             }
             let taxButton = cell?.viewWithTag(3) as! UIButton
             ingredients.append(ingField.text ?? "")
-            prices.append(price ?? "0")
+            prices.append(price!)
             tax.append(taxButton.currentTitle!)
         }
         taxInclude()
     }
 
     func taxInclude(){
+        let taxRate = Double(self.taxRate)
         var IntPrices = prices.map{Int($0)}
         let DoublePrices = prices.map{Double($0)!}
-        let plusTax = DoublePrices.map{$0 * 0.08}
-        let minusTax = DoublePrices.map{$0 * 0.08/1.08}
+        let plusTax = DoublePrices.map{$0 * taxRate!}
+        let minusTax = DoublePrices.map{$0 * taxRate!/(1.00+taxRate!)}
         for i in 0...cellCount-1{
             if tax[i] == "税抜き"{
                 IntPrices[i] = IntPrices[i]! + Int(plusTax[i])
@@ -233,11 +206,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             }
         }
 
-        let counterpartTotalPrice = (totalTaxButton.currentTitle == "(税込)") ? TaxTotalPrice:nonTaxTotalPrice
-        totalPriceLabel.text = String(counterpartTotalPrice)
-        perPriceLabel.text = String(counterpartTotalPrice/person)
-
-
+        totalPriceLabel.text = String(TaxTotalPrice)
+        taxValueLabel.text = "(税\(TaxTotalPrice-nonTaxTotalPrice)円)"
     }
 
     func calculate(prices: [Int],tax:Bool){
@@ -258,7 +228,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.locale = Locale(identifier: "ja_JP")
         let randomTime = Int.random(in: -1000000...1000000)
         date = f.string(from: Date().addingTimeInterval(TimeInterval(randomTime)))
-        DataArray = [ingredients,prices,tax,[String(person)],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
+        DataArray = [ingredients,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)

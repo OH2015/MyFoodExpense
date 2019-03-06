@@ -15,15 +15,13 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var perPriceLabel: UILabel!
     @IBOutlet weak var totalTaxButton: UIButton!
-    @IBOutlet weak var personLabel: UILabel!
+
 
     var DataArray = [[String]]()
     var totalPrice = 0
     var prices = [String]()
     var tax = [String]()
-    var person = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,16 +63,14 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     func setValue(){
         prices = DataArray[1]
         tax = DataArray[2]
-        person = Int(DataArray[3][0])!
+
         taxChange()
     }
 
     func taxChange(){
         let totalPrice = (totalTaxButton.currentTitle == "(税込)") ? DataArray[6][0]:DataArray[7][0]
-        let perPrice = Int(totalPrice)!/person
-        totalPriceLabel.text = totalPrice
-        perPriceLabel.text = String(perPrice)
 
+        totalPriceLabel.text = totalPrice
     }
 
 
