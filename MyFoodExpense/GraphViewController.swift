@@ -127,6 +127,18 @@ class GraphViewController: UIViewController {
         return dateComponents
     }
 
+    func strToDateComponents(strDate:String)->DateComponents{
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateStyle = .full
+        f.timeStyle = .medium
+        let date = f.date(from: strDate)
+        print(date)
+        let dateComponents = Calendar.current.dateComponents([.year, .month], from: date!)
+        return dateComponents
+
+    }
+
     func month()->String{
         var calender = Calendar.current.dateComponents([.year,.month], from: Date())
         calender.month = calender.month! + interval

@@ -33,7 +33,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         tableView.delegate = self
         tableView.dataSource = self
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,9 +107,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             self.view.endEditing(true)
             var realTitle = ""
             realTitle = self.Title.replacingOccurrences(of: " ", with: "")
-            if realTitle != ""{
-                self.store()
+            if realTitle == ""{
+                self.Title = "notitle"
             }
+            self.store()
         }))
         self.present(alert,animated: true)
     }
