@@ -49,6 +49,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         return cell
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        <#code#>
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.reloadData()
     }
@@ -71,6 +75,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         return false
     }
+
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
     }
@@ -116,8 +121,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func insertCell(_ sender: Any) {
-        cellCount += 1
-        tableView.reloadData()
+        if cellCount < 10{
+            cellCount += 1
+            tableView.reloadData()
+        }
     }
 
     @IBAction func removeCell(_ sender: Any) {
