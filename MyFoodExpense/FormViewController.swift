@@ -50,7 +50,13 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
+        let scrHeight = self.view.frame.height
+        let tableHeight = scrHeight*0.6
+        if Int(tableHeight)/cellCount > 60{
+            return 60
+        }else{
+            return tableHeight/CGFloat(cellCount)
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -58,10 +64,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if tableView.isEditing {
-            return .delete
-        }
-        return .none
+        return .delete
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -74,10 +77,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             return true
         }
         return false
-    }
-
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
     }
 
     @IBAction func wrote(_ sender: UITextField) {
@@ -132,10 +131,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             cellCount -= 1
             tableView.reloadData()
         }
-    }
-
-    @IBAction func edit(_ sender: Any) {
-        tableView.isEditing = !tableView.isEditing
     }
 
     @IBAction func taxRateChange(_ sender: UISegmentedControl) {

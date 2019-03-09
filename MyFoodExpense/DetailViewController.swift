@@ -15,11 +15,9 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
-    @IBOutlet weak var totalTaxButton: UIButton!
-
+    @IBOutlet weak var taxValueLabel: UILabel!
 
     var DataArray = [[String]]()
-    var totalPrice = 0
     var prices = [String]()
     var tax = [String]()
     
@@ -29,7 +27,10 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
         DataArray = RecordArray[Row!]
-        setValue()
+
+        totalPriceLabel.text = DataArray[6][0]
+        let taxValue = Int(DataArray[6][0])! - Int(DataArray[7][0])!
+        taxValueLabel.text = String(taxValue)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,29 +50,9 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         return cell
     }
 
-    @IBAction func totalTax(_ sender: UIButton) {
-        if sender.currentTitle == "(税込)"{
-            sender.setTitle("(税抜き)", for: .normal)
-            sender.setTitleColor(UIColor.black, for: .normal)
-        }else{
-            sender.setTitle("(税込)", for: .normal)
-            sender.setTitleColor(UIColor.red, for: .normal)
-        }
-        taxChange()
-    }
 
-    func setValue(){
-        prices = DataArray[1]
-        tax = DataArray[2]
 
-        taxChange()
-    }
 
-    func taxChange(){
-        let totalPrice = (totalTaxButton.currentTitle == "(税込)") ? DataArray[6][0]:DataArray[7][0]
-
-        totalPriceLabel.text = totalPrice
-    }
 
 
 
