@@ -59,7 +59,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vag-MD-izS">
-                                                    <rect key="frame" x="12" y="10" width="129" height="23.5"/>
+                                                    <rect key="frame" x="12" y="10" width="122" height="23.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -78,10 +78,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gll-Cz-7a1">
-                                                    <rect key="frame" x="161" y="0.0" width="46" height="43.5"/>
+                                                    <rect key="frame" x="154" y="0.0" width="60" height="43.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="46" id="0Wc-kV-s3Z"/>
+                                                        <constraint firstAttribute="width" constant="60" id="xKD-Pk-zza"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <state key="normal" title="税抜き">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -90,7 +91,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CEO-lB-fAU" customClass="NumberTextField" customModule="MyFoodExpense" customModuleProvider="target">
-                                                    <rect key="frame" x="227" y="11" width="129" height="21.5"/>
+                                                    <rect key="frame" x="234" y="11" width="122" height="21.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -669,7 +670,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bEG-uE-K4L">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.23652897880000001" blue="0.19558717510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="QaU-AR-1hU" customClass="logTableViewCell" customModule="MyFoodExpense" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="414" height="100"/>
@@ -756,11 +759,18 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="リスト" id="f1o-aL-GCf">
-                        <barButtonItem key="leftBarButtonItem" title="編集" id="EpZ-hZ-LIg">
-                            <connections>
-                                <action selector="edit:" destination="s8V-wd-IU0" id="lHm-dL-qIx"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="編集" id="EpZ-hZ-LIg">
+                                <connections>
+                                    <action selector="edit:" destination="s8V-wd-IU0" id="lHm-dL-qIx"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="ArrowUp" id="JCO-Z9-oQL">
+                                <connections>
+                                    <action selector="closeSections:" destination="s8V-wd-IU0" id="VWc-C6-QYf"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="日付(昇順)" id="9Yf-kx-NkB">
                                 <connections>
@@ -934,7 +944,9 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nzl-qd-Yhi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="471.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.23652897880000001" blue="0.19558717510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="gRD-uq-qNj" customClass="detailTableViewCell" customModule="MyFoodExpense" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
@@ -943,26 +955,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WZt-Rn-07G">
-                                                    <rect key="frame" x="10" y="10" width="138.5" height="30"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10D-er-qKQ">
-                                                    <rect key="frame" x="366.5" y="5" width="17.5" height="39.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VQ-gF-1hQ">
-                                                    <rect key="frame" x="208.5" y="13" width="138" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UdV-M9-tsG">
+                                                    <rect key="frame" x="20" y="15" width="112" height="19.5"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8f-Fw-2zu">
-                                                    <rect key="frame" x="148.5" y="8.5" width="60" height="33"/>
+                                                    <rect key="frame" x="152" y="8.5" width="60" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Wcz-HD-nw8"/>
                                                     </constraints>
@@ -971,23 +972,39 @@
                                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VQ-gF-1hQ">
+                                                    <rect key="frame" x="232" y="13" width="112" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10D-er-qKQ">
+                                                    <rect key="frame" x="364" y="14.5" width="20" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="OFr-87-iix"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="10D-er-qKQ" firstAttribute="centerY" secondItem="UJT-F5-VR2" secondAttribute="centerY" id="4DQ-9K-0OZ"/>
                                                 <constraint firstItem="y8f-Fw-2zu" firstAttribute="centerY" secondItem="UJT-F5-VR2" secondAttribute="centerY" id="5sI-Rd-eoH"/>
-                                                <constraint firstItem="WZt-Rn-07G" firstAttribute="leading" secondItem="UJT-F5-VR2" secondAttribute="leading" constant="10" id="AyV-2u-qiK"/>
-                                                <constraint firstItem="WZt-Rn-07G" firstAttribute="centerY" secondItem="UJT-F5-VR2" secondAttribute="centerY" id="M71-OC-1Hf"/>
+                                                <constraint firstItem="UdV-M9-tsG" firstAttribute="centerY" secondItem="UJT-F5-VR2" secondAttribute="centerY" id="Eza-or-UTx"/>
+                                                <constraint firstItem="9VQ-gF-1hQ" firstAttribute="width" secondItem="UdV-M9-tsG" secondAttribute="width" id="Jce-zn-cCs"/>
+                                                <constraint firstItem="UdV-M9-tsG" firstAttribute="top" secondItem="UJT-F5-VR2" secondAttribute="top" constant="15" id="PcT-xj-yTA"/>
                                                 <constraint firstItem="9VQ-gF-1hQ" firstAttribute="centerY" secondItem="UJT-F5-VR2" secondAttribute="centerY" id="Psb-Hu-HjU"/>
-                                                <constraint firstItem="9VQ-gF-1hQ" firstAttribute="leading" secondItem="y8f-Fw-2zu" secondAttribute="trailing" id="XGU-4u-Yr1"/>
+                                                <constraint firstItem="9VQ-gF-1hQ" firstAttribute="leading" secondItem="y8f-Fw-2zu" secondAttribute="trailing" constant="20" id="XGU-4u-Yr1"/>
+                                                <constraint firstItem="y8f-Fw-2zu" firstAttribute="leading" secondItem="UdV-M9-tsG" secondAttribute="trailing" constant="20" id="aK1-sy-ca6"/>
                                                 <constraint firstItem="10D-er-qKQ" firstAttribute="leading" secondItem="9VQ-gF-1hQ" secondAttribute="trailing" constant="20" id="bty-ZI-iRz"/>
-                                                <constraint firstAttribute="bottom" secondItem="10D-er-qKQ" secondAttribute="bottom" constant="5" id="c5p-d6-fjO"/>
-                                                <constraint firstItem="9VQ-gF-1hQ" firstAttribute="width" secondItem="WZt-Rn-07G" secondAttribute="width" id="i7t-zN-hO6"/>
-                                                <constraint firstItem="y8f-Fw-2zu" firstAttribute="leading" secondItem="WZt-Rn-07G" secondAttribute="trailing" id="kPd-oq-92n"/>
+                                                <constraint firstAttribute="bottom" secondItem="UdV-M9-tsG" secondAttribute="bottom" constant="15" id="exw-tL-YnO"/>
+                                                <constraint firstItem="UdV-M9-tsG" firstAttribute="leading" secondItem="UJT-F5-VR2" secondAttribute="leading" constant="20" id="twI-Er-sIG"/>
                                                 <constraint firstAttribute="trailing" secondItem="10D-er-qKQ" secondAttribute="trailing" constant="30" id="ufp-W4-kc2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ingField" destination="WZt-Rn-07G" id="pBi-uL-CN8"/>
+                                            <outlet property="nameLabel" destination="UdV-M9-tsG" id="6dB-km-r5h"/>
                                             <outlet property="priceLabel" destination="9VQ-gF-1hQ" id="Xm7-4X-Af8"/>
                                             <outlet property="taxButton" destination="y8f-Fw-2zu" id="fdz-RK-OqP"/>
                                         </connections>
@@ -1175,6 +1192,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ArrowUp" width="14.399999618530273" height="7.679999828338623"/>
         <image name="Image" width="640" height="453"/>
         <image name="bookImage" width="30" height="34"/>
         <image name="calculator" width="100" height="100"/>

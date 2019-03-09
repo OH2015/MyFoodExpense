@@ -42,12 +42,22 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! detailTableViewCell
         cell.backgroundColor = cellColor
         var DataArray = RecordArray[Row!]
-        let ing = DataArray[0][indexPath.row]
+        let name = DataArray[0][indexPath.row]
         let price = DataArray[1][indexPath.row]
         let tax = DataArray[2][indexPath.row]
-        print(ing,price,tax)
-        cell.setCell(ing: ing, price: price, tax: tax)
+        cell.setCell(name: name, price: price, tax: tax)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let scrHeight = self.view.frame.height
+        let tableHeight = self.view.frame.height * 0.65
+        let cellCount = DataArray[0].count
+        if Int(tableHeight)/cellCount > 70{
+            return 70
+        }else{
+            return tableHeight/CGFloat(cellCount)
+        }
     }
 
 

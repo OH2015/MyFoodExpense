@@ -69,6 +69,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         cell!.tag = section
         cell!.textLabel!.text = stringMonths()[section]
+        cell!.textLabel!.textColor = UIColor.black
         cell!.section = section
         cell!.setExpanded(expanded:sectionFlgs[section])
         return cell
@@ -219,6 +220,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         sender.title = sortFlag ? "日付(降順)":"日付(昇順)"
         sort()
     }
+
+    @IBAction func closeSections(_ sender: UIBarButtonItem) {
+        sectionFlgs = sectionFlgs.map{_ in false}
+        tableView.reloadData()
+    }
+    
 
 
 //===================================================================================

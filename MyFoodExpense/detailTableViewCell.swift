@@ -10,12 +10,13 @@ import UIKit
 //DataArray = [ingredients,prices,tax,[String(person)],[date],[Title]]
 class detailTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var ingField: UITextField!
+    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var taxButton: UIButton!
     
-    func setCell(ing:String,price:String,tax:String){
-        ingField.text = ing
+    func setCell(name:String,price:String,tax:String){
+        nameLabel.text = name
         priceLabel.text = price
         if tax == "税込"{
             taxButton.setTitle("税込", for: .normal)
