@@ -17,6 +17,10 @@
 		9D131F7C222D3B1500E7DB68 /* customButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D131F7B222D3B1500E7DB68 /* customButton.swift */; };
 		9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15975222106D3700B959B8 /* logTableViewCell.swift */; };
 		9D2CB83822253B7C0095CAEB /* NumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2CB83722253B7C0095CAEB /* NumberTextField.swift */; };
+		9D4902392235050700DDE1C1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D4902382235050700DDE1C1 /* AVFoundation.framework */; };
+		9D49023B2235094900DDE1C1 /* button.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D49023A2235094900DDE1C1 /* button.mp3 */; };
+		9D49023D22350C2700DDE1C1 /* nock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D49023C22350C2700DDE1C1 /* nock.mp3 */; };
+		9D49023F22350F0F00DDE1C1 /* button2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D49023E22350F0F00DDE1C1 /* button2.mp3 */; };
 		9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */; };
 		9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */; };
 		9D851F5122265F4A0024428E /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5022265F4A0024428E /* titleViewController.swift */; };
@@ -73,6 +77,10 @@
 		9D131F7B222D3B1500E7DB68 /* customButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButton.swift; sourceTree = "<group>"; };
 		9D15975222106D3700B959B8 /* logTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logTableViewCell.swift; sourceTree = "<group>"; };
 		9D2CB83722253B7C0095CAEB /* NumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTextField.swift; sourceTree = "<group>"; };
+		9D4902382235050700DDE1C1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9D49023A2235094900DDE1C1 /* button.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button.mp3; sourceTree = "<group>"; };
+		9D49023C22350C2700DDE1C1 /* nock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nock.mp3; sourceTree = "<group>"; };
+		9D49023E22350F0F00DDE1C1 /* button2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button2.mp3; sourceTree = "<group>"; };
 		9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		9D851F5022265F4A0024428E /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D4902392235050700DDE1C1 /* AVFoundation.framework in Frameworks */,
 				9D8ACB202229185C00123F54 /* Charts.framework in Frameworks */,
 				310D406693AFC9297C606EB3 /* Pods_MyFoodExpense.framework in Frameworks */,
 			);
@@ -138,6 +147,7 @@
 		92175C0C6A66A9599C88BE17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D4902382235050700DDE1C1 /* AVFoundation.framework */,
 				9D8ACB1F2229185C00123F54 /* Charts.framework */,
 				6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */,
 				AB88AD970ED062C2C6E55324 /* Pods_MyFoodExpenseTests.framework */,
@@ -192,6 +202,9 @@
 				9D034E632209C1E000917824 /* LaunchScreen.storyboard */,
 				9D034E662209C1E000917824 /* Info.plist */,
 				9D05342E220BF1DE007C57ED /* MyScrollView.swift */,
+				9D49023E22350F0F00DDE1C1 /* button2.mp3 */,
+				9D49023C22350C2700DDE1C1 /* nock.mp3 */,
+				9D49023A2235094900DDE1C1 /* button.mp3 */,
 			);
 			path = MyFoodExpense;
 			sourceTree = "<group>";
@@ -322,8 +335,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D49023F22350F0F00DDE1C1 /* button2.mp3 in Resources */,
 				9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */,
+				9D49023D22350C2700DDE1C1 /* nock.mp3 in Resources */,
 				9D034E652209C1E000917824 /* LaunchScreen.storyboard in Resources */,
+				9D49023B2235094900DDE1C1 /* button.mp3 in Resources */,
 				9D034E622209C1E000917824 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

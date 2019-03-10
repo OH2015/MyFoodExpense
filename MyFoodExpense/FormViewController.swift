@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
+class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,AVAudioPlayerDelegate{
 
     var names = [String]()
     var prices = [String]()
@@ -22,6 +23,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var DataArray = [[String]]()
     var cellCount = 3
     let uds = UserDefaults.standard
+    var audioPlayer:AVAudioPlayer!
 
     @IBOutlet weak var nonTaxTotalLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -38,6 +40,24 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         tax = [String](repeating: "税抜き", count: cellCount)
         prices = [String](repeating: "", count: cellCount)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+
+
+        let audioPath = Bundle.main.path(forResource: "button2", ofType:"mp3")!
+        let audioUrl = URL(fileURLWithPath: audioPath)
+        var audioError:NSError?
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+        } catch let error as NSError {
+            audioError = error
+            audioPlayer = nil
+        }
+        if let error = audioError {
+            print("Error \(error.localizedDescription)")
+        }
+
+        audioPlayer.delegate = self
+        audioPlayer.volume = 0.4
+        audioPlayer.prepareToPlay()
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,6 +119,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func taxChanged(_ sender: UIButton) {
+        audioPlayer.currentTime = 0.4
+        audioPlayer.play()
         if sender.currentTitle == "税抜き"{
             sender.setTitle("税込", for: .normal)
             sender.setTitleColor(UIColor.red, for: .normal)
@@ -151,6 +173,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func taxRateChange(_ sender: UISegmentedControl) {
+        audioPlayer.currentTime = 0.4
+        audioPlayer.play()
         switch sender.selectedSegmentIndex {
         case 0:taxRate = "0.08"
         case 1:taxRate = "0.10"
@@ -205,7 +229,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         let taxRate = Double(self.taxRate)
         var IntPrices = prices.map{Int($0)}
         let DoublePrices = prices.map{Double($0)!}
-        let plusTax = DoublePrices.map{$0 * taxRate!}
+        let plusTax = DoublePrices.map{($0 * taxRate!).rounded()}
         let minusTax = DoublePrices.map{$0 * taxRate!/(1.00+taxRate!)}
         for i in 0...cellCount-1{
             if tax[i] == "税抜き"{
