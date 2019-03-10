@@ -42,7 +42,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="8b6-TL-uRc">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="281"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-Ha-Zdm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-Ha-Zdm">
                                 <rect key="frame" x="0.0" y="325" width="414" height="488"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="1" green="0.74518327480000002" blue="0.076234201589999995" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -136,18 +136,18 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMH-Ol-oKU">
-                                <rect key="frame" x="136.5" y="108" width="141" height="70.5"/>
+                                <rect key="frame" x="199" y="108" width="16.5" height="70.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oig-1d-7Oj">
-                                <rect key="frame" x="297.5" y="132.5" width="20" height="21"/>
+                                <rect key="frame" x="235.5" y="132.5" width="20" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="SmZ-jW-5Uy"/>
                                     <constraint firstAttribute="width" constant="20" id="fvE-kh-S7v"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -181,11 +181,11 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計金額(税込)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5T-VV-UT4">
-                                <rect key="frame" x="20" y="108" width="116.5" height="70.5"/>
+                                <rect key="frame" x="20" y="108" width="179" height="70.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="116.5" id="Z3P-9F-Gwt"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="SiK-ub-mjf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

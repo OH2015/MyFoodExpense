@@ -120,9 +120,11 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func insertCell(_ sender: Any) {
+        view.endEditing(true)
         if cellCount < 10{
             cellCount += 1
             tableView.reloadData()
+            reloadValue()
         }
     }
 
@@ -130,6 +132,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         if cellCount > 0{
             cellCount -= 1
             tableView.reloadData()
+            reloadValue()
         }
     }
 
@@ -140,7 +143,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         case 1:taxRate = "0.10"
         default:break
         }
-        taxInclude()
+
     }
 
 
@@ -164,6 +167,11 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         ingredients.removeAll()
         prices.removeAll()
         tax.removeAll()
+        if cellCount == 0{
+            totalPriceLabel.text = "0"
+            taxValueLabel.text = "(税0円)"
+            return
+        }
         for i in 0...cellCount-1{
             let cell = tableView.cellForRow(at: [0,i])
             let ingField = cell?.viewWithTag(1) as! UITextField

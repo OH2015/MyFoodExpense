@@ -86,7 +86,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
-        let filterdRecordTuple = RecordTuple.filter{GVC.strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}
+        let calender = Calendar.current
+        let filterdRecordTuple = RecordTuple.filter{GVC.strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:GVC.stringToDateComponents(strDate: $0.element[4][0]))! < calender.date(from:GVC.stringToDateComponents(strDate:$1.element[4][0]))!}
+
+
+
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
         let row = DataTuple.offset
@@ -217,7 +221,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     @IBAction func sortButtonTapped(_ sender: UIBarButtonItem) {
-        sender.title = sortFlag ? "日付(降順)":"日付(昇順)"
+        sender.title = sortFlag ? "月(降順)":"月(昇順)"
         sort()
     }
 
