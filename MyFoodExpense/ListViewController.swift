@@ -99,7 +99,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let image:UIImage? = readimage(fileName: name)
         let dateComponents = GVC.stringToDateComponents(strDate:DataArray[4][0])
         let strDate = dateComponentsToString(dateComponents: dateComponents)
-        cell.setCell(imageName: image ?? nil, title: title,price:String(totalPrice),date:strDate)
+        cell.setCell(image: image ?? nil, title: title,price:String(totalPrice),date:strDate)
 
         return cell
     }
@@ -350,7 +350,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func dateComponentsToString(dateComponents:DateComponents)->String{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
-        f.dateFormat = DateFormatter.dateFormat(fromTemplate: "d日", options: 0, locale: .current)
+        f.dateFormat = DateFormatter.dateFormat(fromTemplate: "dE", options: 0, locale: .current)
         let date = Calendar.current.date(from: dateComponents)
         let strDate = f.string(from: date!)
         return strDate
