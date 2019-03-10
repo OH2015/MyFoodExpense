@@ -16,7 +16,8 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var taxValueLabel: UILabel!
-
+    @IBOutlet weak var nonTaxTotalLabel: UILabel!
+    
     var DataArray = [[String]]()
     var prices = [String]()
     var tax = [String]()
@@ -29,6 +30,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         DataArray = RecordArray[Row!]
 
         totalPriceLabel.text = DataArray[6][0]
+        nonTaxTotalLabel.text = DataArray[7][0]
         let taxValue = Int(DataArray[6][0])! - Int(DataArray[7][0])!
         taxValueLabel.text = "(税\(taxValue)円)"
     }
@@ -51,13 +53,17 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let scrHeight = self.view.frame.height
-        let tableHeight = self.view.frame.height * 0.65
+        let tableHeight = self.view.frame.height * 0.6
         let cellCount = DataArray[0].count
-        if Int(tableHeight)/cellCount > 70{
-            return 70
+        if Int(tableHeight)/cellCount > 60{
+            return 60
         }else{
             return tableHeight/CGFloat(cellCount)
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.reloadData()
     }
 
 
