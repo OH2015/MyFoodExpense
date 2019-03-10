@@ -39,7 +39,7 @@ class NumberTextField: UITextField{
 
 
     @objc func cancel() {
-        self.text = "0"
+        self.text = ""
         self.endEditing(true)
     }
 

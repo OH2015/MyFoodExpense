@@ -10,7 +10,7 @@ import UIKit
 
 class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
 
-    var ingredients = [String]()
+    var names = [String]()
     var prices = [String]()
     var tax = [String]()
     var taxRate = "0.08"
@@ -23,6 +23,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var cellCount = 3
     let uds = UserDefaults.standard
 
+    @IBOutlet weak var nonTaxTotalLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -33,7 +34,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         tableView.delegate = self
         tableView.dataSource = self
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        names = [String](repeating: "", count: cellCount)
+        tax = [String](repeating: "税抜き", count: cellCount)
+        prices = [String](repeating: "", count: cellCount)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,10 +45,16 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! InputTableViewCell
         cell.backgroundColor = cellColor
+        let name = names[indexPath.row]
+        let price = prices[indexPath.row]
+        let tax = self.tax[indexPath.row]
+        cell.setValue(name:name,tax:tax,price:price)
+
         let ingField = cell.viewWithTag(1) as! UITextField
         ingField.delegate = self
+
 
         return cell
     }
@@ -69,8 +79,9 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         cellCount -= 1
-        tableView.deleteRows(at: [indexPath], with: .automatic)
         reloadValue()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if tableView.isEditing{
@@ -122,28 +133,30 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     @IBAction func insertCell(_ sender: Any) {
         view.endEditing(true)
         if cellCount < 10{
+            reloadValue()
+            names.append("")
+            tax.append("税抜き")
+            prices.append("")
             cellCount += 1
             tableView.reloadData()
-            reloadValue()
         }
     }
 
     @IBAction func removeCell(_ sender: Any) {
         if cellCount > 0{
             cellCount -= 1
-            tableView.reloadData()
             reloadValue()
+            tableView.reloadData()
         }
     }
 
     @IBAction func taxRateChange(_ sender: UISegmentedControl) {
-        reloadValue()
         switch sender.selectedSegmentIndex {
         case 0:taxRate = "0.08"
         case 1:taxRate = "0.10"
         default:break
         }
-
+        reloadValue()
     }
 
 
@@ -164,7 +177,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func reloadValue(){
-        ingredients.removeAll()
+        names.removeAll()
         prices.removeAll()
         tax.removeAll()
         if cellCount == 0{
@@ -181,7 +194,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                 price = "0"
             }
             let taxButton = cell?.viewWithTag(3) as! UIButton
-            ingredients.append(ingField.text ?? "")
+            names.append(ingField.text ?? "")
             prices.append(price!)
             tax.append(taxButton.currentTitle!)
         }
@@ -218,6 +231,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
 
         totalPriceLabel.text = String(TaxTotalPrice)
+        nonTaxTotalLabel.text = String(nonTaxTotalPrice)
         taxValueLabel.text = "(税\(TaxTotalPrice-nonTaxTotalPrice)円)"
     }
 
@@ -239,7 +253,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.locale = Locale(identifier: "ja_JP")
         let randomTime = Int.random(in: -1000000...1000000)
         date = f.string(from: Date().addingTimeInterval(TimeInterval(randomTime)))
-        DataArray = [ingredients,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
+        DataArray = [names,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
@@ -248,8 +262,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         nextView.selectedIndex = 1
 
         self.present(nextView, animated: false, completion: nil)
-
-
     }
 
 }

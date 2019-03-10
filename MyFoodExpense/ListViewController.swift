@@ -51,7 +51,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let detailVC = segue.destination as! DetailViewController
             detailVC.Row = cell.tag
         }
-
     }
 //======================================================tableView====================================================
 
@@ -89,12 +88,9 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let calender = Calendar.current
         let filterdRecordTuple = RecordTuple.filter{GVC.strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:GVC.stringToDateComponents(strDate: $0.element[4][0]))! < calender.date(from:GVC.stringToDateComponents(strDate:$1.element[4][0]))!}
 
-
-
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
         let row = DataTuple.offset
-
 //RecordArrayの中で何番めか
         cell.tag = row
         let title = DataArray[5][0]

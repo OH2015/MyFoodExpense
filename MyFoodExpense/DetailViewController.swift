@@ -30,7 +30,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
         totalPriceLabel.text = DataArray[6][0]
         let taxValue = Int(DataArray[6][0])! - Int(DataArray[7][0])!
-        taxValueLabel.text = String(taxValue)
+        taxValueLabel.text = "(税\(taxValue)円)"
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
