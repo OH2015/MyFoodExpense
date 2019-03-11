@@ -58,7 +58,7 @@
                                                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vag-MD-izS">
                                                     <rect key="frame" x="12" y="10" width="122" height="23.5"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="tapped:" destination="voH-L5-xtF" eventType="touchUpInside" id="iXa-T7-TiQ"/>
@@ -76,11 +76,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gll-Cz-7a1">
-                                                    <rect key="frame" x="154" y="0.0" width="60" height="43.5"/>
+                                                    <rect key="frame" x="144" y="0.0" width="80" height="43.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="xKD-Pk-zza"/>
+                                                        <constraint firstAttribute="width" constant="80" id="xKD-Pk-zza"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <state key="normal" title="税抜き">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -101,7 +101,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vag-MD-izS" firstAttribute="leading" secondItem="dwB-CW-s4x" secondAttribute="leading" constant="12" id="ANm-JI-XeV"/>
-                                                <constraint firstItem="CEO-lB-fAU" firstAttribute="leading" secondItem="Gll-Cz-7a1" secondAttribute="trailing" constant="20" id="Df3-8S-3GF"/>
+                                                <constraint firstItem="CEO-lB-fAU" firstAttribute="leading" secondItem="Gll-Cz-7a1" secondAttribute="trailing" constant="10" id="Df3-8S-3GF"/>
                                                 <constraint firstItem="OdK-YG-IkJ" firstAttribute="leading" secondItem="CEO-lB-fAU" secondAttribute="trailing" constant="20" id="HQz-Cn-4Qe"/>
                                                 <constraint firstItem="Gll-Cz-7a1" firstAttribute="top" secondItem="dwB-CW-s4x" secondAttribute="top" id="MfH-gV-XtJ"/>
                                                 <constraint firstItem="CEO-lB-fAU" firstAttribute="height" secondItem="dwB-CW-s4x" secondAttribute="height" multiplier="0.5" id="N8H-nV-VVN"/>
@@ -113,7 +113,7 @@
                                                 <constraint firstItem="Vag-MD-izS" firstAttribute="top" secondItem="dwB-CW-s4x" secondAttribute="top" constant="10" id="lHX-9r-UV6"/>
                                                 <constraint firstItem="CEO-lB-fAU" firstAttribute="centerY" secondItem="dwB-CW-s4x" secondAttribute="centerY" id="v1b-0c-aIA"/>
                                                 <constraint firstItem="CEO-lB-fAU" firstAttribute="width" secondItem="Vag-MD-izS" secondAttribute="width" id="vmG-PW-Ad6"/>
-                                                <constraint firstItem="Gll-Cz-7a1" firstAttribute="leading" secondItem="Vag-MD-izS" secondAttribute="trailing" constant="20" id="ypc-vK-oXc"/>
+                                                <constraint firstItem="Gll-Cz-7a1" firstAttribute="leading" secondItem="Vag-MD-izS" secondAttribute="trailing" constant="10" id="ypc-vK-oXc"/>
                                                 <constraint firstAttribute="bottom" secondItem="Vag-MD-izS" secondAttribute="bottom" constant="10" id="z3I-bT-hjN"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -699,11 +699,12 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bEG-uE-K4L">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.72096596700000004" green="0.76242822929999998" blue="0.92361004840000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.23652897880000001" blue="0.19558717510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.23652897880000001" blue="0.19558717510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.2457466136" green="1" blue="0.30375054039999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="QaU-AR-1hU" customClass="logTableViewCell" customModule="MyFoodExpense" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30" width="414" height="100"/>
