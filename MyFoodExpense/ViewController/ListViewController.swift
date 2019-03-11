@@ -23,7 +23,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var sortFlag = false
     var sectionFlgs = [Bool]()
     var oldDateComponents = [DateComponents]()
-    let GVC = GraphViewController()
 
     var sendImage:UIImage?
 
@@ -75,7 +74,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let recordsInMonth = RecordArray.filter{GVC.strToDateComponents(strDate: $0[4][0]) == dateComponentsByMonth()[section]}
+        let recordsInMonth = RecordArray.filter{strToDateComponents(strDate: $0[4][0]) == dateComponentsByMonth()[section]}
         if sectionFlgs[section]{
             return recordsInMonth.count
         }
@@ -86,7 +85,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
         let calender = Calendar.current
-        let filterdRecordTuple = RecordTuple.filter{GVC.strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:GVC.stringToDateComponents(strDate: $0.element[4][0]))! < calender.date(from:GVC.stringToDateComponents(strDate:$1.element[4][0]))!}
+        let filterdRecordTuple = RecordTuple.filter{strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:stringToDateComponents(strDate: $0.element[4][0]))! < calender.date(from:stringToDateComponents(strDate:$1.element[4][0]))!}
 
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
@@ -97,7 +96,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let totalPrice = DataArray[6][0]
         let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
-        let dateComponents = GVC.stringToDateComponents(strDate:DataArray[4][0])
+        let dateComponents = stringToDateComponents(strDate:DataArray[4][0])
         let strDate = dateComponentsToString(dateComponents: dateComponents)
         cell.setCell(image: image ?? nil, title: title,price:String(totalPrice),date:strDate)
 
@@ -126,7 +125,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         RecordArray.remove(at: cell.tag)
         self.uds.set(RecordArray, forKey: KEY.record.rawValue)
-        let recordsInMonth = RecordArray.filter{GVC.strToDateComponents(strDate: $0[4][0]) == oldDateComponents[indexPath.section]}
+        let recordsInMonth = RecordArray.filter{strToDateComponents(strDate: $0[4][0]) == oldDateComponents[indexPath.section]}
         if recordsInMonth.count == 0{
             sectionFlgs.remove(at: indexPath.section)
             tableView.reloadData()
@@ -327,7 +326,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         var times = [Date]()
         if RecordArray.count == 0{return}
         for i in 0...RecordArray.count-1{
-            let dateComponents = GVC.stringToDateComponents(strDate: RecordArray[i][4][0])
+            let dateComponents = stringToDateComponents(strDate: RecordArray[i][4][0])
             let time = Calendar.current.date(from: dateComponents)
             times.append(time!)
         }
@@ -362,7 +361,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]
             print("\(strDate)strDAte")
-            let dateComponents = GVC.strToDateComponents(strDate: strDate)
+            let dateComponents = strToDateComponents(strDate: strDate)
             if !(months.contains(dateComponents)){
                 months.append(dateComponents)
             }
@@ -379,6 +378,28 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let months = dateComponentsByMonth().map{Calendar.current.date(from: $0)}
         let stringMonths = months.map{f.string(from: $0 as! Date)}
         return stringMonths
+    }
+
+    func stringToDateComponents(strDate:String)->DateComponents{
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateStyle = .full
+        f.timeStyle = .medium
+        let date = f.date(from: strDate)
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date!)
+        return dateComponents
+    }
+
+    func strToDateComponents(strDate:String)->DateComponents{
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ja_JP")
+        f.dateStyle = .full
+        f.timeStyle = .medium
+        let date = f.date(from: strDate)
+        print(date)
+        let dateComponents = Calendar.current.dateComponents([.year, .month], from: date!)
+        return dateComponents
+
     }
 }
 
