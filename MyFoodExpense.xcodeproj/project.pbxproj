@@ -181,30 +181,14 @@
 		9D034E592209C1DE00917824 /* MyFoodExpense */ = {
 			isa = PBXGroup;
 			children = (
-				9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */,
-				9DD9EB652225270300522E26 /* InputTableViewCell.swift */,
-				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
-				9D957B6B222797770025860E /* imageViewController.swift */,
-				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
-				9D851F5A2226BA100024428E /* DataSource.swift */,
-				9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */,
+				9D4902442235FDB000DDE1C1 /* audio */,
+				9D4902432235FD7900DDE1C1 /* swift */,
+				9D4902422235FD4300DDE1C1 /* UITableViewCell */,
+				9D4902412235FCDE00DDE1C1 /* ViewController */,
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
-				9D131F7B222D3B1500E7DB68 /* customButton.swift */,
-				9D855CAC222D1FCE00C6D395 /* CalculatorViewController.swift */,
-				9D851F5C2226CE5E0024428E /* DetailViewController.swift */,
-				9D851F5022265F4A0024428E /* titleViewController.swift */,
-				9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */,
-				9D851F52222672EF0024428E /* extension.swift */,
-				9D2CB83722253B7C0095CAEB /* NumberTextField.swift */,
-				9DDFBE8F222521C300642364 /* FormViewController.swift */,
-				9D8ACB21222918D500123F54 /* GraphViewController.swift */,
-				9D034E612209C1E000917824 /* Assets.xcassets */,
 				9D034E632209C1E000917824 /* LaunchScreen.storyboard */,
+				9D034E612209C1E000917824 /* Assets.xcassets */,
 				9D034E662209C1E000917824 /* Info.plist */,
-				9D05342E220BF1DE007C57ED /* MyScrollView.swift */,
-				9D49023E22350F0F00DDE1C1 /* button2.mp3 */,
-				9D49023C22350C2700DDE1C1 /* nock.mp3 */,
-				9D49023A2235094900DDE1C1 /* button.mp3 */,
 			);
 			path = MyFoodExpense;
 			sourceTree = "<group>";
@@ -225,6 +209,54 @@
 				9D034E7C2209C1E000917824 /* Info.plist */,
 			);
 			path = MyFoodExpenseUITests;
+			sourceTree = "<group>";
+		};
+		9D4902412235FCDE00DDE1C1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D957B6B222797770025860E /* imageViewController.swift */,
+				9D855CAC222D1FCE00C6D395 /* CalculatorViewController.swift */,
+				9D851F5C2226CE5E0024428E /* DetailViewController.swift */,
+				9D851F5022265F4A0024428E /* titleViewController.swift */,
+				9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */,
+				9DDFBE8F222521C300642364 /* FormViewController.swift */,
+				9D8ACB21222918D500123F54 /* GraphViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9D4902422235FD4300DDE1C1 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */,
+				9DD9EB652225270300522E26 /* InputTableViewCell.swift */,
+				9D15975222106D3700B959B8 /* logTableViewCell.swift */,
+			);
+			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		9D4902432235FD7900DDE1C1 /* swift */ = {
+			isa = PBXGroup;
+			children = (
+				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
+				9D851F5A2226BA100024428E /* DataSource.swift */,
+				9D131F7B222D3B1500E7DB68 /* customButton.swift */,
+				9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */,
+				9D851F52222672EF0024428E /* extension.swift */,
+				9D2CB83722253B7C0095CAEB /* NumberTextField.swift */,
+				9D05342E220BF1DE007C57ED /* MyScrollView.swift */,
+			);
+			path = swift;
+			sourceTree = "<group>";
+		};
+		9D4902442235FDB000DDE1C1 /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				9D49023A2235094900DDE1C1 /* button.mp3 */,
+				9D49023E22350F0F00DDE1C1 /* button2.mp3 */,
+				9D49023C22350C2700DDE1C1 /* nock.mp3 */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
