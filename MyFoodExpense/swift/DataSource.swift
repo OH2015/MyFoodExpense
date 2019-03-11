@@ -7,13 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 enum KEY:String {
     case record = "recordKEY"
 }
-
-var PriceArray = [Int]()
 var DataArray = [[String]]()
-//DataArray = [[ingredients,prices,tax,person,date,Title]...]
 var RecordArray = [[[String]]]()
 

@@ -15,7 +15,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     @IBOutlet weak var trashButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    let systemBlueColor = UIColor(red: 0, green: 122 / 255, blue: 1, alpha: 1)
     let uds = UserDefaults.standard
     var index:Int?
     var indexPath:IndexPath?
@@ -74,7 +73,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let recordsInMonth = RecordArray.filter{strToDateComponents(strDate: $0[4][0]) == dateComponentsByMonth()[section]}
+        let recordsInMonth = RecordArray.filter{strToDCym(strDate: $0[4][0]) == dateComponentsByMonth()[section]}
         if sectionFlgs[section]{
             return recordsInMonth.count
         }
@@ -85,7 +84,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! logTableViewCell
         let RecordTuple = RecordArray.enumerated()
         let calender = Calendar.current
-        let filterdRecordTuple = RecordTuple.filter{strToDateComponents(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:stringToDateComponents(strDate: $0.element[4][0]))! < calender.date(from:stringToDateComponents(strDate:$1.element[4][0]))!}
+        let filterdRecordTuple = RecordTuple.filter{strToDCym(strDate: $0.element[4][0]) == dateComponentsByMonth()[indexPath[0]]}.sorted{calender.date(from:strToDCymd(strDate: $0.element[4][0]))! < calender.date(from:strToDCymd(strDate:$1.element[4][0]))!}
 
         let DataTuple = filterdRecordTuple[indexPath.row]
         let DataArray = DataTuple.element
@@ -96,8 +95,8 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let totalPrice = DataArray[6][0]
         let name = "\(DataArray[4][0]).JPEG"
         let image:UIImage? = readimage(fileName: name)
-        let dateComponents = stringToDateComponents(strDate:DataArray[4][0])
-        let strDate = dateComponentsToString(dateComponents: dateComponents)
+        let dateComponents = strToDCymd(strDate:DataArray[4][0])
+        let strDate = DCToString(dateComponents: dateComponents)
         cell.setCell(image: image ?? nil, title: title,price:String(totalPrice),date:strDate)
 
         return cell
@@ -125,7 +124,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         RecordArray.remove(at: cell.tag)
         self.uds.set(RecordArray, forKey: KEY.record.rawValue)
-        let recordsInMonth = RecordArray.filter{strToDateComponents(strDate: $0[4][0]) == oldDateComponents[indexPath.section]}
+        let recordsInMonth = RecordArray.filter{strToDCym(strDate: $0[4][0]) == oldDateComponents[indexPath.section]}
         if recordsInMonth.count == 0{
             sectionFlgs.remove(at: indexPath.section)
             tableView.reloadData()
@@ -150,7 +149,6 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let souceCell = tableView.cellForRow(at: sourceIndexPath) as! logTableViewCell
         let destinationCell = tableView.cellForRow(at: destinationIndexPath) as! logTableViewCell
         RecordArray.swapAt(souceCell.tag, destinationCell.tag)
-
         DispatchQueue.main.async {
             self.uds.set(RecordArray, forKey: KEY.record.rawValue)
         }
@@ -177,7 +175,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBAction func edit(_ sender: Any) {
         tableView.isEditing = !tableView.isEditing
         if tableView.isEditing && RecordArray.count != 0{
-            trashButton.tintColor = systemBlueColor
+            trashButton.tintColor = UIColor.red
             trashButton.isEnabled = true
         }else{
             trashButton.tintColor = UIColor.clear
@@ -259,16 +257,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
 
     func launchCamera(){
-        let sourceType:UIImagePickerController.SourceType =
-            UIImagePickerController.SourceType.camera
-        if UIImagePickerController.isSourceTypeAvailable(
-            UIImagePickerController.SourceType.camera){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
             let cameraPicker = UIImagePickerController()
-            cameraPicker.sourceType = sourceType
+            cameraPicker.sourceType = .camera
             cameraPicker.delegate = self
             self.present(cameraPicker, animated: true, completion: nil)
         }
-
     }
 
     func imagePickerController(_ imagePicker: UIImagePickerController,
@@ -321,12 +315,11 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 // ==================================================================================
 
     func sort(){
-// 要変更
         RecordArray = uds.array(forKey: KEY.record.rawValue) as! [[[String]]]
         var times = [Date]()
         if RecordArray.count == 0{return}
         for i in 0...RecordArray.count-1{
-            let dateComponents = stringToDateComponents(strDate: RecordArray[i][4][0])
+            let dateComponents = strToDCym(strDate: RecordArray[i][4][0])
             let time = Calendar.current.date(from: dateComponents)
             times.append(time!)
         }
@@ -346,7 +339,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
 
-    func dateComponentsToString(dateComponents:DateComponents)->String{
+    func DCToString(dateComponents:DateComponents)->String{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateFormat = DateFormatter.dateFormat(fromTemplate: "dE", options: 0, locale: .current)
@@ -360,14 +353,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         var months = [DateComponents]()
         for DataArray in RecordArray{
             let strDate = DataArray[4][0]
-            print("\(strDate)strDAte")
-            let dateComponents = strToDateComponents(strDate: strDate)
+            let dateComponents = strToDCym(strDate: strDate)
             if !(months.contains(dateComponents)){
                 months.append(dateComponents)
             }
         }
         return months
-
     }
 
     func stringMonths()->[String]{
@@ -380,7 +371,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return stringMonths
     }
 
-    func stringToDateComponents(strDate:String)->DateComponents{
+    func strToDCymd(strDate:String)->DateComponents{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateStyle = .full
@@ -390,13 +381,12 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return dateComponents
     }
 
-    func strToDateComponents(strDate:String)->DateComponents{
+    func strToDCym(strDate:String)->DateComponents{
         let f = DateFormatter()
         f.locale = Locale(identifier: "ja_JP")
         f.dateStyle = .full
         f.timeStyle = .medium
         let date = f.date(from: strDate)
-        print(date)
         let dateComponents = Calendar.current.dateComponents([.year, .month], from: date!)
         return dateComponents
 

@@ -21,6 +21,7 @@ class CustomHeaderFooterView: UITableViewHeaderFooterView {
             NSLayoutConstraint(item: arrow, attribute: .trailing, relatedBy: .equal, toItem: self.contentView, attribute: .trailing, multiplier: 1.0, constant: -8),
             NSLayoutConstraint(item: arrow, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1.0, constant: 0)])
         self.backgroundColor = UIColor.clear
+        self.textLabel?.textColor = UIColor.black
     }
 
     required init?(coder aDecoder: NSCoder) {
