@@ -65,6 +65,7 @@ class ListViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader)))
         }
         cell!.tag = section
+
         cell!.textLabel!.text = stringMonths()[section]
         cell!.textLabel!.textColor = UIColor.black
         cell!.section = section

@@ -22,8 +22,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var TaxTotalPrice = 0
     var DataArray = [[String]]()
     var cellCount = 3
+    var row = 0
     let uds = UserDefaults.standard
     var audioPlayer:AVAudioPlayer!
+    let notificationCenter = NotificationCenter.default
 
     @IBOutlet weak var nonTaxTotalLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -32,6 +34,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        let img = UIImage(named: "image")
+        view.backgroundColor = UIColor(patternImage: img!)
         uds.register(defaults: [KEY.record.rawValue:[[[String]]]()])
 
         tableView.delegate = self
@@ -58,6 +62,9 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         audioPlayer.delegate = self
         audioPlayer.volume = 0.4
         audioPlayer.prepareToPlay()
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        notificationCenter.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 //----------------------------------tableView----------------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,6 +115,16 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             return true
         }
         return false
+    }
+
+    @IBAction func tapped(_ sender: UITextField) {
+        let cell = sender.superview?.superview as! InputTableViewCell
+        row = tableView.indexPath(for: cell)!.row
+    }
+
+    @IBAction func tapped2(_ sender: NumberTextField) {
+        let cell = sender.superview?.superview as! InputTableViewCell
+        row = tableView.indexPath(for: cell)!.row
     }
 
     @IBAction func wrote(_ sender: UITextField) {
@@ -287,6 +304,37 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         self.present(nextView, animated: false, completion: nil)
     }
+//======================キーボード=======================================================================
+    @objc func keyboardWillShow(_ notification: NSNotification){
+        let userInfo = (notification as NSNotification).userInfo
+        let keyboardFrame = (userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let cell = tableView.cellForRow(at: [0,row])
+        let cellFrame = view.convert(cell!.frame, from: tableView)
+        let overlap = cellFrame.maxY - keyboardFrame.minY
+
+        if  overlap > 0{
+            view.transform = CGAffineTransform(translationX: 0, y: -overlap)
+        }
+
+    }
+
+    @objc func keyboardWillHide(_ notification: NSNotification){
+        UIView.animate(withDuration: 1.0, animations: { () in
+            self.view.transform = CGAffineTransform.identity
+        })
+    }
+
+    func removeObserver() {
+        let notification = NotificationCenter.default
+        notification.removeObserver(self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeObserver() // Notificationを画面が消えるときに削除
+    }
+
+
 
 }
 
