@@ -42,7 +42,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
 
-        let audioPath = Bundle.main.path(forResource: "button2", ofType:"mp3")!
+        let audioPath = Bundle.main.path(forResource: "nock", ofType:"mp3")!
         let audioUrl = URL(fileURLWithPath: audioPath)
         var audioError:NSError?
         do {
@@ -119,7 +119,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func taxChanged(_ sender: UIButton) {
-        audioPlayer.currentTime = 0.4
+        audioPlayer.currentTime = 0.5
         audioPlayer.play()
         if sender.currentTitle == "税抜き"{
             sender.setTitle("税込", for: .normal)
@@ -173,7 +173,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func taxRateChange(_ sender: UISegmentedControl) {
-        audioPlayer.currentTime = 0.4
+        audioPlayer.currentTime = 0.5
         audioPlayer.play()
         switch sender.selectedSegmentIndex {
         case 0:taxRate = "0.08"

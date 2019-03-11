@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
 
     var formula = ""
     var ex = ""
@@ -16,6 +17,7 @@ class CalculatorViewController: UIViewController {
     var performingMath = false
     var equalTapped = false
     var isFirstNumber = true
+    var audioPlayer:AVAudioPlayer!
 
     var operation = 0; //  + , - , × , ÷
 
@@ -26,9 +28,27 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let audioPath = Bundle.main.path(forResource: "クリック", ofType:"mp3")!
+        let audioUrl = URL(fileURLWithPath: audioPath)
+        var audioError:NSError?
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
+        } catch let error as NSError {
+            audioError = error
+            audioPlayer = nil
+        }
+        if let error = audioError {
+            print("Error \(error.localizedDescription)")
+        }
+
+        audioPlayer.delegate = self
+        audioPlayer.volume = 0.4
+        audioPlayer.prepareToPlay()
     }
 
     @IBAction func numbers(_ sender: customButton) {   // 記号を打った直後にはラベルの中身を初期化する必要があるので分岐
+        audioPlayer.currentTime = 0.1
+        audioPlayer.play()
         if isFirstNumber && (sender.tag == 0 || sender.tag == 100){
             return
         }
@@ -54,6 +74,8 @@ class CalculatorViewController: UIViewController {
 
 
     @IBAction func buttons(_ sender: UIButton) {
+        audioPlayer.currentTime = 0.1
+        audioPlayer.play()
         if (!performingMath || operation == 11) && label.text != ""{//まだ記号が押されてないか、=を押した直後
             formula = formula + label.text!
             ex = ex + label.text!
