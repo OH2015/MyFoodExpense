@@ -61,7 +61,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
-                                                        <action selector="tapped:" destination="voH-L5-xtF" eventType="touchUpInside" id="iXa-T7-TiQ"/>
                                                         <action selector="wrote:" destination="voH-L5-xtF" eventType="editingDidEnd" id="An6-N8-mim"/>
                                                     </connections>
                                                 </textField>
@@ -95,7 +94,6 @@
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
                                                         <action selector="costChanged:" destination="voH-L5-xtF" eventType="editingDidEnd" id="Vjf-VL-3nl"/>
-                                                        <action selector="tapped2:" destination="voH-L5-xtF" eventType="editingDidEnd" id="fkL-aM-pi0"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -292,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJQ-W8-sUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="473"/>
+            <point key="canvasLocation" x="-313.04347826086956" y="472.76785714285711"/>
         </scene>
         <!--Calculator View Controller-->
         <scene sceneID="ebl-ln-or4">
