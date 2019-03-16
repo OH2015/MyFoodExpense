@@ -462,7 +462,7 @@
                                     <constraint firstAttribute="width" secondItem="kLE-5H-dNS" secondAttribute="height" multiplier="5:4" id="U8k-Tb-lqg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="00"/>
+                                <state key="normal" title="."/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedBackgroundColor">
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

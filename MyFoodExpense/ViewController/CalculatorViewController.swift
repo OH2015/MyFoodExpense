@@ -17,6 +17,7 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
     var performingMath = false
     var equalTapped = false
     var isFirstNumber = true
+    var dotUsed = false
     var audioPlayer:AVAudioPlayer!
 
     var operation = 0; //  + , - , × , ÷
@@ -49,12 +50,11 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
     @IBAction func numbers(_ sender: customButton) {   // 記号を打った直後にはラベルの中身を初期化する必要があるので分岐
         audioPlayer.currentTime = 0.1
         audioPlayer.play()
-        if isFirstNumber && (sender.tag == 0 || sender.tag == 100){
-            return
-        }
-        if  performingMath{
-            if operation != 11{
-//=以外の記号をformulaに足す
+// .のみ入力はできないよ
+        if isFirstNumber && (sender.tag == 100){return}
+//  記号が押された後
+        if performingMath{
+            if operation != 11{// =じゃなければ記号をformulaに足す
                 let button = view.viewWithTag(operation) as! customButton
                 formula = formula + button.currentTitle!
                 ex = ex + button.currentTitle!
@@ -63,34 +63,43 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
             equalTapped = false
             performingMath = false
         }
+//  2文字目以降
         else{
+            dotUsed = (label.text?.contains("."))!
+            let prefixIsZero = label.text?.hasPrefix("0")
+//  .の重複仕様禁止
+//  09みたいな数にならないように、0のあとは.しか使えないようにする
+            if sender.tag == 100{if dotUsed{return}}
+            if sender.tag != 100 && prefixIsZero! && !dotUsed{
+                label.text = label.text?.replacingOccurrences(of: "0", with: "")
+            }
             label.text = label.text! + sender.currentTitle!
-
         }
         isFirstNumber = false
         formulaLabel.text = ex + label.text!
-
     }
 
 
     @IBAction func buttons(_ sender: UIButton) {
         audioPlayer.currentTime = 0.1
         audioPlayer.play()
-        if (!performingMath || operation == 11) && label.text != ""{//まだ記号が押されてないか、=を押した直後
+        if (!performingMath || operation == 11) && label.text != ""{//初めて記号が押された時または=を押した直後
             formula = formula + label.text!
             ex = ex + label.text!
-            if !equalTapped{//=を押した直後以外はラベルに小数点は入っていない
-                formula = formula + ".0"
+            dotUsed = (label.text?.contains("."))!
+            let suffixIsDot = label.text?.hasSuffix(".")
+            if !dotUsed{formula = formula + ".0"}
+            if suffixIsDot!{
+                formula = formula + "0"
+                ex = ex + "0"
             }
         }
         if label.text != "" && sender.tag != 11 && sender.tag != -1{
-// 初めて記号をタップした時のみに,確定した数値をformulaに足す。
             formulaLabel.text = ex + sender.currentTitle!
             operation = sender.tag
-            performingMath = true;
+            performingMath = true
         }
-        else if sender.tag == 11 // = が押された時の処理
-        {
+        else if sender.tag == 11{ // = が押された時の処理
             equalTapped = true
             let plus = formula.hasSuffix("+")
             let minus = formula.hasSuffix("-")
@@ -136,6 +145,7 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
             equalTapped = false
         }
         isFirstNumber = true
+        dotUsed = false
     }
 
 
