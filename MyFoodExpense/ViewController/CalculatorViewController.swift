@@ -69,7 +69,7 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
             let prefixIsZero = label.text?.hasPrefix("0")
 //  .の重複仕様禁止
 //  09みたいな数にならないように、0のあとは.しか使えないようにする
-            if sender.tag == 100{if dotUsed{return}}
+            if sender.tag == 100 && dotUsed{return}
             if sender.tag != 100 && prefixIsZero! && !dotUsed{
                 label.text = label.text?.replacingOccurrences(of: "0", with: "")
             }
@@ -113,19 +113,18 @@ class CalculatorViewController: UIViewController,AVAudioPlayerDelegate {
             let a = formula.replacingOccurrences(of: "×",with: "*")
             let rightFormula = a.replacingOccurrences(of: "÷", with: "/")
 
-            var expression = NSExpression(format: rightFormula)
+            let expression = NSExpression(format: rightFormula)
             let result = expression.expressionValue(with: nil, context: nil) as! Double?
-            if var result = result{
-                if String(result).hasSuffix(".0"){
-                    let intResult = String(result).replacingOccurrences(of: ".0", with: "")
-                    label.text = String(intResult)
-                    formulaLabel.text = ex + "=" + String(intResult)
+            if let result = result{
+                print("四捨五入\(round(result * pow(10.0, 6.0))/pow(10.0, 6.0))")
+                let rouRs = round(result * pow(10.0, 6.0)) / pow(10.0, 6.0)
+                var clearResult = String(rouRs)
+                if String(rouRs).hasSuffix(".0"){
+                    clearResult = String(rouRs).replacingOccurrences(of: ".0", with: "")
                     equalTapped = false
-                }else{
-                    label.text = String(result)
-                    formulaLabel.text = ex + "=" + String(result)
                 }
-
+                label.text = String(clearResult)
+                formulaLabel.text = ex + "=" + String(clearResult)
                 formula = ""
                 ex = ""
                 performingMath = true

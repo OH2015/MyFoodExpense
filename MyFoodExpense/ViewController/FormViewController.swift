@@ -84,7 +84,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let scrHeight = self.view.frame.height
-        let tableHeight = scrHeight*0.55
+        let tableHeight = scrHeight*0.60
         if Int(tableHeight)/cellCount > 60{
             return 60
         }else{

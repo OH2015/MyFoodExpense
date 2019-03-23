@@ -17,7 +17,8 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var nonTaxTotalLabel: UILabel!
-    
+    @IBOutlet weak var taxRateLabel: UILabel!
+
     var DataArray = [[String]]()
     var prices = [String]()
     var tax = [String]()
@@ -32,7 +33,9 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         totalPriceLabel.text = DataArray[6][0]
         nonTaxTotalLabel.text = DataArray[7][0]
         let taxValue = Int(DataArray[6][0])! - Int(DataArray[7][0])!
+        let taxRate = DataArray[3][0]
         taxValueLabel.text = "(税\(taxValue)円)"
+        taxRateLabel.text = "税率\(Int(Double(taxRate)!*100))%"
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
