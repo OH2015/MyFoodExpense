@@ -45,7 +45,6 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! detailTableViewCell
-        cell.backgroundColor = cellColor
         var DataArray = RecordArray[Row!]
         let name = DataArray[0][indexPath.row]
         let price = DataArray[1][indexPath.row]

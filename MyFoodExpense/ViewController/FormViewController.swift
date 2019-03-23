@@ -137,6 +137,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func send(_ sender: Any) {
+        if cellCount == 0{return}
         let alert = UIAlertController(title: "データを保存します", message: "タイトルをつけてください", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {textField in
             textField.delegate = self
@@ -234,6 +235,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         let taxRate = Double(self.taxRate)
         var IntPrices = prices.map{Int($0)}
         let DoublePrices = prices.map{Double($0)!}
+        var taxPrices:[Double]
+        var nontaxPrices:[Double]
         let plusTax = DoublePrices.map{($0 * taxRate!).rounded()}
         let minusTax = DoublePrices.map{$0 * taxRate!/(1.00+taxRate!)}
         for i in 0...cellCount-1{
@@ -275,7 +278,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     func store(){
-        reloadValue()
+        setValue()
         let f = DateFormatter()
         f.dateStyle = .full
         f.timeStyle = .medium
@@ -291,6 +294,24 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         nextView.selectedIndex = 1
 
         self.present(nextView, animated: false, completion: nil)
+    }
+
+    func setValue(){
+        names.removeAll()
+        prices.removeAll()
+        tax.removeAll()
+        for i in 0...cellCount-1{
+            let cell = tableView.cellForRow(at: [0,i])
+            let ingField = cell?.viewWithTag(1) as! UITextField
+            let priceField = cell?.viewWithTag(2) as! NumberTextField
+            let price = priceField.text
+            if price == "" || price == "0"{continue}
+            let taxButton = cell?.viewWithTag(3) as! UIButton
+            names.append(ingField.text ?? "")
+            prices.append(price!)
+            tax.append(taxButton.currentTitle!)
+        }
+
     }
 
 }
