@@ -233,49 +233,25 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func taxInclude(){
         let taxRate = Double(self.taxRate)
-        var IntPrices = prices.map{Int($0)}
         let DoublePrices = prices.map{Double($0)!}
-        var taxPrices:[Double]
-        var nontaxPrices:[Double]
-        let plusTax = DoublePrices.map{($0 * taxRate!).rounded()}
-        let minusTax = DoublePrices.map{$0 * taxRate!/(1.00+taxRate!)}
+        var taxPriceTotal = 0.0
+        var nontaxPriceTotal = 0.0
         for i in 0...cellCount-1{
             if tax[i] == "税抜き"{
-                IntPrices[i] = IntPrices[i]! + Int(plusTax[i])
+                nontaxPriceTotal += DoublePrices[i]
+            }else{
+                taxPriceTotal += DoublePrices[i]
             }
         }
-        calculate(prices: IntPrices as! [Int], tax: true)
-        for i in 0...cellCount-1{
-            if tax[i] == "税抜き"{
-                IntPrices[i] = IntPrices[i]! - Int(plusTax[i])
-            }
-        }
-        for i in 0...cellCount-1{
-            if tax[i] == "税込"{
-                IntPrices[i] = IntPrices[i]! - Int(minusTax[i])
-            }
-        }
-        calculate(prices: IntPrices as! [Int], tax: false)
-        for i in 0...cellCount-1{
-            if tax[i] == "税込"{
-                IntPrices[i] = IntPrices[i]! + Int(minusTax[i])
-            }
-        }
+        TaxTotalPrice = Int(round(nontaxPriceTotal * (1.0+taxRate!) + taxPriceTotal))
+        nonTaxTotalPrice = Int(round(nontaxPriceTotal + taxPriceTotal * 1.0/(1.0+taxRate!)))
 
         totalPriceLabel.text = String(TaxTotalPrice)
         nonTaxTotalLabel.text = String(nonTaxTotalPrice)
         taxValueLabel.text = "(税\(TaxTotalPrice-nonTaxTotalPrice)円)"
     }
 
-    func calculate(prices: [Int],tax:Bool){
-        totalPrice = 0
-        prices.forEach{totalPrice += $0}
-        if tax{
-            TaxTotalPrice = totalPrice
-        }else{
-            nonTaxTotalPrice = totalPrice
-        }
-    }
+
 
     func store(){
         setValue()
