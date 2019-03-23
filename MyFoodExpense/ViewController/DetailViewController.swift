@@ -55,7 +55,7 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let scrHeight = self.view.frame.height
-        let tableHeight = self.view.frame.height * 0.6
+        let tableHeight = self.view.frame.height * 0.5
         let cellCount = DataArray[0].count
         if Int(tableHeight)/cellCount > 60{
             return 60
