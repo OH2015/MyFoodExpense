@@ -317,11 +317,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvA-HA-cWk" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="10" y="561.5" width="98.5" height="78.5"/>
+                                <rect key="frame" x="10" y="531.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xvA-HA-cWk" secondAttribute="height" multiplier="5:4" id="flv-Sj-De7"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="1"/>
                                 <userDefinedRuntimeAttributes>
@@ -337,11 +334,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGx-DD-d1x" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="207" y="404" width="98.5" height="78.5"/>
+                                <rect key="frame" x="207" y="344.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cGx-DD-d1x" secondAttribute="height" multiplier="5:4" id="qOO-i4-CWw"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="9"/>
                                 <connections>
@@ -349,11 +343,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq0-7Q-lf8" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="108.5" y="404" width="98.5" height="78.5"/>
+                                <rect key="frame" x="108.5" y="344.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Sq0-7Q-lf8" secondAttribute="height" multiplier="5:4" id="gkQ-g4-Rgs"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="8"/>
                                 <connections>
@@ -361,11 +352,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rD-vh-mmD" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="10" y="404" width="98.5" height="78.5"/>
+                                <rect key="frame" x="10" y="344.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6rD-vh-mmD" secondAttribute="height" multiplier="5:4" id="vPN-QX-pOU"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="7"/>
                                 <connections>
@@ -373,11 +361,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V18-qW-CF9" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="207" y="482.5" width="98.5" height="79"/>
+                                <rect key="frame" x="207" y="438" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="V18-qW-CF9" secondAttribute="height" multiplier="5:4" id="DBK-I3-vJm"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="6"/>
                                 <userDefinedRuntimeAttributes>
@@ -393,11 +378,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmQ-40-DfS" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="108.5" y="482.5" width="98.5" height="79"/>
+                                <rect key="frame" x="108.5" y="438" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="lmQ-40-DfS" secondAttribute="height" multiplier="5:4" id="8vO-vR-rmj"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="5"/>
                                 <userDefinedRuntimeAttributes>
@@ -413,11 +395,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhP-IB-FMq" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="10" y="482.5" width="98.5" height="79"/>
+                                <rect key="frame" x="10" y="438" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xhP-IB-FMq" secondAttribute="height" multiplier="5:4" id="WkY-94-QN5"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="4"/>
                                 <userDefinedRuntimeAttributes>
@@ -433,11 +412,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk5-ex-XNf" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="207" y="561.5" width="98.5" height="78.5"/>
+                                <rect key="frame" x="207" y="531.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Dk5-ex-XNf" secondAttribute="height" multiplier="5:4" id="s3Z-Wd-gv0"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="3"/>
                                 <userDefinedRuntimeAttributes>
@@ -453,11 +429,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hot-4O-9yM" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="108.5" y="561.5" width="98.5" height="78.5"/>
+                                <rect key="frame" x="108.5" y="531.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hot-4O-9yM" secondAttribute="height" multiplier="5:4" id="6TW-5W-RgL"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="2"/>
                                 <userDefinedRuntimeAttributes>
@@ -473,11 +446,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLE-5H-dNS" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="207" y="640" width="98.5" height="79"/>
+                                <rect key="frame" x="207" y="625.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="kLE-5H-dNS" secondAttribute="height" multiplier="5:4" id="U8k-Tb-lqg"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="."/>
                                 <userDefinedRuntimeAttributes>
@@ -493,11 +463,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARI-ty-kel" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="10" y="640" width="197" height="79"/>
+                                <rect key="frame" x="10" y="625.5" width="197" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ARI-ty-kel" secondAttribute="height" multiplier="10:4" id="jwV-HI-CwS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="0">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -515,11 +482,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5W-bm-Rjy" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="305.5" y="640" width="98.5" height="79"/>
+                                <rect key="frame" x="305.5" y="625.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="r5W-bm-Rjy" secondAttribute="height" multiplier="5:4" id="6Kt-eS-EW1"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="="/>
                                 <userDefinedRuntimeAttributes>
@@ -535,11 +499,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Uy-tw-331" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="305.5" y="561.5" width="98.5" height="78.5"/>
+                                <rect key="frame" x="305.5" y="531.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4Uy-tw-331" secondAttribute="height" multiplier="5:4" id="Sep-Mc-qKl"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="+"/>
                                 <userDefinedRuntimeAttributes>
@@ -555,11 +516,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMb-jM-9kr" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="305.5" y="482.5" width="98.5" height="79"/>
+                                <rect key="frame" x="305.5" y="438" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="zMb-jM-9kr" secondAttribute="height" multiplier="5:4" id="kfz-85-fPC"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="-"/>
                                 <userDefinedRuntimeAttributes>
@@ -575,11 +533,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66i-0X-9Am" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="305.5" y="404" width="98.5" height="78.5"/>
+                                <rect key="frame" x="305.5" y="344.5" width="98.5" height="93.5"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="66i-0X-9Am" secondAttribute="height" multiplier="5:4" id="y6C-xL-Cq3"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="×"/>
                                 <connections>
@@ -587,11 +542,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-Kl-JRg" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="305.5" y="325" width="98.5" height="79"/>
+                                <rect key="frame" x="305.5" y="250.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wJl-Kl-JRg" secondAttribute="height" multiplier="5:4" id="GyT-cF-OcU"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="÷"/>
                                 <connections>
@@ -599,28 +551,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSd-vb-dXt" customClass="customButton" customModule="MyFoodExpense" customModuleProvider="target">
-                                <rect key="frame" x="10" y="325" width="98.5" height="79"/>
+                                <rect key="frame" x="10" y="250.5" width="98.5" height="94"/>
                                 <color key="backgroundColor" red="0.82786722720000006" green="0.79646819099999999" blue="0.7980432435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="eSd-vb-dXt" secondAttribute="height" multiplier="5:4" id="aQ8-Tf-OM0"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="C"/>
                                 <connections>
                                     <action selector="buttons:" destination="WOa-bC-LRP" eventType="touchUpInside" id="0N2-KT-Sqb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4S-KS-T16">
-                                <rect key="frame" x="30" y="88" width="354" height="237"/>
-                                <color key="backgroundColor" red="1" green="0.69577851595169116" blue="0.38966201926635735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4S-KS-T16">
+                                <rect key="frame" x="20" y="88" width="374" height="162.5"/>
+                                <color key="backgroundColor" red="0.75166378423066038" green="0.80715287447568496" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9O-qH-FKE">
-                                <rect key="frame" x="108.5" y="325" width="197" height="79"/>
-                                <color key="backgroundColor" red="0.38077478060711295" green="0.89518559639999995" blue="0.61984659474089809" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9O-qH-FKE">
+                                <rect key="frame" x="108.5" y="250.5" width="197" height="94"/>
+                                <color key="backgroundColor" red="0.72935038374696493" green="0.89518559639999995" blue="0.65795756707925768" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -631,23 +580,30 @@
                             <constraint firstItem="66i-0X-9Am" firstAttribute="leading" secondItem="cGx-DD-d1x" secondAttribute="trailing" id="1gW-3A-UsE"/>
                             <constraint firstItem="zMb-jM-9kr" firstAttribute="trailing" secondItem="66i-0X-9Am" secondAttribute="trailing" id="3by-ta-eEj"/>
                             <constraint firstItem="xvA-HA-cWk" firstAttribute="bottom" secondItem="hot-4O-9yM" secondAttribute="bottom" id="3fc-Dn-1IP"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="lmQ-40-DfS" secondAttribute="width" id="4d1-Gx-we2"/>
                             <constraint firstItem="r5W-bm-Rjy" firstAttribute="leading" secondItem="kLE-5H-dNS" secondAttribute="trailing" id="4px-BG-TIc"/>
                             <constraint firstItem="xhP-IB-FMq" firstAttribute="leading" secondItem="6rD-vh-mmD" secondAttribute="leading" id="5i4-I8-REt"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="xvA-HA-cWk" secondAttribute="height" id="5lX-VG-0Ka"/>
                             <constraint firstItem="kLE-5H-dNS" firstAttribute="leading" secondItem="ARI-ty-kel" secondAttribute="trailing" id="6Hf-MB-YAv"/>
                             <constraint firstItem="wJl-Kl-JRg" firstAttribute="leading" secondItem="x9O-qH-FKE" secondAttribute="trailing" id="8yA-tW-ygo"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="Dk5-ex-XNf" secondAttribute="width" id="91l-zD-mNo"/>
+                            <constraint firstItem="r5W-bm-Rjy" firstAttribute="width" secondItem="kLE-5H-dNS" secondAttribute="width" id="Amr-Lb-ku2"/>
                             <constraint firstItem="xhP-IB-FMq" firstAttribute="bottom" secondItem="lmQ-40-DfS" secondAttribute="bottom" id="Asm-06-3oN"/>
                             <constraint firstItem="xhP-IB-FMq" firstAttribute="top" secondItem="6rD-vh-mmD" secondAttribute="bottom" id="BOr-a7-0or"/>
-                            <constraint firstItem="Sli-TY-8FC" firstAttribute="trailing" secondItem="T4S-KS-T16" secondAttribute="trailing" constant="30" id="CEF-up-WFm"/>
+                            <constraint firstItem="Sli-TY-8FC" firstAttribute="trailing" secondItem="T4S-KS-T16" secondAttribute="trailing" constant="20" id="CEF-up-WFm"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="xhP-IB-FMq" secondAttribute="width" id="Cec-rP-i5C"/>
                             <constraint firstItem="cGx-DD-d1x" firstAttribute="bottom" secondItem="Sq0-7Q-lf8" secondAttribute="bottom" id="DPE-x0-oja"/>
                             <constraint firstItem="r5W-bm-Rjy" firstAttribute="height" secondItem="ARI-ty-kel" secondAttribute="height" id="EPj-WA-7fF"/>
                             <constraint firstItem="6rD-vh-mmD" firstAttribute="top" secondItem="eSd-vb-dXt" secondAttribute="bottom" id="Fcr-rQ-hfh"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="V18-qW-CF9" secondAttribute="width" id="GZi-HU-nCA"/>
                             <constraint firstItem="r5W-bm-Rjy" firstAttribute="trailing" secondItem="66i-0X-9Am" secondAttribute="trailing" id="HjC-pc-DJu"/>
                             <constraint firstItem="xvA-HA-cWk" firstAttribute="leading" secondItem="6rD-vh-mmD" secondAttribute="leading" id="IcO-9J-qqw"/>
                             <constraint firstItem="Sli-TY-8FC" firstAttribute="bottom" secondItem="ARI-ty-kel" secondAttribute="bottom" constant="50" id="Iu2-PC-UHy"/>
                             <constraint firstItem="66i-0X-9Am" firstAttribute="top" secondItem="wJl-Kl-JRg" secondAttribute="bottom" id="JDo-C1-g4K"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="66i-0X-9Am" secondAttribute="height" id="KXK-XB-91S"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="wJl-Kl-JRg" secondAttribute="width" id="KeA-Su-iFO"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="xhP-IB-FMq" secondAttribute="height" id="KhZ-95-Rwh"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="xvA-HA-cWk" secondAttribute="width" id="L3s-mW-i7c"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="bottom" secondItem="kLE-5H-dNS" secondAttribute="bottom" id="L5A-nH-wy6"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="hot-4O-9yM" secondAttribute="height" id="L5d-I5-SX8"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="cGx-DD-d1x" secondAttribute="height" id="MSB-1u-Liy"/>
@@ -660,35 +616,44 @@
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="zMb-jM-9kr" secondAttribute="height" id="RVN-le-BNX"/>
                             <constraint firstItem="kLE-5H-dNS" firstAttribute="height" secondItem="ARI-ty-kel" secondAttribute="height" id="Rlg-IY-3Io"/>
                             <constraint firstItem="T4S-KS-T16" firstAttribute="top" secondItem="Sli-TY-8FC" secondAttribute="top" id="RwF-Bm-ESf"/>
-                            <constraint firstItem="T4S-KS-T16" firstAttribute="leading" secondItem="Sli-TY-8FC" secondAttribute="leading" constant="30" id="S8J-Pc-ALr"/>
-                            <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="eSd-vb-dXt" secondAttribute="height" id="TJB-CR-guG"/>
+                            <constraint firstItem="T4S-KS-T16" firstAttribute="leading" secondItem="Sli-TY-8FC" secondAttribute="leading" constant="20" id="S8J-Pc-ALr"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="hot-4O-9yM" secondAttribute="width" id="TNL-64-huw"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="V18-qW-CF9" secondAttribute="height" id="TXm-pw-FnK"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="leading" secondItem="Sli-TY-8FC" secondAttribute="leading" constant="10" id="UyP-bE-udx"/>
                             <constraint firstItem="cGx-DD-d1x" firstAttribute="leading" secondItem="Sq0-7Q-lf8" secondAttribute="trailing" id="XQe-Sj-6eC"/>
                             <constraint firstItem="4Uy-tw-331" firstAttribute="leading" secondItem="Dk5-ex-XNf" secondAttribute="trailing" id="YSP-4Q-B4Q"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="66i-0X-9Am" secondAttribute="width" id="ZlT-q7-Elz"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="lmQ-40-DfS" secondAttribute="height" id="aDs-Fh-rZw"/>
                             <constraint firstItem="Dk5-ex-XNf" firstAttribute="leading" secondItem="hot-4O-9yM" secondAttribute="trailing" id="aOY-go-emg"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="wJl-Kl-JRg" secondAttribute="height" id="aXY-Ar-Kg6"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="Sq0-7Q-lf8" secondAttribute="width" id="bIQ-SC-uf4"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="eSd-vb-dXt" secondAttribute="width" id="bns-Ft-CfT"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="leading" secondItem="6rD-vh-mmD" secondAttribute="leading" id="cBg-J4-XS5"/>
-                            <constraint firstItem="x9O-qH-FKE" firstAttribute="height" secondItem="wJl-Kl-JRg" secondAttribute="height" id="ggL-lQ-6Sw"/>
                             <constraint firstItem="4Uy-tw-331" firstAttribute="height" secondItem="ARI-ty-kel" secondAttribute="height" id="glQ-kS-6D7"/>
                             <constraint firstItem="Dk5-ex-XNf" firstAttribute="height" secondItem="ARI-ty-kel" secondAttribute="height" id="he7-d5-kJw"/>
                             <constraint firstItem="r5W-bm-Rjy" firstAttribute="bottom" secondItem="kLE-5H-dNS" secondAttribute="bottom" id="hly-2z-wtv"/>
+                            <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="6rD-vh-mmD" secondAttribute="height" id="iTt-qC-PJp"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="eSd-vb-dXt" secondAttribute="height" id="iWF-Qw-m87"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="6rD-vh-mmD" secondAttribute="width" id="iZY-zP-ALs"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="4Uy-tw-331" secondAttribute="width" id="in9-t8-lkc"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="height" secondItem="x9O-qH-FKE" secondAttribute="height" id="kCq-TJ-lUG"/>
                             <constraint firstItem="zMb-jM-9kr" firstAttribute="bottom" secondItem="lmQ-40-DfS" secondAttribute="bottom" id="lCG-tB-GKV"/>
+                            <constraint firstItem="T4S-KS-T16" firstAttribute="height" secondItem="A2O-zD-5nA" secondAttribute="height" multiplier="0.2" id="mp0-P7-Osx"/>
                             <constraint firstItem="lmQ-40-DfS" firstAttribute="leading" secondItem="xhP-IB-FMq" secondAttribute="trailing" id="nag-kT-vNt"/>
                             <constraint firstItem="cGx-DD-d1x" firstAttribute="top" secondItem="x9O-qH-FKE" secondAttribute="bottom" id="noh-qs-5sE"/>
                             <constraint firstItem="4Uy-tw-331" firstAttribute="bottom" secondItem="hot-4O-9yM" secondAttribute="bottom" id="oPA-1f-HyM"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="top" secondItem="xvA-HA-cWk" secondAttribute="bottom" id="pCC-Cx-fdY"/>
                             <constraint firstItem="6rD-vh-mmD" firstAttribute="bottom" secondItem="Sq0-7Q-lf8" secondAttribute="bottom" id="rBL-2y-obj"/>
-                            <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="6rD-vh-mmD" secondAttribute="height" id="sIM-WV-nXP"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="cGx-DD-d1x" secondAttribute="width" id="sH6-W6-dFa"/>
                             <constraint firstItem="4Uy-tw-331" firstAttribute="trailing" secondItem="66i-0X-9Am" secondAttribute="trailing" id="sLZ-H0-U6e"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="ARI-ty-kel" secondAttribute="width" multiplier="0.5" id="sfp-6d-oxl"/>
                             <constraint firstItem="Sli-TY-8FC" firstAttribute="trailing" secondItem="r5W-bm-Rjy" secondAttribute="trailing" constant="10" id="tru-sC-SLz"/>
                             <constraint firstItem="hot-4O-9yM" firstAttribute="leading" secondItem="xvA-HA-cWk" secondAttribute="trailing" id="uvo-gp-ONH"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="leading" secondItem="eSd-vb-dXt" secondAttribute="leading" id="v7m-7R-Hpt"/>
                             <constraint firstItem="x9O-qH-FKE" firstAttribute="leading" secondItem="eSd-vb-dXt" secondAttribute="trailing" id="vIQ-WA-f1g"/>
                             <constraint firstItem="66i-0X-9Am" firstAttribute="bottom" secondItem="Sq0-7Q-lf8" secondAttribute="bottom" id="vem-w6-ayb"/>
                             <constraint firstItem="ARI-ty-kel" firstAttribute="height" secondItem="Sq0-7Q-lf8" secondAttribute="height" id="voV-7h-6r8"/>
+                            <constraint firstItem="kLE-5H-dNS" firstAttribute="width" secondItem="zMb-jM-9kr" secondAttribute="width" id="w28-Gb-lDI"/>
                             <constraint firstItem="r5W-bm-Rjy" firstAttribute="trailing" secondItem="wJl-Kl-JRg" secondAttribute="trailing" id="wE8-1O-3bi"/>
                             <constraint firstItem="zMb-jM-9kr" firstAttribute="leading" secondItem="V18-qW-CF9" secondAttribute="trailing" id="zz5-BO-QVa"/>
                         </constraints>
