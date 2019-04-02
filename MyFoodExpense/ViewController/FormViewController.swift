@@ -22,9 +22,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var nonTaxTotalPrice = 0
     var TaxTotalPrice = 0
     var DataArray = [[String]]()
-    var cellCount = 3
+    var cellCount = 1
     let uds = UserDefaults.standard
     var audioPlayer:AVAudioPlayer!
+    let unitID = "ca-app-pub-5237111055443143/2461971379"
 
     let cellColor = #colorLiteral(red: 0.5841977863, green: 0.6957643865, blue: 0.9686274529, alpha: 1)
 
@@ -49,16 +50,12 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         let audioPath = Bundle.main.path(forResource: "nock", ofType:"mp3")!
         let audioUrl = URL(fileURLWithPath: audioPath)
-        var audioError:NSError?
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
-        } catch let error as NSError {
-            audioError = error
-            audioPlayer = nil
+        } catch{
+            print("error!")
         }
-        if let error = audioError {
-            print("Error \(error.localizedDescription)")
-        }
+
 
         audioPlayer.delegate = self
         audioPlayer.volume = 0.4
@@ -66,21 +63,20 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     }
 //==============viewDidLayoutSubviews===========================================
-//    override func viewDidLayoutSubviews(){    // ★←この関数まるまる追記
-//        //  広告インスタンス作成
-//        var admobView = GADBannerView()
-//        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-//
-//        let safeArea = self.view.safeAreaInsets.top
-//        admobView.frame.origin = CGPoint(x:0, y:safeArea)
-//        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-//
-//        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-//
-//        admobView.rootViewController = self
-//        admobView.load(GADRequest())
-//        self.view.addSubview(admobView)
-//    }
+    override func viewDidLayoutSubviews(){
+        var admobView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+
+        let safeArea = self.view.safeAreaInsets.top
+        admobView.frame.origin = CGPoint(x:0, y:safeArea)
+        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+
+        admobView.adUnitID = unitID
+
+        admobView.rootViewController = self
+        admobView.load(GADRequest())
+        self.view.addSubview(admobView)
+    }
 //----------------------------------tableView------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellCount
@@ -131,11 +127,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         return false
     }
-
-
-
-
-
 // =====================================================================
 
     @IBAction func wrote(_ sender: UITextField) {
