@@ -12,8 +12,9 @@ class InputTableViewCell: UITableViewCell {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var taxButton: UIButton!
     @IBOutlet weak var priceField: NumberTextField!
-
-    func setValue(name:String,tax:String,price:String){
+    @IBOutlet weak var numberField: NumberTextField!
+    
+    func setValue(name:String,tax:String,price:String,number:String){
         nameField.text = name
         if tax == "税抜き"{
             taxButton.setTitle("税抜き", for: .normal)
@@ -28,6 +29,8 @@ class InputTableViewCell: UITableViewCell {
         }else{
             priceField.text = price
         }
+        numberField.text = number
+        
     }
 
   

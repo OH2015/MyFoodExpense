@@ -15,25 +15,32 @@ class detailTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var taxButton: UIButton!
     @IBOutlet weak var yenLabel: UILabel!
-
-    func setCell(name:String,price:String,tax:String){
+    @IBOutlet weak var numberLabel: UILabel!
+    
+    func setCell(name:String,price:String,tax:String,number: String){
+        if price == ""{
+            nameLabel.text = ""
+            priceLabel.text = ""
+            yenLabel.text = ""
+            numberLabel.text = ""
+            taxButton.setTitle("", for: .normal)
+            return
+        }
         nameLabel.text = name
         priceLabel.text = price
+        numberLabel.text = number
         if tax == "税込"{
             taxButton.setTitle("税込", for: .normal)
             taxButton.setTitleColor(UIColor.red, for: .normal)
-        }else if tax == "税抜き"{
+        }else {
             taxButton.setTitle("税抜き", for: .normal)
             taxButton.setTitleColor(UIColor.black, for: .normal)
-        }else{
-            taxButton.setTitle("", for: .normal)
         }
-        if price == ""{
-            yenLabel.text = ""
-        }
-        if name == "" && price != ""{
+
+        if name == ""{
             nameLabel.text = "no name"
         }
+
     }
 
     override func awakeFromNib() {

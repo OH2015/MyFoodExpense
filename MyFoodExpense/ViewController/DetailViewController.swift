@@ -47,13 +47,14 @@ class DetailViewController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! detailTableViewCell
         let count = DataArray[1].count
         if indexPath.row >= count{
-            cell.setCell(name: "", price: "", tax: "")
+            cell.setCell(name: "", price: "", tax: "",number: "")
             return cell
         }
         let name = DataArray[0][indexPath.row]
         let price = DataArray[1][indexPath.row]
         let tax = DataArray[2][indexPath.row]
-        cell.setCell(name: name, price: price, tax: tax)
+        let number = DataArray[8][indexPath.row]
+        cell.setCell(name: name, price: price, tax: tax,number: number)
         return cell
     }
 

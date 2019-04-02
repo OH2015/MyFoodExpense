@@ -34,7 +34,10 @@ class NumberTextField: UITextField{
         toolbar.setItems([cancelItem,spaceItem,doneItem], animated: true)
 
         self.inputAccessoryView = toolbar
+
     }
+
+    
 
 
 

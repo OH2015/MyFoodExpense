@@ -22,8 +22,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var nonTaxTotalPrice = 0
     var TaxTotalPrice = 0
     var DataArray = [[String]]()
+    var numbers = ["1"]
     var cellCount = 1
     let uds = UserDefaults.standard
+    let dataList = [Int](1...9).map{String($0)}
     var audioPlayer:AVAudioPlayer!
     let unitID = "ca-app-pub-5237111055443143/2461971379"
 
@@ -46,8 +48,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         tax = [String](repeating: "税抜き", count: cellCount)
         prices = [String](repeating: "", count: cellCount)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-
-
         let audioPath = Bundle.main.path(forResource: "nock", ofType:"mp3")!
         let audioUrl = URL(fileURLWithPath: audioPath)
         do {
@@ -88,11 +88,13 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         let name = names[indexPath.row]
         let price = prices[indexPath.row]
         let tax = self.tax[indexPath.row]
-        cell.setValue(name:name,tax:tax,price:price)
+        let number = numbers[indexPath.row]
+        cell.setValue(name:name,tax:tax,price:price,number:number)
 
-        let ingField = cell.viewWithTag(1) as! UITextField
+        let ingField = cell.viewWithTag(10) as! UITextField
         ingField.delegate = self
-
+        let numberField = cell.viewWithTag(1) as! NumberTextField
+        numberField.delegate = self
 
         return cell
     }
@@ -127,6 +129,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         return false
     }
+
+
 // =====================================================================
 
     @IBAction func wrote(_ sender: UITextField) {
@@ -134,6 +138,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
 
     @IBAction func costChanged(_ sender: NumberTextField) {
+        reloadValue()
+    }
+
+    @IBAction func numberChanged(_ sender: NumberTextField) {
         reloadValue()
     }
 
@@ -177,6 +185,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             names.append("")
             tax.append("税抜き")
             prices.append("")
+            numbers.append("1")
             cellCount += 1
             tableView.reloadData()
         }
@@ -215,6 +224,16 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let tag = textField.tag
+        let maxLength = tag
+        let str = textField.text!
+        if str.count < maxLength || string == "" || tag == -1{
+            return true
+        }
+        return false
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -223,6 +242,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         names.removeAll()
         prices.removeAll()
         tax.removeAll()
+        numbers.removeAll()
         if cellCount == 0{
             totalPriceLabel.text = "0"
             nonTaxTotalLabel.text = "0"
@@ -230,15 +250,21 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         for i in 0...cellCount-1{
             let cell = tableView.cellForRow(at: [0,i])
-            let ingField = cell?.viewWithTag(1) as! UITextField
-            let priceField = cell?.viewWithTag(2) as! NumberTextField
+            let ingField = cell?.viewWithTag(10) as! UITextField
+            let priceField = cell?.viewWithTag(8) as! NumberTextField
+            let numberField = cell?.viewWithTag(1) as! NumberTextField
             var price = priceField.text
+            var number = numberField.text
             if price == "" {
                 price = "0"
+            }
+            if number == ""{
+                number = "0"
             }
             let taxButton = cell?.viewWithTag(3) as! UIButton
             names.append(ingField.text ?? "")
             prices.append(price!)
+            numbers.append(number!)
             tax.append(taxButton.currentTitle!)
         }
         taxInclude()
@@ -246,7 +272,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func taxInclude(){
         let taxRate = Double(self.taxRate)
-        let DoublePrices = prices.map{Double($0)!}
+        var DoublePrices = prices.map{Double($0)!}
+        for (i,price) in DoublePrices.enumerated(){
+            DoublePrices[i] = price * Double(numbers[i])!
+        }
         var taxPriceTotal = 0.0
         var nontaxPriceTotal = 0.0
         for i in 0...cellCount-1{
@@ -270,7 +299,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
         date = f.string(from: Date())
-        DataArray = [names,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
+        DataArray = [names,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)],numbers]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)
         uds.set(recordArray, forKey: KEY.record.rawValue)
@@ -285,15 +314,21 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         names.removeAll()
         prices.removeAll()
         tax.removeAll()
+        numbers.removeAll()
         for i in 0...cellCount-1{
             let cell = tableView.cellForRow(at: [0,i])
-            let ingField = cell?.viewWithTag(1) as! UITextField
-            let priceField = cell?.viewWithTag(2) as! NumberTextField
+            let priceField = cell?.viewWithTag(8) as! NumberTextField
             let price = priceField.text
-            if price == "" || price == "0"{continue}
+            let numberField = cell?.viewWithTag(1) as! NumberTextField
+            let number = numberField.text ?? "0"
+            if price == "" || price == "0" || number == "0"{
+                continue
+            }
+            let ingField = cell?.viewWithTag(10) as! UITextField
             let taxButton = cell?.viewWithTag(3) as! UIButton
             names.append(ingField.text ?? "")
             prices.append(price!)
+            numbers.append(number)
             tax.append(taxButton.currentTitle!)
         }
 
