@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		310D406693AFC9297C606EB3 /* Pods_MyFoodExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */; };
 		9D034E5B2209C1DE00917824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D034E5A2209C1DE00917824 /* AppDelegate.swift */; };
 		9D034E622209C1E000917824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D034E612209C1E000917824 /* Assets.xcassets */; };
 		9D034E652209C1E000917824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D034E632209C1E000917824 /* LaunchScreen.storyboard */; };
@@ -20,16 +19,17 @@
 		9D49023D22350C2700DDE1C1 /* nock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D49023C22350C2700DDE1C1 /* nock.mp3 */; };
 		9D4B28FD22221FAB00A9B0D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */; };
 		9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */; };
-		9D851F5122265F4A0024428E /* titleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5022265F4A0024428E /* titleViewController.swift */; };
 		9D851F53222672EF0024428E /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F52222672EF0024428E /* extension.swift */; };
 		9D851F5B2226BA100024428E /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5A2226BA100024428E /* DataSource.swift */; };
 		9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D851F5C2226CE5E0024428E /* DetailViewController.swift */; };
 		9D855CAD222D1FCE00C6D395 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D855CAC222D1FCE00C6D395 /* CalculatorViewController.swift */; };
-		9D8ACB202229185C00123F54 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8ACB1F2229185C00123F54 /* Charts.framework */; };
 		9D957B6C222797780025860E /* imageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D957B6B222797770025860E /* imageViewController.swift */; };
 		9D97F5FC2236191500FED35D /* クリック.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D97F5FB2236191500FED35D /* クリック.mp3 */; };
 		9D97F5FE2236192900FED35D /* キーボード.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9D97F5FD2236192900FED35D /* キーボード.mp3 */; };
 		9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */; };
+		9DCE959022532CED0052166D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DCE958F22532CED0052166D /* GoogleService-Info.plist */; };
+		9DCE9592225330740052166D /* Pods_MyFoodExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6699AB75C38AA25FBDD215 /* Pods_MyFoodExpense.framework */; };
+		9DCE9594225334D20052166D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCE9593225334D20052166D /* CustomLabel.swift */; };
 		9DD358F2222A355F006FFA64 /* CustomHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */; };
 		9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD9EB652225270300522E26 /* InputTableViewCell.swift */; };
 		9DDFBE90222521C300642364 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDFBE8F222521C300642364 /* FormViewController.swift */; };
@@ -78,7 +78,6 @@
 		9D49023C22350C2700DDE1C1 /* nock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nock.mp3; sourceTree = "<group>"; };
 		9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		9D851F5022265F4A0024428E /* titleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = titleViewController.swift; sourceTree = "<group>"; };
 		9D851F52222672EF0024428E /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		9D851F5A2226BA100024428E /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		9D851F5C2226CE5E0024428E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +87,8 @@
 		9D97F5FB2236191500FED35D /* クリック.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "クリック.mp3"; sourceTree = "<group>"; };
 		9D97F5FD2236192900FED35D /* キーボード.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "キーボード.mp3"; sourceTree = "<group>"; };
 		9DBDA5F22226D2FF00523C4F /* detailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailTableViewCell.swift; sourceTree = "<group>"; };
+		9DCE958F22532CED0052166D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9DCE9593225334D20052166D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderFooterView.swift; sourceTree = "<group>"; };
 		9DD9EB652225270300522E26 /* InputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTableViewCell.swift; sourceTree = "<group>"; };
 		9DDFBE8F222521C300642364 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
@@ -102,9 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DCE9592225330740052166D /* Pods_MyFoodExpense.framework in Frameworks */,
 				9D4902392235050700DDE1C1 /* AVFoundation.framework in Frameworks */,
-				9D8ACB202229185C00123F54 /* Charts.framework in Frameworks */,
-				310D406693AFC9297C606EB3 /* Pods_MyFoodExpense.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +184,7 @@
 				9D4B28FC22221FAB00A9B0D1 /* Main.storyboard */,
 				9D034E632209C1E000917824 /* LaunchScreen.storyboard */,
 				9D034E612209C1E000917824 /* Assets.xcassets */,
+				9DCE958F22532CED0052166D /* GoogleService-Info.plist */,
 				9D034E662209C1E000917824 /* Info.plist */,
 			);
 			path = MyFoodExpense;
@@ -213,7 +214,6 @@
 				9D957B6B222797770025860E /* imageViewController.swift */,
 				9D855CAC222D1FCE00C6D395 /* CalculatorViewController.swift */,
 				9D851F5C2226CE5E0024428E /* DetailViewController.swift */,
-				9D851F5022265F4A0024428E /* titleViewController.swift */,
 				9D4D5F1D22258DBD00F090B7 /* ListViewController.swift */,
 				9DDFBE8F222521C300642364 /* FormViewController.swift */,
 			);
@@ -234,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				9D034E5A2209C1DE00917824 /* AppDelegate.swift */,
+				9DCE9593225334D20052166D /* CustomLabel.swift */,
 				9D851F5A2226BA100024428E /* DataSource.swift */,
 				9D131F7B222D3B1500E7DB68 /* customButton.swift */,
 				9DD358F1222A355F006FFA64 /* CustomHeaderFooterView.swift */,
@@ -367,6 +368,7 @@
 				9D97F5FC2236191500FED35D /* クリック.mp3 in Resources */,
 				9D034E652209C1E000917824 /* LaunchScreen.storyboard in Resources */,
 				9D034E622209C1E000917824 /* Assets.xcassets in Resources */,
+				9DCE959022532CED0052166D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,13 +464,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyFoodExpense/Pods-MyFoodExpense-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -483,7 +487,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D851F5D2226CE5E0024428E /* DetailViewController.swift in Sources */,
-				9D851F5122265F4A0024428E /* titleViewController.swift in Sources */,
 				9D855CAD222D1FCE00C6D395 /* CalculatorViewController.swift in Sources */,
 				9D131F7C222D3B1500E7DB68 /* customButton.swift in Sources */,
 				9DBDA5F32226D2FF00523C4F /* detailTableViewCell.swift in Sources */,
@@ -493,6 +496,7 @@
 				9D15975322106D3700B959B8 /* logTableViewCell.swift in Sources */,
 				9D4D5F1E22258DBD00F090B7 /* ListViewController.swift in Sources */,
 				9D851F5B2226BA100024428E /* DataSource.swift in Sources */,
+				9DCE9594225334D20052166D /* CustomLabel.swift in Sources */,
 				9D851F53222672EF0024428E /* extension.swift in Sources */,
 				9DDFBE90222521C300642364 /* FormViewController.swift in Sources */,
 				9DD9EB662225270300522E26 /* InputTableViewCell.swift in Sources */,

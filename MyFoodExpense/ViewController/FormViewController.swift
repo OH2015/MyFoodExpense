@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,AVAudioPlayerDelegate{
 
@@ -25,8 +26,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     let uds = UserDefaults.standard
     var audioPlayer:AVAudioPlayer!
 
-    @IBOutlet weak var nonTaxTotalLabel: UILabel!
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var nonTaxTotalLabel: CustomLabel!
+    @IBOutlet weak var totalPriceLabel: CustomLabel!
     @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 //---------------------------------viewDidLoad----------------------------------------------
@@ -62,7 +63,23 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         audioPlayer.prepareToPlay()
 
     }
-//----------------------------------tableView----------------------------------------------
+//==============viewDidLayoutSubviews===========================================
+    override func viewDidLayoutSubviews(){    // ★←この関数まるまる追記
+        //  広告インスタンス作成
+        var admobView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+
+        let safeArea = self.view.safeAreaInsets.top
+        admobView.frame.origin = CGPoint(x:0, y:safeArea)
+        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+
+        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+
+        admobView.rootViewController = self
+        admobView.load(GADRequest())
+        self.view.addSubview(admobView)
+    }
+//----------------------------------tableView------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellCount
     }
@@ -115,6 +132,10 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
 
 
+
+
+// =====================================================================
+
     @IBAction func wrote(_ sender: UITextField) {
         reloadValue()
     }
@@ -142,7 +163,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         alert.addTextField(configurationHandler: {textField in
             textField.delegate = self
             textField.tag = -1
-            })
+        })
 
         alert.addAction(
             UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
@@ -189,8 +210,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         reloadValue()
     }
 
-
-    //-------------------------------------------------------------------------------------------
+//=============================================================================
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
@@ -248,7 +268,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         totalPriceLabel.text = String(TaxTotalPrice)
         nonTaxTotalLabel.text = String(nonTaxTotalPrice)
-        taxValueLabel.text = "(税\(TaxTotalPrice-nonTaxTotalPrice)円)"
+        taxValueLabel.text = "(消費税\(TaxTotalPrice-nonTaxTotalPrice)円)"
     }
 
 

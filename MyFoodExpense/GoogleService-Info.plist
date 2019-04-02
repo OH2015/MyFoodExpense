@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>209464792356-9lrhm1pgsb8d5sbnp5l9vb4hsd8kkvna.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.209464792356-9lrhm1pgsb8d5sbnp5l9vb4hsd8kkvna</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAAITYkwS-PxvVxVabgROo2XCNB4zmHijg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>209464792356</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fibo2933.taxCalculator</string>
+	<key>PROJECT_ID</key>
+	<string>myfoodexpense-33552</string>
+	<key>STORAGE_BUCKET</key>
+	<string>myfoodexpense-33552.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:209464792356:ios:0bf82ac30af6399e</string>
+	<key>DATABASE_URL</key>
+	<string>https://myfoodexpense-33552.firebaseio.com</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-5237111055443143~1322649097</string>
+</dict>
+</plist>
