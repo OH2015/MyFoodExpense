@@ -28,7 +28,6 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     @IBOutlet weak var nonTaxTotalLabel: CustomLabel!
     @IBOutlet weak var totalPriceLabel: CustomLabel!
-    @IBOutlet weak var taxValueLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 //---------------------------------viewDidLoad----------------------------------------------
     override func viewDidLoad() {
@@ -232,7 +231,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         tax.removeAll()
         if cellCount == 0{
             totalPriceLabel.text = "0"
-            taxValueLabel.text = "(税0円)"
+            nonTaxTotalLabel.text = "0"
             return
         }
         for i in 0...cellCount-1{
@@ -268,7 +267,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         totalPriceLabel.text = String(TaxTotalPrice)
         nonTaxTotalLabel.text = String(nonTaxTotalPrice)
-        taxValueLabel.text = "(消費税\(TaxTotalPrice-nonTaxTotalPrice)円)"
+
     }
 
 
