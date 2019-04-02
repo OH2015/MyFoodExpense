@@ -26,6 +26,9 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     let uds = UserDefaults.standard
     var audioPlayer:AVAudioPlayer!
 
+    let cellColor = #colorLiteral(red: 0.5841977863, green: 0.6957643865, blue: 0.9686274529, alpha: 1)
+
+    @IBOutlet weak var taxTitleLabel: UILabel!
     @IBOutlet weak var nonTaxTotalLabel: CustomLabel!
     @IBOutlet weak var totalPriceLabel: CustomLabel!
     @IBOutlet weak var tableView: UITableView!
@@ -63,21 +66,21 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     }
 //==============viewDidLayoutSubviews===========================================
-    override func viewDidLayoutSubviews(){    // ★←この関数まるまる追記
-        //  広告インスタンス作成
-        var admobView = GADBannerView()
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
-
-        let safeArea = self.view.safeAreaInsets.top
-        admobView.frame.origin = CGPoint(x:0, y:safeArea)
-        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
-
-        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-
-        admobView.rootViewController = self
-        admobView.load(GADRequest())
-        self.view.addSubview(admobView)
-    }
+//    override func viewDidLayoutSubviews(){    // ★←この関数まるまる追記
+//        //  広告インスタンス作成
+//        var admobView = GADBannerView()
+//        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+//
+//        let safeArea = self.view.safeAreaInsets.top
+//        admobView.frame.origin = CGPoint(x:0, y:safeArea)
+//        admobView.frame.size = CGSize(width:self.view.frame.width, height:admobView.frame.height)
+//
+//        admobView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//
+//        admobView.rootViewController = self
+//        admobView.load(GADRequest())
+//        self.view.addSubview(admobView)
+//    }
 //----------------------------------tableView------------------------------------
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellCount
@@ -168,9 +171,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "保存", style: .default, handler: {_ in
             self.view.endEditing(true)
-            var realTitle = ""
-            realTitle = self.Title.replacingOccurrences(of: " ", with: "")
-            if realTitle == ""{
+            if self.Title == ""{
                 self.Title = "notitle"
             }
             self.store()
@@ -206,6 +207,8 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         case 1:taxRate = "0.10"
         default:break
         }
+        let t = Int(Double(taxRate)! * 100)
+        taxTitleLabel.text = "+\(t)%"
         reloadValue()
     }
 
@@ -267,10 +270,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
         totalPriceLabel.text = String(TaxTotalPrice)
         nonTaxTotalLabel.text = String(nonTaxTotalPrice)
-
     }
-
-
 
     func store(){
         setValue()
@@ -278,8 +278,7 @@ class FormViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         f.dateStyle = .full
         f.timeStyle = .medium
         f.locale = Locale(identifier: "ja_JP")
-        let randomTime = Int.random(in: -1000000...1000000)
-        date = f.string(from: Date().addingTimeInterval(TimeInterval(randomTime)))
+        date = f.string(from: Date())
         DataArray = [names,prices,tax,[taxRate],[date],[Title],[String(TaxTotalPrice)],[String(nonTaxTotalPrice)]]
         var recordArray = uds.array(forKey: KEY.record.rawValue)
         recordArray?.append(DataArray)

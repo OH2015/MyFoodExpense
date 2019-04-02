@@ -30,7 +30,7 @@ class NumberTextField: UITextField{
 
         let doneItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(done))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let cancelItem = UIBarButtonItem(title: "キャンセル", style: .done, target: self, action: #selector(cancel))
+        let cancelItem = UIBarButtonItem(title: "リセット", style: .done, target: self, action: #selector(cancel))
         toolbar.setItems([cancelItem,spaceItem,doneItem], animated: true)
 
         self.inputAccessoryView = toolbar

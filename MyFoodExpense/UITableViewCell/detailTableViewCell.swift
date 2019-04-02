@@ -14,16 +14,25 @@ class detailTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var taxButton: UIButton!
-    
+    @IBOutlet weak var yenLabel: UILabel!
+
     func setCell(name:String,price:String,tax:String){
         nameLabel.text = name
         priceLabel.text = price
         if tax == "税込"{
             taxButton.setTitle("税込", for: .normal)
             taxButton.setTitleColor(UIColor.red, for: .normal)
-        }else{
+        }else if tax == "税抜き"{
             taxButton.setTitle("税抜き", for: .normal)
             taxButton.setTitleColor(UIColor.black, for: .normal)
+        }else{
+            taxButton.setTitle("", for: .normal)
+        }
+        if price == ""{
+            yenLabel.text = ""
+        }
+        if name == "" && price != ""{
+            nameLabel.text = "no name"
         }
     }
 
